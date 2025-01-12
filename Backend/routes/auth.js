@@ -28,6 +28,7 @@ router.post('/signup', async (req, res) => {
 });
 
 // Login Route
+// Login Route
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -36,6 +37,9 @@ router.post('/login', async (req, res) => {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
+
+    console.log('User password from DB:', user.password); // Log the hashed password stored in DB
+    console.log('Password provided:', password); // Log the password provided during login
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
@@ -46,6 +50,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.send({ token });
   } catch (error) {
+    console.error(error);  // Log error for debugging
     res.status(500).send({ message: 'Server error' });
   }
 });
