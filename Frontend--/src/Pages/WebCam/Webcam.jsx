@@ -1,8 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Webcam.css';
 
 const WebCamCapture = () => {
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
   const [isWebcamOpen, setIsWebcamOpen] = useState(false); // State to toggle webcam
 
   // Set up the webcam and process each frame
@@ -15,11 +16,15 @@ const WebCamCapture = () => {
           videoRef.current.play();
         } catch (error) {
           console.error('Error accessing webcam:', error);
-          
         }
       };
 
       setupWebcam();
+
+      // Enter fullscreen mode
+      if (containerRef.current && containerRef.current.requestFullscreen) {
+        containerRef.current.requestFullscreen();
+      }
     }
 
     return () => {
@@ -29,6 +34,11 @@ const WebCamCapture = () => {
           stream.getTracks().forEach(track => track.stop());
         }
       }
+
+      // Exit fullscreen if open
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
     };
   }, [isWebcamOpen]); // Run effect when webcam is toggled
 
@@ -37,12 +47,14 @@ const WebCamCapture = () => {
   };
 
   return (
-    <div className="webcam-container dark-theme">
-      <button onClick={handleOpenCamera} className="open-camera-btn">
-        Open Camera
-      </button>
+    <div ref={containerRef} className="webcam-container dark-theme">
+      {!isWebcamOpen && (
+        <button onClick={handleOpenCamera} className="open-camera-btn">
+          Open Camera
+        </button>
+      )}
       {isWebcamOpen && (
-        <video ref={videoRef} width="640" height="480" autoPlay></video>
+        <video ref={videoRef} width="100%" height="100%" autoPlay></video>
       )}
     </div>
   );
