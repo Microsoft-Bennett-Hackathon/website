@@ -1,8 +1,10 @@
 import React from "react";
 import "./HomePage.css";
-
+import Navbar from "../../Components/Navbar/Navbar"
 const HomePage = () => {
+    <Navbar/>
     return (
+        
         <div className="homepage">
             {/* Navbar */}
             <header className="navbar">

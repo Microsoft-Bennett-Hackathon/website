@@ -12,41 +12,7 @@ body {
     align-items: center;
   }
   
-  /* Navbar */
-  .navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 50px;
-    background-color: #202020;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
   
-  .logo {
-    font-size: 44px;
-    font-weight: bold;
-    color: #c20e0e;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-  }
-  
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 30px;
-  }
-  
-  .nav-links a:hover {
-    color: #ff6b6b;
-  }
   
   /* Hero Section */
   /* Hero Section */

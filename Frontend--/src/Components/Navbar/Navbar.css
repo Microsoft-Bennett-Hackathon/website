@@ -1,0 +1,101 @@
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #202020;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 12px 10px rgba(150, 150, 150, 0.2);
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: bold;
+    color: #ff0000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.dumbbell-icon {
+    font-size: 36px;
+    color: #12fd35;
+    transition: transform 0.3s ease-in-out;
+}
+
+.dumbbell-icon:hover {
+    transform: rotate(20deg) scale(1.2);
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center; 
+    gap: 50px; }
+
+    .nav-links a {
+        color: #f2f2f2;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        position: relative;
+        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    .nav-links a:hover {
+        color: #ff6b6b;
+        transform: scale(1.2); /* Makes the link bigger on hover */
+        font-size: 20px; /* Increase font size on hover */
+    }
+    
+    .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: #ff6b6b;
+        left: 50%;
+        bottom: -5px;
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-50%);
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+    
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .dumbbell-icon {
+        font-size: 30px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links a {
+        font-size: 18px;
+    }
+}
