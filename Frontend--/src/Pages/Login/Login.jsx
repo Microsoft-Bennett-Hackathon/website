@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css"
+import "./Login.css";
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +17,7 @@ const LoginPage = () => {
       });
       localStorage.setItem("token", response.data.token); // Save token for authenticated routes
       alert("Login successful!");
-      navigate("/dashboard");
+      navigate("/dashboard"); // Redirect to dashboard after login
     } catch (error) {
       alert(error.response?.data?.message || "Login failed.");
     }
