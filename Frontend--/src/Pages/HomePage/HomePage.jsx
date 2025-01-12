@@ -1,6 +1,6 @@
 import React from "react";
+import Navbar from "../../Components/Navbar/Navbar";
 import "./HomePage.css";
-import Navbar from "../../Components/Navbar/Navbar"
 const HomePage = () => {
     <Navbar/>
     return (
@@ -30,6 +30,7 @@ const HomePage = () => {
                     <img
                         src="https://images.pexels.com/photos/8436627/pexels-photo-8436627.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         alt="Hero Background"
+                        className="hero-img"
                     />
                 </div>
 
