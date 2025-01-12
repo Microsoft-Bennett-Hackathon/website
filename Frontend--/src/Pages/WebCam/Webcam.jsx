@@ -15,6 +15,7 @@ const WebCamCapture = () => {
           videoRef.current.play();
         } catch (error) {
           console.error('Error accessing webcam:', error);
+          
         }
       };
 
