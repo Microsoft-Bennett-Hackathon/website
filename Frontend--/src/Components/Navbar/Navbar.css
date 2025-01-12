@@ -52,10 +52,10 @@
         transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
     
+    /* Hover effect */
     .nav-links a:hover {
         color: #ff6b6b;
         transform: scale(1.2); /* Makes the link bigger on hover */
-        font-size: 20px; /* Increase font size on hover */
     }
     
     .nav-links a::after {
@@ -73,10 +73,6 @@
     .nav-links a:hover::after {
         width: 100%;
     }
-    
-.nav-links a:hover::after {
-    width: 100%;
-}
 
 @media (max-width: 768px) {
     .navbar {

@@ -28,7 +28,7 @@ const HomePage = () => {
                 </div>
                 <div className="hero-image">
                     <img
-                        // src="https://images.pexels.com/photos/3822727/pexels-photo-3822727.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        src="https://images.pexels.com/photos/8436627/pexels-photo-8436627.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         alt="Hero Background"
                     />
                 </div>
