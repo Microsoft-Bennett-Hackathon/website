@@ -11,10 +11,14 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+      console.log(password);
       localStorage.setItem("token", response.data.token); // Save token for authenticated routes
       alert("Login successful!");
       navigate("/dashboard"); // Redirect to dashboard after login
@@ -41,7 +45,9 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="auth-button">Login</button>
+        <button type="submit" className="auth-button">
+          Login
+        </button>
         <p className="auth-text">
           Don't have an account? <a href="/signup">Sign up</a>
         </p>
