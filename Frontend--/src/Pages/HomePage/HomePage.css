@@ -95,6 +95,7 @@
   height: 100%;
   object-fit: cover; /* Cover the entire section */
   z-index: 1; /* Behind content and overlay */
+  filter: brightness(60%);
 }
 
 .features {
@@ -179,6 +180,70 @@ p {
   font-size: 4rem;
   margin-bottom: 0.5rem;
 }
+/* Advantages Section */
+.advantages {
+  padding: 60px 20px;
+  background-color: #black;
+  color:white;
+}
+
+.advantages-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-out;
+}
+
+.advantages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.advantage-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 1s ease-out;
+}
+.advantage-item {
+  opacity: 0;
+  transform: translateY(20px); /* Example of initial state */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.advantage-item.show {
+  opacity: 1;
+  transform: translateY(0); /* Animation when the item becomes visible */
+}
+
+.advantage-card-right {
+  flex-basis: 45%;
+  text-align: right;
+}
+
+.advantage-info-left {
+  flex-basis: 50%;
+  padding-right: 20px;
+}
+
+.advantage-info-left p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.advantage-icon {
+  font-size: 3rem;
+  color: #ff6b6b;
+}
+
+.h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 
 /* About Section */
 .about {
@@ -251,9 +316,32 @@ p {
   color: #ff4a4a;
 }
 
-/* Contact Form */
+/* Contact Section Styles */
+.contact {
+  padding: 40px 20px;
+  background-color: black;
+  color: #fff;
+  position: relative;
+}
+
+.contact-heading {
+  text-align: center;
+  font-size: 2.5rem; /* Increased the font size */
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Wrapper for content */
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Form Styling */
 .contact-form {
-  max-width: 500px;
+  max-width: 700px; /* Increased the max-width for a wider form */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -261,22 +349,29 @@ p {
   animation: formAnimation 0.8s ease-out forwards;
 }
 
+/* Make the form group wider and more spacious */
 .form-group {
   display: flex;
   flex-direction: column;
   text-align: left;
+  padding: 10px; /* Increased padding */
+  margin-left: 10px;
+  margin-right: 10px; /* Reduced the right margin for balanced spacing */
+  font-size: 1.3rem; /* Increased font size for better readability */
 }
 
+/* Make labels bolder */
 .form-group label {
   margin-bottom: 8px;
   font-weight: bold;
   color: #fff;
 }
 
+/* Input and Textarea fields */
 .form-group input,
 .form-group textarea {
-  padding: 12px;
-  font-size: 1rem;
+  padding: 15px; /* Increased padding */
+  font-size: 1.2rem; /* Increased font size for input text */
   border: 2px solid #ff6b6b;
   border-radius: 5px;
   background-color: #282828;
@@ -284,11 +379,13 @@ p {
   transition: all 0.3s ease-in-out;
 }
 
+/* Placeholder styling */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: #ccc;
 }
 
+/* Hover effects for input and textarea */
 .form-group input:hover,
 .form-group textarea:hover {
   border-color: #ff4a4a;
@@ -296,10 +393,10 @@ p {
 }
 
 .contact-button {
-  padding: 12px 20px;
-  font-size: 1rem;
+  padding: 15px 25px; /* Increased button padding */
+  font-size: 1.2rem; /* Increased font size */
   color: #fff;
-  background-color: #ff6b6b;
+  background-color: #ff0000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -308,7 +405,61 @@ p {
 
 .contact-button:hover {
   background-color: #ff4a4a;
-  transform: scale(1.05); /* Adds scale effect */
+  transform: scale(1.05);
+}
+
+/* Additional Content Styles */
+.contact-info {
+  max-width: 450px; /* Increased width for contact info */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-text {
+  font-size: 1.5rem; /* Increased font size for the text */
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* "We would love to hear from you" text */
+.contact-text strong {
+  font-size: 1.7rem; /* Made this text even bigger */
+  font-weight: bold;
+  color: #ff6b6b; /* Added some color for emphasis */
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Fade In / Out Animations */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Keyframe Animation for Form Elements */
