@@ -4,7 +4,7 @@ import axios from "axios";
 import "./SignUp.css";
 
 const SignUpPage = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", password: "", preference: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -50,6 +50,24 @@ const SignUpPage = () => {
           onChange={handleChange}
           required
         />
+        {/* Preference Section */}
+        <div className="preference-container">
+          <label htmlFor="preference">Select your fitness preference:</label>
+          <select
+            name="preference"
+            value={formData.preference}
+            onChange={handleChange}
+            required
+          >
+            <option value="">--Select--</option>
+            <option value="bodybuilding">Bodybuilding</option>
+            <option value="weightlifting">Weightlifting</option>
+            <option value="cardio">Cardio</option>
+            <option value="yoga">Yoga</option>
+            <option value="crossfit">CrossFit</option>
+            <option value="pilates">Pilates</option>
+          </select>
+        </div>
         <button type="submit" className="auth-button">Sign Up</button>
         <p className="auth-text">
           Already have an account? <a href="/login">Login</a>
