@@ -22,10 +22,13 @@ const SignUpPage = () => {
     }
   };
 
+  
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSignUp}>
         <h1 className="auth-title">Sign Up</h1>
+
+        {/* Name */}
         <input
           type="text"
           name="name"
@@ -34,6 +37,8 @@ const SignUpPage = () => {
           onChange={handleChange}
           required
         />
+
+        {/* Email */}
         <input
           type="email"
           name="email"
@@ -42,6 +47,8 @@ const SignUpPage = () => {
           onChange={handleChange}
           required
         />
+
+        {/* Password */}
         <input
           type="password"
           name="password"
@@ -50,6 +57,7 @@ const SignUpPage = () => {
           onChange={handleChange}
           required
         />
+
         {/* Preference Section */}
         <div className="preference-container">
           <label htmlFor="preference">Select your fitness preference:</label>
@@ -68,7 +76,50 @@ const SignUpPage = () => {
             <option value="pilates">Pilates</option>
           </select>
         </div>
+
+        {/* Age Section */}
+        <div className="age-container">
+          <label htmlFor="age">Age:</label>
+          <input
+            type="number"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            placeholder="Enter your age"
+            required
+          />
+        </div>
+
+        {/* Weight Section */}
+        <div className="weight-container">
+          <label htmlFor="weight">Weight (kg):</label>
+          <input
+            type="number"
+            name="weight"
+            value={formData.weight}
+            onChange={handleChange}
+            placeholder="Enter your weight in kg"
+            required
+          />
+        </div>
+
+        {/* Height Section */}
+        <div className="height-container">
+          <label htmlFor="height">Height (cm):</label>
+          <input
+            type="number"
+            name="height"
+            value={formData.height}
+            onChange={handleChange}
+            placeholder="Enter your height in cm"
+            required
+          />
+        </div>
+
+        {/* Submit Button */}
         <button type="submit" className="auth-button">Sign Up</button>
+
+        {/* Login Link */}
         <p className="auth-text">
           Already have an account? <a href="/login">Login</a>
         </p>
