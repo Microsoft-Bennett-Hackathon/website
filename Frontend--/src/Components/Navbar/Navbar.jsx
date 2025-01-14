@@ -6,7 +6,7 @@ const Navbar = () => {
         <header className="navbar">
             <div className="logo">
                 <span className="dumbbell-icon">🏋️</span>
-                FitAI
+                <b>FitAI</b>
             </div>
             <nav>
                 <ul className="nav-links">

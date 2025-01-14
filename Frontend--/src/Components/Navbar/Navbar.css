@@ -1,109 +1,108 @@
 /* Navbar */
 .navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 20px; /* Reduced padding for a smaller navbar */
-    background-color: #242323;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 12px 10px rgba(163, 163, 163, 0.2);
-    height: 40px; /* Set a specific height if needed */
-  }
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px; /* Reduced padding for a smaller navbar */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+  height: 40px; /* Set a specific height if needed */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)); /* Semi-transparent gradient */
+  filter: brightness(80%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Soft shadow to create depth */
+}
 
+/* Logo */
 .logo {
-    font-size: 34px;
-    font-weight: bold;
-    color: #ff0000;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+  font-size: 44px;
+  font-weight: bold;
+  color: #ff0000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
 .logo:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
+/* Dumbbell Icon */
 .dumbbell-icon {
-    font-size: 36px;
-    color: #12fd35;
-    transition: transform 0.3s ease-in-out;
+  font-size: 36px;
+  color: #12fd35;
+  transition: transform 0.3s ease-in-out;
 }
 
 .dumbbell-icon:hover {
-    transform: rotate(20deg) scale(1.2);
+  transform: rotate(20deg) scale(1.2);
 }
+
 /* Nav Links Container */
 .nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-  }
-  
-  /* Nav Links Styling */
-  .nav-links a {
-    color: #f2f2f2;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 18px; /* Increased font size for better readability */
-    position: relative;
-    padding: 5px 0; /* Added padding to give space for underline */
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, text-shadow 0.3s ease;
-  }
-  
-  /* Hover Effects */
-  .nav-links a:hover {
-    color: #ff6b6b; /* Change color on hover */
-    transform: scale(1.1); /* Slightly enlarge the link on hover */
-    text-shadow: 0 0 10px rgba(255, 107, 107, 0.6); /* Add glowing effect */
-  }
-  
-  /* Underline Animation */
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: #ff6b6b;
-    transition: width 0.3s ease;
-  }
-  
-  .nav-links a:hover::after {
-    width: 100%; /* Expands the underline when hovered */
-  }
-  
-  /* Optional: Active Link Styling */
-  .nav-links a:active {
-    color: #ff4a4a; /* Darker color when the link is actively clicked */
-  }
-  
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
 
+/* Nav Links Styling */
+.nav-links a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 23px; /* Increased font size for better readability */
+  position: relative;
+  padding: 5px 0; /* Added padding to give space for underline */
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, text-shadow 0.3s ease;
+}
+
+/* Hover Effects */
+.nav-links a:hover {
+  color: #f23e3e; /* Change color on hover */
+  transform: scale(1.1); /* Slightly enlarge the link on hover */
+  text-shadow: 0 0 10px rgba(185, 31, 31, 0.6); /* Add glowing effect */
+}
+
+/* Underline Animation */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ff6b6b;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%; /* Expands the underline when hovered */
+}
+
+/* Responsive Styling */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 15px 20px;
-    }
+  .navbar {
+    padding: 15px 20px;
+  }
 
-    .logo {
-        font-size: 36px;
-    }
+  .logo {
+    font-size: 36px;
+  }
 
-    .dumbbell-icon {
-        font-size: 30px;
-    }
+  .dumbbell-icon {
+    font-size: 30px;
+  }
 
-    .nav-links {
-        gap: 20px;
-    }
+  .nav-links {
+    gap: 20px;
+  }
 
-    .nav-links a {
-        font-size: 18px;
-    }
+  .nav-links a {
+    font-size: 18px;
+  }
 }

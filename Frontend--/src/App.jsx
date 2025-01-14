@@ -21,6 +21,7 @@ const App = () => {
     <Router>
       <Routes>
         {/* Public Routes */}
+       
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
@@ -29,6 +30,7 @@ const App = () => {
         {/* Protected Route */}
         <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
       </Routes>
+      
     </Router>
   );
 };
