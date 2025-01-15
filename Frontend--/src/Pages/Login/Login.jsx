@@ -3,6 +3,29 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
+// const LoginPage = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const response = await axios.post("http://localhost:5000/api/auth/login", {
+//         email,
+//         password,
+//       });
+
+//       // Save token to localStorage (if needed)
+//       localStorage.setItem("authToken", response.data.token);
+
+//       // Navigate to Dashboard
+//       alert("Login successful!");
+//       navigate("/dashboard");
+//     } catch (error) {
+//       alert(error.response?.data?.message || "Login failed.");
+//     }
+//   };
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,22 +34,21 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        {
-          email,
-          password,
-        }
-      );
-      console.log(password);
-      localStorage.setItem("token", response.data.token); // Save token for authenticated routes
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
+
+      // Save token to localStorage
+      localStorage.setItem("authToken", response.data.token);
+
+      // Navigate to Dashboard
       alert("Login successful!");
-      navigate("/dashboard"); // Redirect to dashboard after login
+      navigate("/dashboard");
     } catch (error) {
       alert(error.response?.data?.message || "Login failed.");
     }
   };
-
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleLogin}>

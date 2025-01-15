@@ -72,4 +72,23 @@
   .auth-text a:hover {
     text-decoration: underline;
   }
-  
+  /* Preference Container */
+.preference-container {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.preference-container label {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.preference-container select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ff6b6b;
+  border-radius: 5px;
+  background-color: #282828;
+  color: #fff;
+}
