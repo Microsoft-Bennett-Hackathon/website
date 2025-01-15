@@ -1,7 +1,7 @@
 
 
 import React, { useEffect, useState } from "react";
-import "./Navbar.css"; 
+import "./Navbar.css";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,8 +18,11 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+    
       <div className="logo">
-        <i className="dumbbell-icon">🏋️</i> FITAI
+       
+        <span className="fit">FIT</span>
+        <span className="ai">AI</span>
       </div>
       <ul className="nav-links">
         <li><a href="#home">Home</a></li>

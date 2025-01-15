@@ -1,4 +1,9 @@
+
+
+/* Change cursor on hover over interactive elements */
+
 body {
+ 
   font-family: 'Barlow', sans-serif;
 }
 
@@ -6,7 +11,8 @@ body {
 /* Navbar */
 .navbar {
   width: 100%;
-  
+  width: calc(100% - 140px); /* Subtract 80px from both sides */
+  margin-left: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,20 +31,30 @@ body {
   color: whitesmoke; 
   box-shadow: 0 4px 6px rgba(78, 78, 78, 0.1); /* Slight box shadow */
 }
+
 /* Logo */
 .logo {
   font-size: 44px;
   font-weight: bold;
-  color: #ff0000;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  transition: color 0.3s ease-in-out, opacity 0.5s ease-in-out; 
+  transition: color 0.3s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .logo:hover {
   transform: scale(1.1);
+}
+
+/* FIT */
+.fit {
+  color: #ff0000; /* Red */
+}
+
+/* AI */
+.ai {
+  color: white; /* Blue */
 }
 
 /* Dumbbell Icon */

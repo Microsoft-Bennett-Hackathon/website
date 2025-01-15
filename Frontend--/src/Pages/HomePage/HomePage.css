@@ -1,32 +1,25 @@
-/* Reset all margins, paddings, and borders */
-* {
-  font-family: 'Barlow', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  cursor: url('https://cdn-icons-png.flaticon.com/512/888/888839.png'), auto; /* Replace URL with your desired custom cursor image */
-}
 
- .homepage{
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+
+
+.homepage {
+   padding: 0 70px; 
+   margin: 0 auto; 
+   max-width: 100%;
+   box-sizing: border-box;
   background-color: black;
   font-family: 'Barlow', sans-serif;
-
 }
 
 /* Hero Section */
+
 .hero {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align content to the left */
+  justify-content: flex-start; 
   width: 100%;
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh; 
   position: relative;
-  overflow: hidden; /* Prevent extra scrollbars or borders */
-  /* Prevent any gaps showing background */
+  overflow: hidden;
 }
 
 /* Gradient Overlay for Darker Left Side */
@@ -43,64 +36,82 @@
 /* Hero Content */
 .hero-content {
   position: relative;
-  z-index: 2; /* Above video and overlay */
+  z-index: 2; 
   padding: 30px;
   color: #fff;
-  width: 50%; /* Constrain content width */
+  width: 50%; 
   text-align: left;
 }
 
-.hero h1 {
-  font-size: 3em;
+.hero  {
+  font-size: 3.2em;
   margin-bottom: 20px;
   color: white; /* Default text color */
   text-align: left; /* Optional: Center-align text */
-  line-height: 1.2; /* Adjust line spacing */
+  line-height: 1.5; /* Adjust line spacing */
 }
 
-/* Styling the first letter */
-.hero h1::first-letter {
-  font-size: 2em; /* Make the first letter larger */
-  font-weight: bold; /* Optional: Make it bold */
-  color: red; /* Red color for the first letter */
-  text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5); /* Slight red shadow */
+.hero-content .highlight {
+  color: red; /* Red color for the first word */
+  font-size: 1.1em; /* Slightly larger than default */
+  font-weight: bold; 
+  text-align: left;
 }
+
+.hero-content .do-it-right {
+  font-size: 1.1em; /* Set the same font size as .highlight */
+  font-weight: bold; 
+  color: inherit; /* Inherit color */
+  text-align: left;
+}
+
+
+
 .hero p {
   font-size: 1.5rem;
   margin-bottom: 20px;
-  margin-right: 0; /* Remove or reduce the right margin */
-  margin-left: 7px; /* Optional: Add a slight left margin for uniformity */
-  text-align: left; /* Align text to the left */
-  line-height: 1.6; /* Optional: Add more space between lines for readability */
+  margin-top: 20px;
+  margin-right: 0; 
+  margin-left: 7px; 
+  text-align: left; 
+  line-height: 1.6; 
   word-wrap: break-word;
 }
 
 /* Call-to-Action Buttons */
 .cta-button {
-  padding: 14px 30px;
+  padding: 16px 30px;
   font-size: 1.1rem;
-  color: #fff;
-  background-color: #ff0000;
+  color: black;
+  background-color: white;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 600;
-  transition: all 0.3s ease;
-  margin: 10px;
+  transition: all 0.3s ease, background-position 0.5s ease-in-out;
+  margin: 20px;
+  margin-top: 90px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, red 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-button:hover {
-  background-color: #ff4a4a;
-  transform: scale(1.05);
+  color: white; 
+  background-position: 0 0;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
 }
 
 .cta-button:active {
-  transform: scale(1);
+  transform: scale(0.98); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .hero-video {
   border: none;
   border-radius: 0;
@@ -112,62 +123,96 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cover the entire section */
-  z-index: 1; /* Behind content and overlay */
+  object-fit: cover; 
+  z-index: 1; 
   filter: brightness(60%);
 }
-
+/* Feature-sec */
+/* Features Section */
 .features {
   padding: 6rem 3rem;
   text-align: center;
-  background-color: #000;
   color: #fff;
 }
 
 .features h2 {
-  font-size: 2.7rem;
+  font-size: 3.7rem;
   color: red;
-  margin-bottom: 3rem;
+  margin-bottom: 3.4rem;
 }
+
 
 .feature-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
+}
+
+/* Second Feature with Background */
+.feature-item-second {
+  background: url('/Texture/bg.png') no-repeat center center / cover;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  height: 500px; /* Increased height of the feature item */
 }
 
 .feature-item.show {
   opacity: 1;
   transform: translateY(0);
 }
+.background-text {
+  position: absolute;
+  font-size: 8rem;
+  font-weight: bold;
+  color: rgba(83, 83, 83, 0.2); /* Increased opacity for better visibility */
+  z-index: -1; /* Ensure the text stays behind other elements */
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out; /* Smooth transition for transform and opacity */
+}
 
-.h3 {
-  font-size: 30px;
-  text-align: center;
+
+.feature-info-left,
+.feature-info-right {
+  width: 50%;
+  text-align: justify;
+}
+
+
+.feature-info-left h3,
+.feature-info-right h3 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.feature-info-left p,
+.feature-info-right p {
+  font-size: 1.3rem;
+  line-height: 1.6;
 }
 
 .feature-card-left,
 .feature-card-right {
-  background: linear-gradient(blackgrey, red);
-  color: white;
-  border: red;
-  border-color: red;
-  padding: 1.5rem;
+  width: 35%;
+}
+
+.feature-image {
+  width: 90%;
+  height: auto;
+  max-width: 500px;
+  height: 1000pxrem;
   border-radius: 10px;
-  width: 40%;
-  height: 270px;
-  text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  position: relative; /* Added for text positioning */
 }
 
 .feature-card-left .feature-info,
@@ -182,28 +227,24 @@
 
 .feature-item.show .feature-info {
   opacity: 1;
-  transform: translate(-50%, -40%); /* Text moves slightly up from the center */
+  transform: translate(-50%, -40%);
 }
 
 p {
   font-size: 20px;
 }
 
-.feature-info-left,
-.feature-info-right {
-  width: 50%;
-  text-align: justify;
-}
-
 .feature-icon {
   font-size: 4rem;
   margin-bottom: 0.5rem;
 }
+
 /* Advantages Section */
 .advantages {
   padding: 60px 20px;
-  background-color: #black;
+  background-color: black;
   color:white;
+  background: url('/Texture/bg.png') no-repeat center center / cover;
 }
 
 .advantages-heading {
