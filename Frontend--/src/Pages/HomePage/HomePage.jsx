@@ -58,7 +58,7 @@ const HomePage = () => {
   return (
     <>
       {/* Navbar Component */}
-      <LoadingLogo />
+     
       <Navbar />
 
       {/* Homepage Content */}
@@ -75,13 +75,14 @@ const HomePage = () => {
               you reach excellence, your only goal is PERFECTION.
             </p>
             <div className="cta-buttons">
-              <button className="cta-button" onClick={() => navigate("/signup")}>
-                Sign Up
+              <button   style={{ fontSize: "21px" }} 
+ className="cta-button" onClick={() => navigate("/signup")}>
+               GET STARTED
               </button>
-              <button className="cta-button" onClick={() => navigate("/login")}>
-                Login
+              <button  style={{ fontSize: "21px" }}  className="cta-button" onClick={() => navigate("/login")}>
+              LOGIN 💪
               </button>
-              <button className="cta-button">Get Started</button>
+             
             </div>
           </div>
           <video autoPlay loop muted className="hero-video">

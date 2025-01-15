@@ -1,0 +1,12 @@
+.auth-container {
+    background-color: #000;
+    color: #ff0000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Add more styles as needed */
+  

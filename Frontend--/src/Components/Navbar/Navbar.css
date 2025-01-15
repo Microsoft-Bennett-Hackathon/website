@@ -1,20 +1,30 @@
+body {
+  font-family: 'Barlow', sans-serif;
+}
+
+
 /* Navbar */
 .navbar {
   width: 100%;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 20px; /* Reduced padding for a smaller navbar */
-  position: sticky;
+  padding: 5px 20px;
+  position: fixed;
   top: 0;
   z-index: 100;
-  transition: all 0.3s ease-in-out;
-  height: 40px; /* Set a specific height if needed */
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)); /* Semi-transparent gradient */
-  filter: brightness(80%);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Soft shadow to create depth */
+  transition: background 0.5s ease, opacity 0.5s ease; /* Smooth transitions */
+  height: 60px; /* Slightly taller navbar for better fading */
+  opacity: 1; /* Default opacity */
 }
 
+/* Navbar background when scrolled */
+.navbar.scrolled {
+  background-color: #000000;
+  color: whitesmoke; 
+  box-shadow: 0 4px 6px rgba(78, 78, 78, 0.1); /* Slight box shadow */
+}
 /* Logo */
 .logo {
   font-size: 44px;
@@ -24,7 +34,7 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, opacity 0.5s ease-in-out; 
 }
 
 .logo:hover {
@@ -55,7 +65,7 @@
   color: #f2f2f2;
   text-decoration: none;
   font-weight: 500;
-  font-size: 23px; /* Increased font size for better readability */
+  font-size: 27px; 
   position: relative;
   padding: 5px 0; /* Added padding to give space for underline */
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, text-shadow 0.3s ease;
@@ -82,6 +92,7 @@
 
 .nav-links a:hover::after {
   width: 100%; /* Expands the underline when hovered */
+
 }
 
 /* Responsive Styling */
