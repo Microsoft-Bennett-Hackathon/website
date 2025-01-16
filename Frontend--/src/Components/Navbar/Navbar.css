@@ -3,7 +3,7 @@
 /* Change cursor on hover over interactive elements */
 
 body {
- 
+ cursor:pointer;
   font-family: 'Barlow', sans-serif;
 }
 
@@ -110,19 +110,7 @@ body {
   width: 100%; /* Expands the underline when hovered */
 
 }
-/* Circle effect for hover state */
-.nav-links a.hovered::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border: 2px solid red;
-  border-radius: 50%;
-  pointer-events: none;
-}
-/* Responsive Styling */
+Responsive Styling */
 @media (max-width: 768px) {
   .navbar {
     padding: 15px 20px;

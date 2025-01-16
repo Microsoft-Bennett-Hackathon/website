@@ -5,7 +5,7 @@ import WebCam from "./Pages/WebCam/Webcam";
 import LoginPage from "./Pages/Login/Login";
 import SignUpPage from "./Pages/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-
+import MuscleGainPage from "./Pages/MuscleGain/MuscleGain";
 // Mock authentication check
 const isAuthenticated = () => {
   return localStorage.getItem("authToken") !== null;
@@ -26,6 +26,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/camera" element={<WebCam />} />
+        <Route path="/gain" element={<MuscleGainPage />}/>
 
         {/* Protected Route */}
         <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />

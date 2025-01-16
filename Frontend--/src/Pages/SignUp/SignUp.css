@@ -5,11 +5,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #2b2b2c;
-  flex-direction: column;
-  padding: 20px;
+  height: 120vh; 
+  background-color: #2b2b2c; 
+  flex-direction: column; 
+  padding: 0 70px; 
+  background-image: url('./Texture/bg.png'); 
+  background-size: cover;
+  background-position: center; 
+  background-attachment: fixed;
+  box-sizing: border-box; 
+  color: white; 
+  text-align: center; 
 }
+
+.auth-container h1 {
+  font-size: 3rem; /* Larger font size for headings */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.auth-container p {
+  font-size: 1.2rem; /* Adjust font size for readability */
+  margin-bottom: 20px; /* Space below the paragraph */
+}
+
+.auth-container button {
+  background-color: red; /* Green button */
+  color: white; /* Button text in white */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-container button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
 
 /* Form styles */
 .auth-form {
@@ -27,7 +60,7 @@
 .auth-title {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #333;
+  color: white;
 }
 
 .auth-form input {
@@ -46,7 +79,7 @@
 }
 
 .auth-button {
-  background-color: #4caf50;
+  background-color: red;
   color: rgb(18, 18, 18);
   border: none;
   border-radius: 5px;
@@ -76,7 +109,7 @@
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: black;
   padding: 30px;
   border-radius: 10px;
   width: 100%;

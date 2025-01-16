@@ -19,6 +19,8 @@ const HomePage = () => {
   const [isVisible1, setIsVisible1] = useState(false);
   const [isVisible2, setIsVisible2] = useState(false);
   const [isVisible3, setIsVisible3] = useState(false);
+  const listRef = useRef(null);
+
 
 
   useEffect(() => {
@@ -121,6 +123,21 @@ const HomePage = () => {
       }
     };
   }, []);
+  useEffect(() => {
+    const scrollInterval = setInterval(() => {
+      if (listRef.current) {
+        listRef.current.scrollLeft += 2; // Adjust the scroll speed here
+        if (
+          listRef.current.scrollLeft >=
+          listRef.current.scrollWidth - listRef.current.clientWidth
+        ) {
+          listRef.current.scrollLeft = 0; // Reset to the beginning
+        }
+      }
+    }, 20); // Adjust the interval here (lower = smoother scroll)
+
+    return () => clearInterval(scrollInterval); // Cleanup on component unmount
+  }, []);
 
 
   return (
@@ -148,9 +165,9 @@ const HomePage = () => {
                 <button
                   style={{ fontSize: "21px" }}
                   className="cta-button"
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate("/signup")}
                 >
-                  GET STARTED
+                       GET STARTED
                 </button>
               </div>
             </div>
@@ -262,38 +279,61 @@ const HomePage = () => {
         </section>
 
         <section className="advantages" id="advantages">
-          <h2 className="advantages-heading">Why Choose Our App?</h2>
-          <div className="advantages-list">
-            <div className="advantage-item fade-in">
-              <div className="advantage-info-left">
-                <p>Our app helps you achieve your fitness goals faster by combining personalized training plans, AI-powered feedback, and real-time progress tracking. Here’s why our users love it!</p>
-              </div>
-              <div className="advantage-card-right">
-                <span className="advantage-icon">⚡</span>
-                <h3 className="h3">Faster Results</h3>
-              </div>
-            </div>
-
-            <div className="advantage-item fade-in">
-              <div className="advantage-info-left">
-                <p>Our users experience continuous motivation and improved results. With easy-to-understand data insights, you can adjust your workouts and diet for optimal performance.</p>
-              </div>
-              <div className="advantage-card-right">
-                <span className="advantage-icon">📊</span>
-                <h3 className="h3">Data-Driven Insights</h3>
-              </div>
-            </div>
-
-            <div className="advantage-item fade-in">
-              <div className="advantage-info-left">
-              </div>
-              <div className="advantage-card-right">
-                <span className="advantage-icon">📈</span>
-                <h3 className="h3">Graphical Insights</h3>
-              </div>
-            </div>
+      <h2 className="advantages-heading">Why Choose Our App?</h2>
+      <div className="advantages-list" ref={listRef}>
+        <div className="advantage-item">
+          <div className="advantage-info-left">
+            <p>
+              Achieve your fitness goals faster with personalized training
+              plans, AI feedback, and real-time tracking.
+            </p>
           </div>
-        </section>
+          <div className="advantage-card-right">
+            <span className="advantage-icon">⚡</span>
+            <h3 className="h3">Faster Results</h3>
+          </div>
+        </div>
+
+        <div className="advantage-item">
+          <div className="advantage-info-left">
+            <p>
+              Continuous motivation with insights to adjust your workouts and
+              diet for optimal performance.
+            </p>
+          </div>
+          <div className="advantage-card-right">
+            <span className="advantage-icon">📊</span>
+            <h3 className="h3">Data-Driven Insights</h3>
+          </div>
+        </div>
+
+        <div className="advantage-item">
+          <div className="advantage-info-left">
+            <p>
+              Visualize your progress with interactive and easy-to-understand
+              graphs.
+            </p>
+          </div>
+          <div className="advantage-card-right">
+            <span className="advantage-icon">📈</span>
+            <h3 className="h3">Graphical Insights</h3>
+          </div>
+        </div>
+
+        <div className="advantage-item">
+          <div className="advantage-info-left">
+            <p>
+              Seamless integration with your favorite fitness devices and
+              applications.
+            </p>
+          </div>
+          <div className="advantage-card-right">
+            <span className="advantage-icon">📱</span>
+            <h3 className="h3">Device Integration</h3>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 
@@ -322,14 +362,7 @@ const HomePage = () => {
             </form>
 
             {/* Additional Section with Animations */}
-            <div className="contact-info">
-              <p className="contact-text fade-in">We would love to hear from you! Drop your queries or suggestions.</p>
-              <div className="social-icons fade-in">
-                <img src="/contact -section/1.png" alt="facebook" className="social-icon" />
-                <img src="/contact -section/2.png" alt="twitter" className="social-icon" />
-                <img src="/contact -section/3.png" alt="instagram" className="social-icon" />
-              </div>
-            </div>
+            
           </div>
         </section>
 

@@ -15,32 +15,9 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle mouse movement near anchor elements
-  const handleMouseMove = (e) => {
-    const anchors = document.querySelectorAll(".nav-links a");
-    anchors.forEach((anchor) => {
-      const boundingBox = anchor.getBoundingClientRect();
-      const buffer = 10; // Distance threshold around the anchor element
-      if (
-        e.clientX >= boundingBox.left - buffer &&
-        e.clientX <= boundingBox.right + buffer &&
-        e.clientY >= boundingBox.top - buffer &&
-        e.clientY <= boundingBox.bottom + buffer
-      ) {
-        setHoveredElement(anchor);
-      } else {
-        if (hoveredElement === anchor) {
-          setHoveredElement(null);
-        }
-      }
-    });
-  };
-
+  
   // Adding mouse move event listener to track cursor position
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [hoveredElement]);
+  
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
@@ -55,13 +32,13 @@ const Navbar = () => {
           </a>
         </li>
         <li>
-          <a href="#about" className={hoveredElement === document.querySelector('[href="#about"]') ? "hovered" : ""}>
+          <a href="#advantages" className={hoveredElement === document.querySelector('[href="#about"]') ? "hovered" : ""}>
             About
           </a>
         </li>
         <li>
-          <a href="#services" className={hoveredElement === document.querySelector('[href="#services"]') ? "hovered" : ""}>
-            Services
+          <a href="#features" className={hoveredElement === document.querySelector('[href="#features"]') ? "hovered" : ""}>
+            features
           </a>
         </li>
         <li>

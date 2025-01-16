@@ -14,12 +14,9 @@ const Carousel = ({ onSelect, onFinish }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  const handleChange = (e) => {
+    const index = Number(e.target.value);
+    setCurrentIndex(index);
   };
 
   const handleSelect = () => {
@@ -27,20 +24,24 @@ const Carousel = ({ onSelect, onFinish }) => {
     onSelect(images[currentIndex].label);
   };
 
-  const handleContinue = () => {
+  const handleSignup = () => {
     onFinish();
   };
 
   const handleScroll = (e) => {
-    if (e.deltaY > 0) {
-      handleNext();
-    } else {
-      handlePrev();
+    if (e.deltaY > 0 && currentIndex < images.length - 1) {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
 
   return (
     <div className="carousel-container" onWheel={handleScroll}>
+     <h1 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>
+  <span style={{ color: "red" }}>SELECT</span> YOUR BODY-FAT %
+</h1>
+     
       <div className="carousel-wrapper">
         <div className="card-wrapper">
           <div
@@ -50,13 +51,15 @@ const Carousel = ({ onSelect, onFinish }) => {
             <p className="card-label">{images[currentIndex].label}</p>
           </div>
         </div>
-        <div className="navigation-wrapper">
-          <button className="navigation-button left" onClick={handlePrev}>
-            {"<"}
-          </button>
-          <button className="navigation-button right" onClick={handleNext}>
-            {">"}
-          </button>
+        <div className="slider-wrapper">
+          <input
+            type="range"
+            min="0"
+            max={images.length - 1}
+            value={currentIndex}
+            onChange={handleChange}
+            className="carousel-slider"
+          />
         </div>
       </div>
       <button
@@ -65,8 +68,8 @@ const Carousel = ({ onSelect, onFinish }) => {
       >
         {selectedIndex === currentIndex ? "Selected" : "Select"}
       </button>
-      <button className="auth-button continue-button" onClick={handleContinue}>
-        Continue
+      <button className="auth-button signup-button" onClick={handleSignup}>
+        Sign Up
       </button>
     </div>
   );
