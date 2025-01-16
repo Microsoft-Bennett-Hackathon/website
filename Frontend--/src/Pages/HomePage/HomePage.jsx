@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./HomePage.css";
@@ -16,6 +16,10 @@ const HomePage = () => {
   const intersectionObserver1 = useRef(null);
   const intersectionObserver2 = useRef(null);
   const intersectionObserver3 = useRef(null);
+  const [isVisible1, setIsVisible1] = useState(false);
+  const [isVisible2, setIsVisible2] = useState(false);
+  const [isVisible3, setIsVisible3] = useState(false);
+
 
   useEffect(() => {
     // Observer for advantage items
@@ -62,81 +66,61 @@ const HomePage = () => {
       featureItems.forEach((item) => featureObserver.unobserve(item));
     };
   }, []);
-  useEffect(() => {
-    intersectionObserver1.current = new IntersectionObserver((entries) => {
+  const createIntersectionObserver = (ref, setIsVisible) => {
+    return new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          backgroundRef1.current.style.transform = "translateY(-50%) translateX(0)";
-          backgroundRef1.current.style.opacity = 1;
+          ref.current.style.transform = "translateY(-50%) translateX(0)";
+          ref.current.style.opacity = 1;
+          setIsVisible(true);
         } else {
-          backgroundRef1.current.style.transform = "translateY(-50%) translateX(-150%)";
-          backgroundRef1.current.style.opacity = 0;
+          ref.current.style.transform = "translateY(-50%) translateX(-150%)";
+          ref.current.style.opacity = 0;
+          setIsVisible(false);
         }
       });
     }, { threshold: 0.1 });
+  };
 
+  // Function to start the observers when refs are ready
+  const startObservers = () => {
     if (backgroundRef1.current) {
+      intersectionObserver1.current = createIntersectionObserver(backgroundRef1, setIsVisible1);
       intersectionObserver1.current.observe(backgroundRef1.current);
     }
 
-    return () => {
-      if (intersectionObserver1.current && backgroundRef1.current) {
-        intersectionObserver1.current.unobserve(backgroundRef1.current);
-      }
-    };
-  }, []);
-
-  // Observer setup for background 2
-  useEffect(() => {
-    intersectionObserver2.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          backgroundRef2.current.style.transform = "translateY(-50%) translateX(0)";
-          backgroundRef2.current.style.opacity = 1;
-        } else {
-          backgroundRef2.current.style.transform = "translateY(-50%) translateX(-150%)";
-          backgroundRef2.current.style.opacity = 0;
-        }
-      });
-    }, { threshold: 0.1 });
-
     if (backgroundRef2.current) {
+      intersectionObserver2.current = createIntersectionObserver(backgroundRef2, setIsVisible2);
       intersectionObserver2.current.observe(backgroundRef2.current);
     }
 
+    if (backgroundRef3.current) {
+      intersectionObserver3.current = createIntersectionObserver(backgroundRef3, setIsVisible3);
+      intersectionObserver3.current.observe(backgroundRef3.current);
+    }
+  };
+
+  // Ensure observers are set up once component is mounted
+  useEffect(() => {
+    // Delay observer setup to ensure refs are ready and component is fully rendered
+    const timeoutId = setTimeout(() => {
+      requestAnimationFrame(startObservers);
+    }, 100);
+
     return () => {
+      clearTimeout(timeoutId);
+      // Cleanup observers
+      if (intersectionObserver1.current && backgroundRef1.current) {
+        intersectionObserver1.current.unobserve(backgroundRef1.current);
+      }
       if (intersectionObserver2.current && backgroundRef2.current) {
         intersectionObserver2.current.unobserve(backgroundRef2.current);
       }
-    };
-  }, []);
-
-  // Observer setup for background 3
-  useEffect(() => {
-    intersectionObserver3.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          backgroundRef3.current.style.transform = "translateY(-50%) translateX(0)";
-          backgroundRef3.current.style.opacity = 1;
-        } else {
-          backgroundRef3.current.style.transform = "translateY(-50%) translateX(-150%)";
-          backgroundRef3.current.style.opacity = 0;
-        }
-      });
-    }, { threshold: 0.1 });
-
-    if (backgroundRef3.current) {
-      intersectionObserver3.current.observe(backgroundRef3.current);
-    }
-
-    return () => {
       if (intersectionObserver3.current && backgroundRef3.current) {
         intersectionObserver3.current.unobserve(backgroundRef3.current);
       }
     };
   }, []);
-  
-
 
 
   return (

@@ -95,7 +95,7 @@ body {
 }
 
 /* Underline Animation */
-.nav-links a::after {
+/* .nav-links a::after {
   content: '';
   position: absolute;
   left: 0;
@@ -104,13 +104,24 @@ body {
   height: 2px;
   background-color: #ff6b6b;
   transition: width 0.3s ease;
-}
+} */
 
 .nav-links a:hover::after {
   width: 100%; /* Expands the underline when hovered */
 
 }
-
+/* Circle effect for hover state */
+.nav-links a.hovered::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid red;
+  border-radius: 50%;
+  pointer-events: none;
+}
 /* Responsive Styling */
 @media (max-width: 768px) {
   .navbar {
