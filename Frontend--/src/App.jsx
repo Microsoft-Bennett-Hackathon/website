@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import WebCam from "./Pages/WebCam/Webcam";
 import LoginPage from "./Pages/Login/Login";
@@ -21,17 +26,17 @@ const App = () => {
     <Router>
       <Routes>
         {/* Public Routes */}
-       
+
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/camera" element={<WebCam />} />
-        <Route path="/gain" element={<MuscleGainPage />}/>
+        <Route path="/gain" element={<MuscleGainPage />} />
 
         {/* Protected Route */}
-        <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+        {/* <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} /> */}
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-      
     </Router>
   );
 };
