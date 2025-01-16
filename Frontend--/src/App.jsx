@@ -10,7 +10,11 @@ import WebCam from "./Pages/WebCam/Webcam";
 import LoginPage from "./Pages/Login/Login";
 import SignUpPage from "./Pages/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import MuscleGainPage from "./Pages/MuscleGain/MuscleGain";
+
+import WeightLossMain from "./Pages/Weightloss/WeightLossMain";
+import MusclegainMain from "./Pages/Musclegain/MusclegainMain";
+import DietplanMain from "./Pages/Dietplan/DietplanMain";
+import AllworkoutsMain from "./Pages/Allworkouts/AllworkoutsMain";
 // Mock authentication check
 const isAuthenticated = () => {
   return localStorage.getItem("authToken") !== null;
@@ -31,11 +35,14 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/camera" element={<WebCam />} />
-        <Route path="/gain" element={<MuscleGainPage />} />
 
         {/* Protected Route */}
         {/* <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/WeightlossMain" element={<WeightLossMain />} />
+        <Route path="/MusclegainMain" element={<MusclegainMain />} />
+        <Route path="/DietplanMain" element={<DietplanMain />} />
+        <Route path="/AllworkoutsMain" element={<AllworkoutsMain />} />
       </Routes>
     </Router>
   );
