@@ -6,7 +6,14 @@ const UserSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  age: { type: Number, default: null }, 
+  weight: { type: Number, default: null },
+  height: { type: Number, default: null },
+  bodyFat: { type: String, default: null },
+  targetExercise: { type: String, default: "" },
+  
 });
+
 
 // Hash the password before saving the user
 UserSchema.pre('save', async function (next) {
