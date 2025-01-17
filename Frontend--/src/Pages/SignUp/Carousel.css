@@ -4,9 +4,6 @@
   align-items: center;
   justify-content: center;
   width: 60%;
-  /* background-image: url('./Texture/bg.png');
-  background-size: cover;
-  background-position: center; */
   padding: 0 70px 10px 70px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -41,8 +38,6 @@
 }
 
 .card {
-  width: 350px;
-  height: 450px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -51,7 +46,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #fff;
+  background-color: #faf9fe;
   transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
   opacity: 0;
   animation: fadeInCard 0.8s ease-in-out forwards;
@@ -76,10 +71,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.card img:hover {
-  transform: scale(1.05);
-}
-
 .card-label {
   font-size: 1.5rem;
   font-weight: bold;
@@ -98,36 +89,111 @@
   width: 80%;
 }
 
-.carousel-slider {
+.scale-slider-container {
+  display: flex;
+  position: relative;
   width: 100%;
-  cursor: pointer;
-  appearance: none;
-  height: 9px;
-  border-radius: 5px;
-  background: linear-gradient(to left, black,white);
+  padding: 20px 0;
+  height: 60px;
+}
+
+.carousel-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
   outline: none;
-  transition: background 0.3s ease;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
 .carousel-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: black;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 16px;
+  height: 24px;
+  background: red;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 3;
 }
 
 .carousel-slider::-webkit-slider-thumb:hover {
-  background:red;
+  transform: scaleY(1.2);
+}
+
+.carousel-slider::-moz-range-thumb {
+  width: 16px;
+  height: 24px;
+  background: red;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 3;
+  border: none;
+}
+
+.carousel-slider::-moz-range-track {
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+}
+
+.scale-marks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.scale-mark {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+  height: 100%;
+  transition: color 0.3s ease;
+}
+.mark-line {
+  width: 2px;
+  height: 10px;
+  background-color: #464646;
+  margin-top: 25px;
+}
+
+.mark-label {
+  font-size: 12px;
+  color: white;
+  margin-top: 5px;
+  white-space: nowrap;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.scale-mark.active .mark-line {
+  background-color: red;
+  height: 12px;
+}
+
+.scale-mark.active .mark-label {
+  color: red;
   transform: scale(1.1);
+  font-weight: bold;
 }
 
 .auth-button {
   margin-top: 20px;
-  background-color:red;
+  background-color: red;
   color: white;
   border: none;
   border-radius: 8px;
@@ -136,7 +202,8 @@
   font-size: 1rem;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .auth-button:hover {
@@ -168,6 +235,11 @@
 }
 
 @media (max-width: 768px) {
+  .carousel-container {
+    width: 90%;
+    padding: 0 20px 10px 20px;
+  }
+
   .card {
     width: 280px;
     height: 400px;
@@ -177,7 +249,15 @@
     height: 70%;
   }
 
-  .carousel-container {
-    width: 90%;
+  .scale-marks {
+    padding: 0 4px;
+  }
+
+  .mark-label {
+    font-size: 10px;
+  }
+
+  .scale-slider-container {
+    height: 50px;
   }
 }

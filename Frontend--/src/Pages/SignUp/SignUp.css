@@ -5,17 +5,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120vh; 
-  background-color: #2b2b2c; 
-  flex-direction: column; 
-  padding: 0 70px; 
-  background-image: url('./Texture/bg.png'); 
+  height: 120vh;
+  background-color: #2b2b2c;
+  flex-direction: column;
+  padding: 0 70px;
+  background-image: url("./Texture/bg.png");
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   background-attachment: fixed;
-  box-sizing: border-box; 
-  color: white; 
-  text-align: center; 
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
 }
 
 .auth-container h1 {
@@ -42,7 +42,6 @@
 .auth-container button:hover {
   background-color: #45a049; /* Darker green on hover */
 }
-
 
 /* Form styles */
 .auth-form {
@@ -120,7 +119,6 @@
 .modal-content h2 {
   margin-bottom: 20px;
   font-size: 1.5rem;
-  color: #333;
 }
 
 .modal-content input {
@@ -241,7 +239,7 @@ button:hover {
 
 .auth-button {
   margin-top: 20px;
-  background-color:red;
+  background-color: red;
 }
 
 .auth-button.selected {
@@ -254,5 +252,5 @@ button:hover {
 }
 
 .auth-button:hover:not(.selected) {
-  background-color:red;
+  background-color: red;
 }
