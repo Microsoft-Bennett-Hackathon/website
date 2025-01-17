@@ -1,6 +1,6 @@
 [
   {
-    "title": "6 months weight gain plan",
+    "title": "3 months weight loss plan",
     "schedule": {
       "Monday": "chest",
       "Tuesday": "arms",
@@ -9,8 +9,9 @@
       "Friday": "legs",
       "Saturday": "shoulder"
     },
-    "goal": "weight gain",
-    "days": 182
+    "goal": "weight loss",
+    "days": 182,
+    "level": "beginner"
   },
   {
     "title": "6 months weight loss plan",
@@ -23,7 +24,8 @@
       "Saturday": "shoulder"
     },
     "goal": "weight loss",
-    "days": 182
+    "days": 182,
+    "level": "intermediate"
   },
   {
     "title": "1 year weight loss plan",
@@ -36,10 +38,11 @@
       "Saturday": "shoulder"
     },
     "goal": "weight loss",
-    "days": 365
+    "days": 182,
+    "level": "Advance"
   },
   {
-    "title": "1 year weight gain plan",
+    "title": "3 months weight Gain plan",
     "schedule": {
       "Monday": "chest",
       "Tuesday": "arms",
@@ -48,7 +51,36 @@
       "Friday": "legs",
       "Saturday": "shoulder"
     },
-    "goal": "weight gain",
-    "days": 365
+    "goal": "weight Gain",
+    "days": 365,
+    "level": "beginner"
+  },
+  {
+    "title": "6 months weight Gain plan",
+    "schedule": {
+      "Monday": "chest",
+      "Tuesday": "arms",
+      "Wednesday": "abs",
+      "Thursday": "back",
+      "Friday": "legs",
+      "Saturday": "shoulder"
+    },
+    "goal": "weight Gain",
+    "days": 365,
+    "level": "intermediate"
+  },
+  {
+    "title": "1 year weight Gain plan",
+    "schedule": {
+      "Monday": "chest",
+      "Tuesday": "arms",
+      "Wednesday": "abs",
+      "Thursday": "back",
+      "Friday": "legs",
+      "Saturday": "shoulder"
+    },
+    "goal": "weight Gain",
+    "days": 365,
+    "level": "Advance"
   }
 ]
