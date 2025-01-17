@@ -8,7 +8,7 @@ const Allworkouts = () => {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/exercises");
+        const response = await fetch("http://localhost:5001/api/exercises");
         const data = await response.json();
         setExercises(data);
       } catch (error) {
@@ -48,7 +48,7 @@ const Allworkouts = () => {
                 className="bg-[#2d2d2d] w-[428px] h-[140px] rounded-lg flex flex-row items-center p-[10px] hover:scale-105 transition-transform duration-300"
               >
                 <img
-                  src="/bodybuilder.avif"
+                  src={exercise.url || "/bodybuilder.avif"} // Use exercise.url if available, else fallback to default
                   alt={exercise.Exercise}
                   className="w-[150px] h-full rounded-lg object-cover"
                 />

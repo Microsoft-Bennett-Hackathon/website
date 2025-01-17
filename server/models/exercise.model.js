@@ -12,7 +12,7 @@ const exerciseSchema = new mongoose.Schema({
   Reps: { type: String, required: true },
   Description: { type: String, required: true },
   goal: { type: String, required: true },
-  VideoURL: { type: String, required: false },
+  url: { type: String, required: false },
 });
 
 const Exercise = mongoose.model("Exercise", exerciseSchema);
