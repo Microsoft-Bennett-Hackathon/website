@@ -1,7 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const HomeDashboard = () => {
+  const [exercises, setExercises] = useState({
+    armsDay: [],
+    legsDay: [],
+    shoulderDay: [],
+    chestDay: [],
+    backDay: [],
+    fullBodyDay: [],
+  });
+
+  // Function to randomly pick difficulty
+  const getRandomDifficulty = () => {
+    const difficulties = ["Beginner", "Intermediate", "Advanced"];
+    const randomIndex = Math.floor(Math.random() * difficulties.length);
+    return difficulties[randomIndex];
+  };
+
+  useEffect(() => {
+    const fetchExercises = async () => {
+      try {
+        const response = await fetch("http://localhost:5001/api/exercises");
+        const data = await response.json();
+
+        const randomDifficulty = getRandomDifficulty(); // Get random difficulty
+
+        const filteredExercises = {
+          armsDay: data
+            .filter(
+              (exercise) =>
+                exercise.TargetArea === "Arms" &&
+                exercise.Difficulty === randomDifficulty
+            )
+            .slice(0, 6),
+          legsDay: data
+            .filter(
+              (exercise) =>
+                exercise.TargetArea === "Legs" &&
+                exercise.Difficulty === randomDifficulty
+            )
+            .slice(0, 6),
+          shoulderDay: data
+            .filter(
+              (exercise) =>
+                exercise.TargetArea === "Shoulders" &&
+                exercise.Difficulty === randomDifficulty
+            )
+            .slice(0, 6),
+          chestDay: data
+            .filter(
+              (exercise) =>
+                exercise.TargetArea === "Chest" &&
+                exercise.Difficulty === randomDifficulty
+            )
+            .slice(0, 6),
+          backDay: data
+            .filter(
+              (exercise) =>
+                exercise.TargetArea === "Back" &&
+                exercise.Difficulty === randomDifficulty
+            )
+            .slice(0, 6),
+          fullBodyDay: data
+            .filter(
+              (exercise) =>
+                exercise.TargetArea === "Full Body" &&
+                exercise.Difficulty === randomDifficulty
+            )
+            .slice(0, 6),
+        };
+
+        setExercises(filteredExercises);
+      } catch (error) {
+        console.error("Error fetching exercises:", error);
+      }
+    };
+
+    fetchExercises();
+  }, []);
+
   return (
     <>
       <div className="dashboard-home-container flex flex-col p-[40px] overflow-scrolls">
@@ -93,85 +171,86 @@ const HomeDashboard = () => {
         <div className="dh-bottom flex mt-[40px]">
           <div className="bg-[#2d2d2d] w-full rounded-lg px-[10px]">
             <div className="flex flex-row items-center py-4">
+              {/* Monday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[20px]">Monday</span>
+                <span className="text-white font-bold mb-[10px]">Monday</span>
                 <span className="text-sm text-slate-300">Arms Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   6:00 AM - 7:00 AM
                 </span>
-                <span className="text-xs text-slate-300">
-                  <li>Bicep Curls</li>
-                  <li>Tricep Dips</li>
-                  <li>Hammer Curls</li>
-                  <li>Overhead Extensions</li>
-                </span>
+                <ul className="text-xs text-slate-300 flex flex-col items-center">
+                  {exercises.armsDay.map((exercise, index) => (
+                    <span key={index}>{exercise.Exercise}</span>
+                  ))}
+                </ul>
               </div>
+              {/* Tuesday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[20px]">Tuesday</span>
-                <span className="text-sm text-slate-300">Shoulder Day</span>
+                <span className="text-white font-bold mb-[10px]">Tuesday</span>
+                <span className="text-sm text-slate-300">Legs Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   7:30 AM - 8:30 AM
                 </span>
-                <span className="text-xs text-slate-300">
-                  <li>Overhead Press</li>
-                  <li>Lateral Raises</li>
-                  <li>Front Raises</li>
-                  <li>Arnold Press</li>
-                </span>
+                <ul className="text-xs text-slate-300 flex flex-col items-center">
+                  {exercises.legsDay.map((exercise, index) => (
+                    <span key={index}>{exercise.Exercise}</span>
+                  ))}
+                </ul>
               </div>
+              {/* Wednesday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[20px]">
+                <span className="text-white font-bold mb-[10px]">
                   Wednesday
                 </span>
-                <span className="text-sm text-slate-300">Back Day</span>
+                <span className="text-sm text-slate-300">Shoulder Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   6:00 AM - 7:00 AM
                 </span>
-                <span className="text-xs text-slate-300">
-                  <li>Pull-Ups</li>
-                  <li>Deadlifts</li>
-                  <li>Rows</li>
-                  <li>Lat Pulldowns</li>
-                </span>
+                <ul className="text-xs text-slate-300 flex flex-col items-center">
+                  {exercises.shoulderDay.map((exercise, index) => (
+                    <span key={index}>{exercise.Exercise}</span>
+                  ))}
+                </ul>
               </div>
+              {/* Thursday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[20px]">Thursday</span>
+                <span className="text-white font-bold mb-[10px]">Thursday</span>
                 <span className="text-sm text-slate-300">Chest Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   7:30 AM - 8:30 AM
                 </span>
-                <span className="text-xs text-slate-300">
-                  <li>Bench Press</li>
-                  <li>Push-Ups</li>
-                  <li>Incline Press</li>
-                  <li>Chest Flys</li>
-                </span>
+                <ul className="text-xs text-slate-300 flex flex-col items-center">
+                  {exercises.chestDay.map((exercise, index) => (
+                    <span key={index}>{exercise.Exercise}</span>
+                  ))}
+                </ul>
               </div>
+              {/* Friday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[20px]">Friday</span>
-                <span className="text-sm text-slate-300">Legs Day</span>
+                <span className="text-white font-bold mb-[10px]">Friday</span>
+                <span className="text-sm text-slate-300">Back Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   6:00 AM - 7:00 AM
                 </span>
-                <span className="text-xs text-slate-300">
-                  <li>Squats</li>
-                  <li>Lunges</li>
-                  <li>Leg Press</li>
-                  <li>Calf Raises</li>
-                </span>
+                <ul className="text-xs text-slate-300 flex flex-col items-center">
+                  {exercises.backDay.map((exercise, index) => (
+                    <span key={index}>{exercise.Exercise}</span>
+                  ))}
+                </ul>
               </div>
+              {/* Saturday */}
               <div className="flex flex-col items-center w-1/6">
-                <span className="text-white font-bold mb-[20px]">Saturday</span>
+                <span className="text-white font-bold mb-[10px]">Saturday</span>
                 <span className="text-sm text-slate-300">Full Body Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   8:00 AM - 9:00 AM
                 </span>
-                <span className="text-xs text-slate-300">
-                  <li>Burpees</li>
-                  <li>Mountain Climbers</li>
-                  <li>Plank</li>
-                  <li>Jump Squats</li>
-                </span>
+
+                <ul className="text-xs text-slate-300 flex flex-col items-center">
+                  {exercises.armsDay.map((exercise, index) => (
+                    <span key={index}>{exercise.Exercise}</span>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
