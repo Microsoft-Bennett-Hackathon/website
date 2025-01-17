@@ -25,7 +25,7 @@ const Advantages = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }} // Trigger animation when 10% of the section is visible
+        viewport={{ once: false, amount: 0.2 }} 
       >
         <motion.div className="advantage-item" variants={itemVariants}>
           <div className="advantage-card-right">

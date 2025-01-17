@@ -1,36 +1,43 @@
 import React, { useEffect, useRef, useState } from "react";
+import io from "socket.io-client";
 import "./Webcam.css";
 
 const WebCamCapture = () => {
-  const videoRef = useRef(null);
+  const videoRef = useRef(null); // Keep this for possible future extensions
   const containerRef = useRef(null);
   const [isWebcamOpen, setIsWebcamOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [predictionData, setPredictionData] = useState({
+    frame: null,
+    class: "",
+    probability: 0,
+    count: 0,
+  });
 
-  // Set up the webcam and process each frame
+  const [socket, setSocket] = useState(null);
+
+  // Set up WebSocket connection
   useEffect(() => {
     if (isWebcamOpen) {
-      const setupWebcam = async () => {
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-          videoRef.current.srcObject = stream;
-          videoRef.current.play();
-        } catch (error) {
-          console.error("Error accessing webcam:", error);
-        }
+      const newSocket = io("http://localhost:5001"); // Connect to Flask server
+      setSocket(newSocket);
+
+      newSocket.on("video_frame", (data) => {
+        setPredictionData({
+          frame: `data:image/jpeg;base64,${data.frame}`,
+          class: data.class,
+          probability: data.probability,
+          count: data.count,
+        });
+      });
+
+      // Request to start video processing
+      newSocket.emit("start_video");
+
+      return () => {
+        newSocket.disconnect();
       };
-
-      setupWebcam();
     }
-
-    return () => {
-      if (videoRef.current) {
-        const stream = videoRef.current.srcObject;
-        if (stream) {
-          stream.getTracks().forEach((track) => track.stop());
-        }
-      }
-    };
   }, [isWebcamOpen]);
 
   const handleOpenCamera = () => {
@@ -69,10 +76,30 @@ const WebCamCapture = () => {
         </button>
       )}
 
-      {/* Webcam */}
+      {/* Webcam and Prediction Data */}
       {isWebcamOpen && (
         <div className="webcam-wrapper">
-          <video ref={videoRef} className="webcam-video" autoPlay></video>
+          {/* Display the frame received from Flask */}
+          {predictionData.frame ? (
+            <img
+              src={predictionData.frame}
+              alt="Camera feed"
+              className="webcam-video"
+            />
+          ) : (
+            <p>Loading webcam feed...</p>
+          )}
+          <div className="prediction-info">
+            <p>
+              <strong>Pose:</strong> {predictionData.class}
+            </p>
+            <p>
+              <strong>Probability:</strong> {predictionData.probability}
+            </p>
+            <p>
+              <strong>Count:</strong> {predictionData.count}
+            </p>
+          </div>
           <button onClick={handleFullscreenToggle} className="fullscreen-btn">
             {isFullscreen ? "Exit Fullscreen" : "Go Fullscreen"}
           </button>

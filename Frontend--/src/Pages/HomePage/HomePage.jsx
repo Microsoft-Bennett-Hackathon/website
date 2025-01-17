@@ -87,7 +87,7 @@ const HomePage = () => {
                 <button
                   style={{ fontSize: "21px", display: "flex", alignItems: "center", gap: "8px" }}
                   className="cta-button"
-                  onClick={() => navigate("/signup")}
+                  onClick={() => navigate("/join")}
                 >
                   GET STARTED
                   <svg
@@ -246,7 +246,7 @@ const HomePage = () => {
         <About />
 
         {/* join us */}
-        <section className="join-us-section">
+        <section className="join-us-section" id="join">
           <h1 className="title">JOIN US</h1>
           <p className="description">
             Our app helps you achieve your fitness goals faster by combining personalized
