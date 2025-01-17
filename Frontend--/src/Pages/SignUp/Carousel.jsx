@@ -162,12 +162,13 @@ const Carousel = ({ onSelect, onFinish }) => {
         </div>
       </div>
       <button
+    style={{padding:'10px 40px' , marginBottom: '10px' }}
         className={`${selectedIndex === currentIndex ? "selected" : ""}`}
         onClick={handleSelect}
       >
         {selectedIndex === currentIndex ? "Selected" : "Select"}
       </button>
-      <button className="signup-button" onClick={handleSignup}>
+      <button style={{padding:'10px 40px' , margintop: '10px' }} className="signup-button" onClick={handleSignup}>
         Sign Up
       </button>
     </div>
