@@ -5,7 +5,7 @@ const Musclegain = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/schedules")
+    fetch("http://localhost:5001/api/schedules")
       .then((response) => response.json())
       .then((data) => {
         const filteredSchedules = data.filter(

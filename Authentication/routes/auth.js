@@ -6,7 +6,16 @@ import bcrypt from "bcryptjs"; // Import bcrypt to hash passwords
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
-  const { name, email, password, age, weight, height, bodyFat, targetExercise="" } = req.body;
+  const {
+    name,
+    email,
+    password,
+    age,
+    weight,
+    height,
+    bodyFat,
+    targetExercise = "",
+  } = req.body;
 
   try {
     // Check if the user already exists
