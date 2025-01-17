@@ -1,0 +1,54 @@
+[
+  {
+    "title": "6 months weight gain plan",
+    "schedule": {
+      "Monday": "chest",
+      "Tuesday": "arms",
+      "Wednesday": "abs",
+      "Thursday": "back",
+      "Friday": "legs",
+      "Saturday": "shoulder"
+    },
+    "goal": "weight gain",
+    "days": 182
+  },
+  {
+    "title": "6 months weight loss plan",
+    "schedule": {
+      "Monday": "chest",
+      "Tuesday": "arms",
+      "Wednesday": "abs",
+      "Thursday": "back",
+      "Friday": "legs",
+      "Saturday": "shoulder"
+    },
+    "goal": "weight loss",
+    "days": 182
+  },
+  {
+    "title": "1 year weight loss plan",
+    "schedule": {
+      "Monday": "chest",
+      "Tuesday": "arms",
+      "Wednesday": "abs",
+      "Thursday": "back",
+      "Friday": "legs",
+      "Saturday": "shoulder"
+    },
+    "goal": "weight loss",
+    "days": 365
+  },
+  {
+    "title": "1 year weight gain plan",
+    "schedule": {
+      "Monday": "chest",
+      "Tuesday": "arms",
+      "Wednesday": "abs",
+      "Thursday": "back",
+      "Friday": "legs",
+      "Saturday": "shoulder"
+    },
+    "goal": "weight gain",
+    "days": 365
+  }
+]
