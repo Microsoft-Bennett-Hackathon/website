@@ -5,139 +5,61 @@ import Navbar from "../../Components/Navbar/Navbar";
 import "./HomePage.css";
 import LoadingLogo from "./LoadingLogo";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-
+import About from "../../Components/About/About"
+import Footer from "../../Components/Footer/Footer";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const backgroundRef1 = useRef(null);
-  const backgroundRef2 = useRef(null);
-  const backgroundRef3 = useRef(null);
-  const intersectionObserver1 = useRef(null);
-  const intersectionObserver2 = useRef(null);
-  const intersectionObserver3 = useRef(null);
-  const [isVisible1, setIsVisible1] = useState(false);
-  const [isVisible2, setIsVisible2] = useState(false);
-  const [isVisible3, setIsVisible3] = useState(false);
-  const listRef = useRef(null);
+const listRef = useRef(null);
+const handleLogin = () => {
+  navigate('/login'); // Navigate to the login page
+};
 
+const handleSignup = () => {
+  navigate('/signup'); // Navigate to the signup page
+};
 
-
-  useEffect(() => {
-    // Observer for advantage items
-    const advantageObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          } else {
-            entry.target.classList.remove("show"); // Remove class when out of view
-          }
-        });
-      },
-      { threshold: 0.2 } // Trigger animation when 20% of the item is visible
-    );
-
-    const advantageItems = document.querySelectorAll(".advantage-item");
-    advantageItems.forEach((item) => advantageObserver.observe(item));
-
-    return () => {
-      advantageItems.forEach((item) => advantageObserver.unobserve(item));
-    };
-  }, []);
-
-  useEffect(() => {
-    // Observer for feature items
-    const featureObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          } else {
-            entry.target.classList.remove("show"); // Remove class when out of view
-          }
-        });
-      },
-      { threshold: 0.2 } // Trigger animation when 20% of the card is visible
-    );
-
-    const featureItems = document.querySelectorAll(".feature-item");
-    featureItems.forEach((item) => featureObserver.observe(item));
-
-    return () => {
-      featureItems.forEach((item) => featureObserver.unobserve(item));
-    };
-  }, []);
-  const createIntersectionObserver = (ref, setIsVisible) => {
-    return new IntersectionObserver((entries) => {
+useEffect(() => {
+  // Observer for feature items
+  const featureObserver = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          ref.current.style.transform = "translateY(-50%) translateX(0)";
-          ref.current.style.opacity = 1;
-          setIsVisible(true);
+          entry.target.classList.add("show");
         } else {
-          ref.current.style.transform = "translateY(-50%) translateX(-150%)";
-          ref.current.style.opacity = 0;
-          setIsVisible(false);
+          entry.target.classList.remove("show"); // Remove class when out of view
         }
       });
-    }, { threshold: 0.1 });
+    },
+    { threshold: 0.2 } // Trigger animation when 20% of the card is visible
+  );
+
+  const featureItems = document.querySelectorAll(
+    ".feature-item, .feature-image, .feature-info-left, .feature-info-right"
+  );
+  featureItems.forEach((item) => featureObserver.observe(item));
+
+  return () => {
+    featureItems.forEach((item) => featureObserver.unobserve(item));
   };
+}, []);
 
-  // Function to start the observers when refs are ready
-  const startObservers = () => {
-    if (backgroundRef1.current) {
-      intersectionObserver1.current = createIntersectionObserver(backgroundRef1, setIsVisible1);
-      intersectionObserver1.current.observe(backgroundRef1.current);
+useEffect(() => {
+  const scrollInterval = setInterval(() => {
+    if (listRef.current) {
+      listRef.current.scrollLeft += 2; // Adjust the scroll speed here
+      if (
+        listRef.current.scrollLeft >=
+        listRef.current.scrollWidth - listRef.current.clientWidth
+      ) {
+        listRef.current.scrollLeft = 0; // Reset to the beginning
+      }
     }
+  }, 20); // Adjust the interval here (lower = smoother scroll)
 
-    if (backgroundRef2.current) {
-      intersectionObserver2.current = createIntersectionObserver(backgroundRef2, setIsVisible2);
-      intersectionObserver2.current.observe(backgroundRef2.current);
-    }
-
-    if (backgroundRef3.current) {
-      intersectionObserver3.current = createIntersectionObserver(backgroundRef3, setIsVisible3);
-      intersectionObserver3.current.observe(backgroundRef3.current);
-    }
-  };
-
-  // Ensure observers are set up once component is mounted
-  useEffect(() => {
-    // Delay observer setup to ensure refs are ready and component is fully rendered
-    const timeoutId = setTimeout(() => {
-      requestAnimationFrame(startObservers);
-    }, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      // Cleanup observers
-      if (intersectionObserver1.current && backgroundRef1.current) {
-        intersectionObserver1.current.unobserve(backgroundRef1.current);
-      }
-      if (intersectionObserver2.current && backgroundRef2.current) {
-        intersectionObserver2.current.unobserve(backgroundRef2.current);
-      }
-      if (intersectionObserver3.current && backgroundRef3.current) {
-        intersectionObserver3.current.unobserve(backgroundRef3.current);
-      }
-    };
-  }, []);
-  useEffect(() => {
-    const scrollInterval = setInterval(() => {
-      if (listRef.current) {
-        listRef.current.scrollLeft += 2; // Adjust the scroll speed here
-        if (
-          listRef.current.scrollLeft >=
-          listRef.current.scrollWidth - listRef.current.clientWidth
-        ) {
-          listRef.current.scrollLeft = 0; // Reset to the beginning
-        }
-      }
-    }, 20); // Adjust the interval here (lower = smoother scroll)
-
-    return () => clearInterval(scrollInterval); // Cleanup on component unmount
-  }, []);
+  return () => clearInterval(scrollInterval); // Cleanup on component unmount
+}, []);
 
 
   return (
@@ -163,12 +85,54 @@ const HomePage = () => {
               </p>
               <div className="cta-buttons">
                 <button
-                  style={{ fontSize: "21px" }}
+                  style={{ fontSize: "21px", display: "flex", alignItems: "center", gap: "8px" }}
                   className="cta-button"
                   onClick={() => navigate("/signup")}
                 >
-                       GET STARTED
+                  GET STARTED
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    className="cta-svg"
+                  >
+                    <g
+                      fill="none"
+                      stroke="#000"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeDasharray="20"
+                        strokeDashoffset="20"
+                        d="M3 12h17.5"
+                      >
+                        <animate
+                          fill="freeze"
+                          attributeName="stroke-dashoffset"
+                          dur="0.2s"
+                          values="20;0"
+                        />
+                      </path>
+                      <path
+                        strokeDasharray="12"
+                        strokeDashoffset="12"
+                        d="M21 12l-7 7M21 12l-7-7"
+                      >
+                        <animate
+                          fill="freeze"
+                          attributeName="stroke-dashoffset"
+                          begin="0.2s"
+                          dur="0.2s"
+                          values="12;0"
+                        />
+                      </path>
+                    </g>
+                  </svg>
                 </button>
+
               </div>
             </div>
             <video autoPlay loop muted className="hero-video">
@@ -181,13 +145,13 @@ const HomePage = () => {
         {/* Features Section */}
         <section className="features" id="features">
           <h2>Our Features</h2>
-          <div  className="feature-list">
+          <div className="feature-list">
             {/* First Feature */}
             <div className="feature-item fade-in  feature-item-first">
               <div className="feature-info-left">
                 <div
                   className="background-text"
-                  ref={backgroundRef1}
+                  // ref={backgroundRef1}
 
                 >
                   Personalize
@@ -217,17 +181,17 @@ const HomePage = () => {
 
             {/* Second Feature */}
             <div className="feature-item fade-in feature-item-second">
-              <div style ={{padding:'0 70px 0 70px'}} className="feature-card-left">
+              <div style={{ padding: '0 70px 0 70px' }} className="feature-card-left">
                 <img
                   src="/Features/2.jpeg"
                   alt="Calorie Tracking"
                   className="feature-image"
                 />
               </div>
-              <div style ={{padding:'0 70px 0 70px'}} className="feature-info-right">
+              <div style={{ padding: '0 70px 0 70px' }} className="feature-info-right">
                 <div
                   className="background-text"
-                  ref={backgroundRef2}
+                  // ref={backgroundRef2}
 
                 >
                   Calories
@@ -250,7 +214,7 @@ const HomePage = () => {
               <div className="feature-info-left">
                 <div
                   className="background-text"
-                  ref={backgroundRef3}
+                  // ref={backgroundRef3}
 
                 >
                   AIPOSE
@@ -279,106 +243,51 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="advantages" id="advantages">
-      <h2 className="advantages-heading">Why Choose Our App?</h2>
-      <div className="advantages-list" ref={listRef}>
-        <div className="advantage-item">
-          <div className="advantage-info-left">
-            <p>
-              Achieve your fitness goals faster with personalized training
-              plans, AI feedback, and real-time tracking.
-            </p>
-          </div>
-          <div className="advantage-card-right">
-            <span className="advantage-icon">⚡</span>
-            <h3 className="h3">Faster Results</h3>
-          </div>
-        </div>
+       <About />
 
-        <div className="advantage-item">
-          <div className="advantage-info-left">
-            <p>
-              Continuous motivation with insights to adjust your workouts and
-              diet for optimal performance.
-            </p>
-          </div>
-          <div className="advantage-card-right">
-            <span className="advantage-icon">📊</span>
-            <h3 className="h3">Data-Driven Insights</h3>
-          </div>
-        </div>
-
-        <div className="advantage-item">
-          <div className="advantage-info-left">
-            <p>
-              Visualize your progress with interactive and easy-to-understand
-              graphs.
-            </p>
-          </div>
-          <div className="advantage-card-right">
-            <span className="advantage-icon">📈</span>
-            <h3 className="h3">Graphical Insights</h3>
-          </div>
-        </div>
-
-        <div className="advantage-item">
-          <div className="advantage-info-left">
-            <p>
-              Seamless integration with your favorite fitness devices and
-              applications.
-            </p>
-          </div>
-          <div className="advantage-card-right">
-            <span className="advantage-icon">📱</span>
-            <h3 className="h3">Device Integration</h3>
-          </div>
-        </div>
-      </div>
-    </section>
 
 
 
         {/* Contact Section */}
         <section className="contact" id="contact">
-          <h2 className="contact-heading">Contact Us</h2>
-
-          <div className="contact-content">
-            {/* Contact Form */}
-            <form className="contact-form">
-              <div className="form-group">
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">Message:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Your Message"></textarea>
-              </div>
-              <button type="submit" className="contact-button">
-                Submit
-              </button>
-            </form>
-
-            {/* Additional Section with Animations */}
-            
-          </div>
-        </section>
-
-        {/* Footer Section */}
-        <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-logo">FitAI</div>
-            <div className="footer-links">
-              <a href="#about">About</a>
-              <a href="#contact">Contact</a>
-              <a href="#features">Features</a>
+          <h2>Contact Us</h2>
+          <form className="contact-form">
+            <div className="form-group">
+              <label htmlFor="name">Name:</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" />
             </div>
-            <p>&copy; 2025 FitAI. All rights reserved.</p>
-          </div>
-        </footer>
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="Your Email" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Message:</label>
+              <textarea id="message" name="message" rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" className="contact-button">
+              Submit
+            </button>
+          </form>
+        </section>
+        {/* join us */}
+        <section className="join-us-section">
+        <h1 className="title">JOIN US</h1>
+        <p className="description">
+          Our app helps you achieve your fitness goals faster by combining personalized
+          training plans, AI-powered feedback, and real-time progress tracking. Here's
+          why our users love it!
+        </p>
+        <div className="button-container">
+          <button className="login-button" onClick={handleLogin}>
+            Login
+          </button>
+          <button className="signup-button" onClick={handleSignup}>
+            Signup
+          </button>
+        </div>
+      </section>
+
+        <Footer />
       </div>
 
 

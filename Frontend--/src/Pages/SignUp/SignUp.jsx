@@ -185,15 +185,10 @@ const SignUpPage = () => {
 
   const handleSignUp = async () => {
     try {
-<<<<<<< HEAD
-      // Send form data to backend
-      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
-=======
       const response = await axios.post(
         "http://localhost:5000/api/auth/signup",
         formData
       );
->>>>>>> bd679e510e96ba43edb9c50ce448b43b86f6389c
       alert(response.data.message || "Sign-up successful!");
       navigate("/login"); // Redirect to login page
     } catch (error) {
@@ -231,31 +226,24 @@ const SignUpPage = () => {
             onChange={handleChange}
             required
           />
-<<<<<<< HEAD
           <div className="navigation-buttons">
-            <button type="button" className="auth-button" onClick={() => setStep(2)}>
+            <button
+              type="button"
+              className="auth-button"
+              onClick={() => setStep(2)}
+            >
               Next
             </button>
           </div>
-=======
-          <button type="button" className="auth-button " onClick={handleNext}>
-            Next
-          </button>
->>>>>>> bd679e510e96ba43edb9c50ce448b43b86f6389c
         </form>
       )}
 
       {/* Step 2: Additional Details */}
       {step === 2 && (
-<<<<<<< HEAD
         <Modal onClose={() => setStep(1)}>
-          <h2>Enter Additional Details</h2>
-=======
-        <Modal onClose={handleNext}>
           <h2 className="font-bold text-2xl text-white">
             <span className="text-[#FF0000]">Enter</span> Additional Details
           </h2>
->>>>>>> bd679e510e96ba43edb9c50ce448b43b86f6389c
           <input
             type="number"
             name="age"
@@ -280,20 +268,22 @@ const SignUpPage = () => {
             onChange={handleChange}
             required
           />
-<<<<<<< HEAD
           <div className="navigation-buttons">
-            <button type="button" className="auth-button" onClick={() => setStep(1)}>
+            {/* <button
+              type="button"
+              className="auth-button"
+              onClick={() => setStep(1)}
+            >
               Back
-            </button>
-            <button type="button" className="auth-button" onClick={() => setStep(3)}>
-              Next
+            </button> */}
+            <button
+              type="button"
+              className="auth-button"
+              onClick={() => setStep(3)}
+            >
+              ->>>>
             </button>
           </div>
-=======
-          <button type="button" className="auth-button " onClick={handleNext}>
-            Next
-          </button>
->>>>>>> bd679e510e96ba43edb9c50ce448b43b86f6389c
         </Modal>
       )}
 
@@ -304,10 +294,18 @@ const SignUpPage = () => {
           onFinish={handleSignUp}
         >
           <div className="navigation-buttons">
-            <button type="button" className="auth-button" onClick={() => setStep(2)}>
+            <button
+              type="button"
+              className="auth-button"
+              onClick={() => setStep(2)}
+            >
               Back
             </button>
-            <button type="button" className="auth-button" onClick={handleSignUp}>
+            <button
+              type="button"
+              className="auth-button"
+              onClick={handleSignUp}
+            >
               Sign Up
             </button>
           </div>

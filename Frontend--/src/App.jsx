@@ -10,7 +10,7 @@ import WebCam from "./Pages/WebCam/Webcam";
 import LoginPage from "./Pages/Login/Login";
 import SignUpPage from "./Pages/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-
+import About from "./Components/About/About"
 import WeightLossMain from "./Pages/Weightloss/WeightLossMain";
 import MusclegainMain from "./Pages/Musclegain/MusclegainMain";
 import DietplanMain from "./Pages/Dietplan/DietplanMain";
@@ -35,6 +35,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/camera" element={<WebCam />} />
+        <Route path="/advantages" element={<About />} />
 
         {/* Protected Route */}
         {/* <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} /> */}

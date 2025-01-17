@@ -237,6 +237,7 @@
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
+
 .feature-item.show .feature-info {
   opacity: 1;
   transform: translate(-50%, -40%);
@@ -251,383 +252,137 @@ p {
   margin-bottom: 0.5rem;
 }
 
-/* Advantages Section */
-.advantages {
-  padding: 0 70px 0 70px;
-  background-color: black;
-  color:white;
-  background: url('/Texture/bg.png') no-repeat center center / cover;
-}
-
-.advantages-heading {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  animation: fadeIn 1s ease-out;
-}
-
-.advantages-list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin: 0 auto;
-}
-
-.advantage-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  animation: fadeIn 1s ease-out;
-}
-.advantage-item {
-  opacity: 0;
-  transform: translateY(20px); /* Example of initial state */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.advantage-item.show {
-  opacity: 1;
-  transform: translateY(0); /* Animation when the item becomes visible */
-}
-
-.advantage-card-right {
-  flex-basis: 45%;
-  text-align: right;
-}
-
-.advantage-info-left {
-  flex-basis: 50%;
-  padding-right: 20px;
-}
-
-.advantage-info-left p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-}
-
-.advantage-icon {
-  font-size: 3rem;
-  color: #ff6b6b;
-}
-
-.h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 10px;
-}
 
 
 /* About Section */
-.about {
-  width: 100%;
-  padding: 80px 40px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px); /* Start position for animation */
-  animation: fadeIn 1s ease-out forwards; /* Animation for fade-in */
-}
-
-
-.about h2 {
-  font-size: 2.5rem; /* Slightly larger font size */
-  margin-bottom: 20px;
-  color: #ff6b6b;
-  position: relative;
-  transition: color 0.3s ease-in-out;
-}
-
-.about h2:hover {
-  color: #ff4a4a; /* Slight hover effect for the heading */
-}
-
-.about p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  color: #ccc;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  transition: transform 0.3s ease-in-out;
-}
-
-.about p:hover {
-  transform: translateX(10px); /* Adds a small effect on hover */
-}
-
-/* Keyframe Animation for Fade-in Effect */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Contact Page */
 .contact {
-  width: 100%;
-  padding: 80px 40px;
+  margin-top: 50px;
+ 
+  color: #fff; /* White text */
+  padding: 0 70px 0 70px;
   text-align: center;
-  opacity: 0;
-  transform: translateY(30px); /* Start position for animation */
-  animation: fadeIn 1s ease-out forwards; /* Animation for fade-in */
+  border-radius: 8px;
 }
 
 .contact h2 {
   font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #ff6b6b;
-  position: relative;
-  transition: color 0.3s ease-in-out;
+  margin-bottom: 20px;
+  color: white ;/* Red color for heading */
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.contact h2:hover {
-  color: #ff4a4a;
-}
-
-/* Contact Section Styles */
-.contact {
-  padding: 40px 20px;
-  background-color: black;
-  color: #fff;
-  position: relative;
-}
-
-.contact-heading {
-  text-align: center;
-  font-size: 2.5rem; /* Increased the font size */
-  margin-bottom: 30px;
-  animation: fadeIn 1s ease-out;
-}
-
-/* Wrapper for content */
-.contact-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-/* Form Styling */
 .contact-form {
-  max-width: 700px; /* Increased the max-width for a wider form */
+  max-width: 500px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  animation: formAnimation 0.8s ease-out forwards;
-}
-
-/* Make the form group wider and more spacious */
-.form-group {
-  display: flex;
-  flex-direction: column;
   text-align: left;
-  padding: 10px; /* Increased padding */
-  margin-left: 10px;
-  margin-right: 10px; /* Reduced the right margin for balanced spacing */
-  font-size: 1.3rem; /* Increased font size for better readability */
 }
 
-/* Make labels bolder */
+.form-group {
+  margin-bottom: 20px;
+}
+
 .form-group label {
-  margin-bottom: 8px;
+  display: block;
   font-weight: bold;
-  color: #fff;
+  color: white;/* Red for labels */
+  margin-bottom: 5px;
 }
 
-/* Input and Textarea fields */
 .form-group input,
 .form-group textarea {
-  padding: 15px; /* Increased padding */
-  font-size: 1.2rem; /* Increased font size for input text */
-  border: 2px solid #ff6b6b;
-  border-radius: 5px;
-  background-color: #282828;
+  width: 100%;
+  padding: 10px;
+  background: #1a1a1a; /* Dark background for inputs */
+  border-radius: 4px;
   color: #fff;
-  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
 }
 
-/* Placeholder styling */
-.form-group input::placeholder,
+/* .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #ccc;
-}
+  col;
+} */
 
-/* Hover effects for input and textarea */
-.form-group input:hover,
-.form-group textarea:hover {
-  border-color: #ff4a4a;
-  background-color: #333333;
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #fff; /* White border on focus */
 }
 
 .contact-button {
-  padding: 15px 25px; /* Increased button padding */
-  font-size: 1.2rem; /* Increased font size */
+  background-color: #ff0000; /* Red button */
   color: #fff;
-  background-color: #ff0000;
   border: none;
-  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
 }
 
 .contact-button:hover {
-  background-color: #ff4a4a;
-  transform: scale(1.05);
+  background-color: #fff; /* White background on hover */
+  color: #ff0000; /* Red text on hover */
+  transform: scale(1.1); /* Slight zoom effect */
 }
 
-/* Additional Content Styles */
-.contact-info {
-  max-width: 450px; /* Increased width for contact info */
+.contact-button:active {
+  transform: scale(1.05); /* Slight compression on click */
+  background-color: #ff4d4d; /* Lighter red on click */
+}
+/* join us */
+.join-us-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-}
-
-.contact-text {
-  font-size: 1.5rem; /* Increased font size for the text */
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-/* "We would love to hear from you" text */
-.contact-text strong {
-  font-size: 1.7rem; /* Made this text even bigger */
-  font-weight: bold;
-  color: #ff6b6b; /* Added some color for emphasis */
-}
-
-.social-icons {
-  display: flex;
-  gap: 20px;
-}
-
-.social-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: scale(1.1);
-}
-
-/* Fade In / Out Animations */
-.fade-in {
-  animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Keyframe Animation for Form Elements */
-@keyframes formAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* Footer Section */
-.footer {
-  width: 100%;
-  padding: 60px 0;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 -12px 10px rgba(163, 163, 163, 0.2);
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding:60px 70px;
 }
 
-.footer-logo {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #ff6b6b;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: color 0.3s ease-in-out;
+.title {
+  color: red;
+  text-shadow:2px solid red ;
+  font-size: 3rem;
+  margin-bottom: 50px;
 }
 
-.footer-logo:hover {
-  color: #ff4a4a;
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 70px;
+  max-width: 700px;
 }
 
-.footer-links {
+.button-container {
   display: flex;
-  gap: 40px;
-  margin-bottom: 20px;
+  gap: 30px;
 }
 
-.footer-links a {
-  text-decoration: none;
-  color: #ccc;
-  font-size: 1.1rem;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s ease-in-out;
+.login-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 15px 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease;
 }
 
-.footer-links a:hover {
-  color: #ff6b6b;
-  transform: translateY(-5px);
+.signup-button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 15px 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease;
 }
 
-.footer-links a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #ff6b6b;
-  bottom: -5px;
-  left: 0;
-  transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
-}
 
-.footer-links a:hover::after {
-  transform: scaleX(1);
-}
 
-.footer p {
-  font-size: 1rem;
-  color: #ccc;
-  margin-top: 20px;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-}
-
-@media (max-width: 768px) {
-  .footer-links {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .footer-logo {
-    font-size: 1.6rem;
-  }
-}
