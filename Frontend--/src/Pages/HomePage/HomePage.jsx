@@ -20,6 +20,7 @@ const HomePage = () => {
     navigate('/signup'); // Navigate to the signup page
   };
 
+
   useEffect(() => {
     // Observer for feature items
     const featureObserver = new IntersectionObserver(
@@ -28,37 +29,21 @@ const HomePage = () => {
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
           } else {
-            entry.target.classList.remove("show"); // Remove class when out of view
+            entry.target.classList.remove("show");
           }
         });
       },
-      { threshold: 0.2 } // Trigger animation when 20% of the card is visible
+      { threshold: 0.2 }
     );
 
     const featureItems = document.querySelectorAll(
-      ".feature-item, .feature-image, .feature-info-left, .feature-info-right"
+      ".feature-item, .feature-image, .background-text"
     );
     featureItems.forEach((item) => featureObserver.observe(item));
 
     return () => {
       featureItems.forEach((item) => featureObserver.unobserve(item));
     };
-  }, []);
-
-  useEffect(() => {
-    const scrollInterval = setInterval(() => {
-      if (listRef.current) {
-        listRef.current.scrollLeft += 2; // Adjust the scroll speed here
-        if (
-          listRef.current.scrollLeft >=
-          listRef.current.scrollWidth - listRef.current.clientWidth
-        ) {
-          listRef.current.scrollLeft = 0; // Reset to the beginning
-        }
-      }
-    }, 20); // Adjust the interval here (lower = smoother scroll)
-
-    return () => clearInterval(scrollInterval); // Cleanup on component unmount
   }, []);
 
 
@@ -145,7 +130,7 @@ const HomePage = () => {
         {/* Features Section */}
         <section className="features" id="features">
           <h2>Our Features</h2>
-          <div className="feature-list">
+          <div className="feature-list"  ref={listRef}>
             {/* First Feature */}
             <div className="feature-item fade-in  feature-item-first">
               <div className="feature-info-left">
