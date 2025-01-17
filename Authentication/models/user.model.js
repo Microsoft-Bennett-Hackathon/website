@@ -18,10 +18,10 @@ const UserSchema = new mongoose.Schema({
     level: { type: String, default: null },
   },
   dietPreferences: {
-    dietaryPreference: { type: String, default: null }, // e.g., Vegetarian, Vegan, etc.
+    dietaryPreference: { type: String, default: null },
     lastWeight: { type: Number, default: null },
     targetWeight: { type: Number, default: null },
-    workoutFrequency: { type: String, default: null }, // e.g., Daily, 3 Times a Week
+    workoutFrequency: { type: String, default: null },
   },
 });
 

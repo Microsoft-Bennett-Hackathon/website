@@ -5,17 +5,10 @@ import bcrypt from "bcryptjs"; // Import bcrypt to hash passwords
 
 const router = express.Router();
 
+// Signup Route
+// Signup Route
 router.post("/signup", async (req, res) => {
-  const {
-    name,
-    email,
-    password,
-    age,
-    weight,
-    height,
-    bodyFat,
-    targetExercise = "",
-  } = req.body;
+  const { name, email, password } = req.body;
 
   try {
     // Check if the user already exists
@@ -24,22 +17,13 @@ router.post("/signup", async (req, res) => {
       return res.status(400).send({ message: "User already exists" });
     }
 
-    // Create the new user
-    const user = new User({
-      name,
-      email,
-      password, // No need to hash here as it's done in pre-save middleware
-      age,
-      weight,
-      height,
-      bodyFat,
-      targetExercise,
-    });
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Save the user to the database
+    // Save user with the hashed password
+    const user = new User({ name, email, password });
     await user.save();
-
-    res.status(201).send({ message: "User created successfully", user });
+    res.status(201).send({ message: "User created successfully" });
   } catch (error) {
     console.error("Error creating user:", error);
     res.status(500).send({ message: "Error creating user" });

@@ -25,6 +25,42 @@ const Musclegain = () => {
   const closePopup = () => {
     setIsPopupVisible(false);
   };
+  const handleUpdateDietPreferences = async () => {
+    const token = localStorage.getItem("token"); // Assuming the token is stored in localStorage
+    if (!token) {
+      alert("You must be logged in.");
+      return;
+    }
+  
+    // const data = {
+    //   lastWeight,
+    //   targetWeight,
+    //   dietaryPreference,
+    //   workoutFrequency,
+    // };
+  
+    try {
+      const response = await fetch("http://localhost:5001/api/update-diet-preferences", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include JWT token in the Authorization header
+        },
+        // body: JSON.stringify(data),
+      });
+  
+      const result = await response.json();
+      if (response.ok) {
+        alert(result.message);
+      } else {
+        alert(result.message || "Failed to update preferences.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong!");
+    }
+  };
+  
 
   return (
     <div
@@ -65,7 +101,7 @@ const Musclegain = () => {
       {isPopupVisible && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-[#2d2d2d] p-6 rounded-lg shadow-lg w-[400px] text-center relative">
-            <h2 className="text-xl font-bold text-white mb-4">
+            <h2 className="text-xl font-bold text-white mb-4" onSubmit={handleUpdateDietPreferences}>
               Build Your Diet Plan
             </h2>
             <form className="flex flex-col gap-4 text-left">
