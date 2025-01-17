@@ -1,39 +1,136 @@
-/* Dark theme */
+/* Main Container */
 .dark-theme {
-    background-color: #121212;
-    color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Webcam Wrapper */
+.webcam-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  position: relative;
+}
+
+.webcam-video {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Fullscreen Button */
+.fullscreen-btn {
+  margin-top: 10px;
+  background-color: #1f1f1f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fullscreen-btn:hover {
+  background-color: #333333;
+}
+
+/* Left Sidebar: Today's Exercise */
+.left-sidebar {
+  position: absolute;
+  left: 10px;
+  top: 10%;
+  width: 200px;
+  height: 80%;
+  background: rgba(30, 30, 30, 0.8);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-sidebar h3 {
+  margin-bottom: 10px;
+  color: red;
+}
+
+.left-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.left-sidebar li {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+/* Right Sidebar: Pose Correction */
+.floating-sidebar {
+  position: absolute;
+  right: 10px;
+  top: 10%;
+  width: 200px;
+  height: 80%;
+  background: rgba(30, 30, 30, 0.8);
+  color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrolling-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  animation: scrollUp 10s linear infinite;
+}
+
+.scrolling-content p,
+.scrolling-content h3 {
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Animation for scrolling text */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(100%);
   }
-  
-  /* Button styling */
-  .open-camera-btn {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
+  100% {
+    transform: translateY(-100%);
   }
-  
-  .open-camera-btn:hover {
-    background-color: #333333;
-  }
-  
-  /* Video styling */
-  video {
-    border: 2px solid #ffffff;
-    border-radius: 10px;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-  
+}
+
+/* Button */
+.open-camera-btn {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.open-camera-btn:hover {
+  background-color: #333333;
+}
