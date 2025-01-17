@@ -130,7 +130,7 @@ const HomePage = () => {
         {/* Features Section */}
         <section className="features" id="features">
           <h2>Our Features</h2>
-          <div className="feature-list"  ref={listRef}>
+          <div className="feature-list" ref={listRef}>
             {/* First Feature */}
             <div className="feature-item fade-in  feature-item-first">
               <div className="feature-info-left">
@@ -265,7 +265,14 @@ const HomePage = () => {
               <label htmlFor="message">Message:</label>
               <textarea id="message" name="message" rows="4" placeholder="Your Message"></textarea>
             </div>
-            <button type="submit" className="contact-button">
+            <button
+              type="submit"
+              className="contact-button"
+              style={{
+                display: "block",
+                margin: "0 auto",
+              }}
+            >
               Submit
             </button>
           </form>

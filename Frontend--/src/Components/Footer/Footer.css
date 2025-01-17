@@ -1,0 +1,101 @@
+/* Footer.css */
+
+.footer {
+    margin-top: 20px;
+    position: relative;
+    background-color: #A62727; /* Rich red color for the background */
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    height:40vh;
+  }
+  
+  .footer-background-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.1); /* Light and subtle text for background */
+    white-space: nowrap;
+    font-weight: bold;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .footer-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-nav {
+    margin: 1rem 0;
+  }
+  
+  .footer-nav a {
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer-nav a:hover {
+    color: #FFE08A; /* Highlight color */
+  }
+  
+  .footer-copyright {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #f8f8f8;
+  }
+  
+  .footer-icons {
+    margin-top: 1.5rem;
+  }
+  
+  .footer-icons a {
+    margin: 0 0.5rem;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-icons a img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .footer-icons a:hover {
+    transform: scale(1.2); /* Zoom effect on hover */
+  }
+  
+  @media (max-width: 768px) {
+    .footer-background-text {
+      font-size: 3rem;
+    }
+  
+    .footer-logo {
+      font-size: 2rem;
+    }
+  
+    .footer-nav a {
+      margin: 0 0.5rem;
+      font-size: 1rem;
+    }
+  
+    .footer-icons a {
+      margin: 0 0.3rem;
+      width: 28px;
+    }
+  }
+  
