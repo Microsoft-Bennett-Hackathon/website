@@ -21,11 +21,11 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <div className="logo">
+      <div style ={{padding:'0 70px 0 70px'}} className="logo">
         <span className="fit">FIT</span>
         <span className="ai">AI</span>
       </div>
-      <ul className="nav-links">
+      <ul style ={{padding:'0 70px 0 70px'}} className="nav-links">
         <li>
           <a href="#home" className={hoveredElement === document.querySelector('[href="#home"]') ? "hovered" : ""}>
             Home

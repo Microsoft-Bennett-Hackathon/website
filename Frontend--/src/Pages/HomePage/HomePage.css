@@ -132,9 +132,7 @@
 /* Feature-sec */
 /* Features Section */
 .features {
-  padding: 6rem 3rem;
   text-align: center;
-  padding:0 70px 0 70px;
 
   color: #fff;
 }
@@ -150,25 +148,35 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  
 }
 
 /* Second Feature with Background */
 .feature-item-second {
   background: url('/Texture/bg.png') no-repeat center center / cover;
-  padding: 2rem;
+  width: 100%;
+  opacity: 0; /* Corrected for 12% opacity */
+  height: 100vh;
   background-size: cover;
   background-position: center;
 }
+.feature-item-first{
+  padding:0 70px 0 70px;
+  height:100vh;
+}
+.feature-item-third{
+  padding:0 70px 0 70px;
+  height:100vh;
+}
 
-.feature-item {
+
+.feature-item { 
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-  height: 500px; /* Increased height of the feature item */
 }
 
 .feature-item.show {
@@ -205,17 +213,17 @@
   line-height: 1.6;
 }
 
-.feature-card-left,
+
 .feature-card-right {
-  width: 35%;
+  width: 30%;
 }
 
 .feature-image {
   width: 90%;
   height: auto;
   max-width: 500px;
-  height: 1000pxrem;
-  border-radius: 10px;
+  height: 450px;
+
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 

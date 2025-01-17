@@ -172,7 +172,7 @@ const HomePage = () => {
               </div>
             </div>
             <video autoPlay loop muted className="hero-video">
-              <source src="/kk.mp4" type="video/mp4" />
+              <source src="/hero-video.mp4" type="video/mp4" />
             </video>
           </section>
         </div>
@@ -181,9 +181,9 @@ const HomePage = () => {
         {/* Features Section */}
         <section className="features" id="features">
           <h2>Our Features</h2>
-          <div className="feature-list">
+          <div  className="feature-list">
             {/* First Feature */}
-            <div className="feature-item fade-in">
+            <div className="feature-item fade-in  feature-item-first">
               <div className="feature-info-left">
                 <div
                   className="background-text"
@@ -205,6 +205,7 @@ const HomePage = () => {
                   staying motivated.
                 </p>
               </div>
+              {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="20" stroke-dashoffset="20" d="M3 12h17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M21 12l-7 7M21 12l-7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.2s" dur="0.2s" values="12;0"/></path></g></svg> */}
               <div className="feature-card-right">
                 <img
                   src="/Features/1.png"
@@ -216,14 +217,14 @@ const HomePage = () => {
 
             {/* Second Feature */}
             <div className="feature-item fade-in feature-item-second">
-              <div className="feature-card-left">
+              <div style ={{padding:'0 70px 0 70px'}} className="feature-card-left">
                 <img
                   src="/Features/2.jpeg"
                   alt="Calorie Tracking"
                   className="feature-image"
                 />
               </div>
-              <div className="feature-info-right">
+              <div style ={{padding:'0 70px 0 70px'}} className="feature-info-right">
                 <div
                   className="background-text"
                   ref={backgroundRef2}
@@ -245,7 +246,7 @@ const HomePage = () => {
             </div>
 
             {/* Third Feature */}
-            <div className="feature-item fade-in">
+            <div className="feature-item fade-in  feature-item-third">
               <div className="feature-info-left">
                 <div
                   className="background-text"

@@ -11,8 +11,7 @@ body {
 /* Navbar */
 .navbar {
   width: 100%;
-  width: calc(100% - 140px); /* Subtract 80px from both sides */
-  margin-left: 70px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
