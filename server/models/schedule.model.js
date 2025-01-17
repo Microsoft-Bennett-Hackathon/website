@@ -12,6 +12,7 @@ const scheduleSchema = new mongoose.Schema({
   },
   goal: { type: String, required: true },
   days: { type: Number, required: true },
+  level: { type: String, required: true },
 });
 
 const Schedule = mongoose.model("Schedule", scheduleSchema);
