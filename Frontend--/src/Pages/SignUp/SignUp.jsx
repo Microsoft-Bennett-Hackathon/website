@@ -29,7 +29,10 @@ const SignUpPage = () => {
 
   const handleSignUp = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/signup",
+        formData
+      );
       alert(response.data.message || "Sign-up successful!");
       // Redirect to the login page after successful signup
       navigate("/login");
@@ -67,7 +70,7 @@ const SignUpPage = () => {
             onChange={handleChange}
             required
           />
-          <button type="button" className="auth-button" onClick={handleNext}>
+          <button type="button" className="auth-button " onClick={handleNext}>
             Next
           </button>
         </form>
@@ -75,7 +78,9 @@ const SignUpPage = () => {
 
       {step === 2 && (
         <Modal onClose={handleNext}>
-          <h2>Enter Additional Details</h2>
+          <h2 className="font-bold text-2xl text-white">
+            <span className="text-[#FF0000]">Enter</span> Additional Details
+          </h2>
           <input
             type="number"
             name="age"
@@ -100,7 +105,7 @@ const SignUpPage = () => {
             onChange={handleChange}
             required
           />
-          <button type="button" className="auth-button" onClick={handleNext}>
+          <button type="button" className="auth-button " onClick={handleNext}>
             Next
           </button>
         </Modal>
