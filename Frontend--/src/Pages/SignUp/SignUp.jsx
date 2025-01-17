@@ -11,42 +11,35 @@
 //     name: "",
 //     email: "",
 //     password: "",
-//   });
-
-//   const [extraData, setExtraData] = useState({
 //     age: "",
 //     weight: "",
 //     height: "",
 //     bodyFat: null,
+//     targetExercise: "",
 //   });
 
 //   const navigate = useNavigate();
 
-//   const handleFormDataChange = (e) => {
+//   const handleChange = (e) => {
 //     setFormData({ ...formData, [e.target.name]: e.target.value });
 //   };
 
-//   const handleExtraDataChange = (e) => {
-//     const { name, value } = e.target;
+//   const handleNext = () => {
+//     setStep((prevStep) => prevStep + 1);
+//   };
 
-//     // Ensure age and weight cannot be negative
-//     if ((name === "age" || name === "weight") && value < 0) {
-//       alert(`${name} cannot be negative!`);
-//       return;
-//     }
-
-//     setExtraData({ ...extraData, [name]: value });
+//   const handleBack = () => {
+//     setStep((prevStep) => prevStep - 1);
 //   };
 
 //   const handleSignUp = async () => {
 //     try {
-//       // Send data to backend
-//       const response = await axios.post("http://localhost:5000/api/auth/signup", {
-//         ...formData,
-//         extra: extraData,
-//       });
+//       const response = await axios.post(
+//         "http://localhost:5000/api/auth/signup",
+//         formData
+//       );
 //       alert(response.data.message || "Sign-up successful!");
-//       navigate("/login"); // Redirect to login
+//       navigate("/login"); // Redirect to login page
 //     } catch (error) {
 //       alert(error.response?.data?.message || "Sign-up failed.");
 //     }
@@ -54,7 +47,6 @@
 
 //   return (
 //     <div className="auth-container">
-//       {/* Step 1: Basic Details */}
 //       {step === 1 && (
 //         <form className="auth-form">
 //           <h1 className="auth-title">Sign Up</h1>
@@ -63,7 +55,7 @@
 //             name="name"
 //             placeholder="Name"
 //             value={formData.name}
-//             onChange={handleFormDataChange}
+//             onChange={handleChange}
 //             required
 //           />
 //           <input
@@ -71,7 +63,7 @@
 //             name="email"
 //             placeholder="Email"
 //             value={formData.email}
-//             onChange={handleFormDataChange}
+//             onChange={handleChange}
 //             required
 //           />
 //           <input
@@ -79,71 +71,55 @@
 //             name="password"
 //             placeholder="Password"
 //             value={formData.password}
-//             onChange={handleFormDataChange}
+//             onChange={handleChange}
 //             required
 //           />
-//           <div className="navigation-buttons">
-//             <button type="button" className="auth-button" onClick={() => setStep(2)}>
-//               Next
-//             </button>
-//           </div>
+//           <button type="button" className="auth-button" onClick={handleNext}>
+//             Next
+//           </button>
 //         </form>
 //       )}
 
-//       {/* Step 2: Additional Details */}
 //       {step === 2 && (
-//         <Modal onClose={() => setStep(1)}>
-//           <h2>Enter Additional Details</h2>
+//         <Modal onClose={handleBack}>
+//           <h2 className="modal-title">
+//             <span className="highlight">Enter</span> Additional Details
+//           </h2>
 //           <input
 //             type="number"
 //             name="age"
 //             placeholder="Age"
-//             value={extraData.age}
-//             onChange={handleExtraDataChange}
+//             value={formData.age}
+//             onChange={handleChange}
 //             required
 //           />
 //           <input
 //             type="number"
 //             name="weight"
 //             placeholder="Weight (kg)"
-//             value={extraData.weight}
-//             onChange={handleExtraDataChange}
+//             value={formData.weight}
+//             onChange={handleChange}
 //             required
 //           />
 //           <input
 //             type="number"
 //             name="height"
 //             placeholder="Height (cm)"
-//             value={extraData.height}
-//             onChange={handleExtraDataChange}
+//             value={formData.height}
+//             onChange={handleChange}
 //             required
 //           />
-//           <div className="navigation-buttons">
-//             <button type="button" className="auth-button" onClick={() => setStep(1)}>
-//               Back
-//             </button>
-//             <button type="button" className="auth-button" onClick={() => setStep(3)}>
-//               Next
-//             </button>
-//           </div>
+//           <button type="button" className="auth-button" onClick={handleNext}>
+//             Next
+//           </button>
 //         </Modal>
 //       )}
 
-//       {/* Step 3: Body Fat and Submission */}
 //       {step === 3 && (
 //         <Carousel
-//           onSelect={(bodyFat) => setExtraData({ ...extraData, bodyFat })}
+//           onSelect={(bodyFat) => setFormData({ ...formData, bodyFat })}
 //           onFinish={handleSignUp}
-//         >
-//           <div className="navigation-buttons">
-//             <button type="button" className="auth-button" onClick={() => setStep(2)}>
-//               Back
-//             </button>
-//             <button type="button" className="auth-button" onClick={handleSignUp}>
-//               Sign Up
-//             </button>
-//           </div>
-//         </Carousel>
+//         />
 //       )}
 //     </div>
 //   );
@@ -166,28 +142,32 @@ const SignUpPage = () => {
     age: "",
     weight: "",
     height: "",
-    bodyFat: "",
+    bodyFat: null, // Will be set via the Carousel component
+    targetExercise: "", // Empty value, not part of the form inputs
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    // Ensure age and weight are not negative
-    if ((name === "age" || name === "weight") && value < 0) {
-      alert(`${name} cannot be negative!`);
-      return;
-    }
+  const handleNext = () => {
+    setStep((prevStep) => prevStep + 1);
+  };
 
-    setFormData({ ...formData, [name]: value });
+  const handleBack = () => {
+    setStep((prevStep) => prevStep - 1);
   };
 
   const handleSignUp = async () => {
     try {
       const response = await axios.post(
         "http://localhost:5000/api/auth/signup",
-        formData
+        {
+          ...formData,
+          targetExercise: "", // Ensuring this field is sent as empty
+        }
       );
       alert(response.data.message || "Sign-up successful!");
       navigate("/login"); // Redirect to login page
@@ -198,7 +178,6 @@ const SignUpPage = () => {
 
   return (
     <div className="auth-container">
-      {/* Step 1: Basic Details */}
       {step === 1 && (
         <form className="auth-form">
           <h1 className="auth-title">Sign Up</h1>
@@ -226,23 +205,16 @@ const SignUpPage = () => {
             onChange={handleChange}
             required
           />
-          <div className="navigation-buttons">
-            <button
-              type="button"
-              className="auth-button"
-              onClick={() => setStep(2)}
-            >
-              Next
-            </button>
-          </div>
+          <button type="button" className="auth-button" onClick={handleNext}>
+            Next
+          </button>
         </form>
       )}
 
-      {/* Step 2: Additional Details */}
       {step === 2 && (
-        <Modal onClose={() => setStep(1)}>
-          <h2 className="font-bold text-2xl text-white">
-            <span className="text-[#FF0000]">Enter</span> Additional Details
+        <Modal onClose={handleBack}>
+          <h2 className="modal-title">
+            <span className="highlight">Enter</span> Additional Details
           </h2>
           <input
             type="number"
@@ -268,51 +240,21 @@ const SignUpPage = () => {
             onChange={handleChange}
             required
           />
-          <div className="navigation-buttons">
-            {/* <button
-              type="button"
-              className="auth-button"
-              onClick={() => setStep(1)}
-            >
-              Back
-            </button> */}
-            <button
-              type="button"
-              className="auth-button"
-              onClick={() => setStep(3)}
-            >
-              ->>>>
-            </button>
-          </div>
+          <button type="button" className="auth-button" onClick={handleNext}>
+            Next
+          </button>
         </Modal>
       )}
 
-      {/* Step 3: Body Fat and Submission */}
       {step === 3 && (
         <Carousel
           onSelect={(bodyFat) => setFormData({ ...formData, bodyFat })}
           onFinish={handleSignUp}
-        >
-          <div className="navigation-buttons">
-            <button
-              type="button"
-              className="auth-button"
-              onClick={() => setStep(2)}
-            >
-              Back
-            </button>
-            <button
-              type="button"
-              className="auth-button"
-              onClick={handleSignUp}
-            >
-              Sign Up
-            </button>
-          </div>
-        </Carousel>
+        />
       )}
     </div>
   );
 };
 
 export default SignUpPage;
+

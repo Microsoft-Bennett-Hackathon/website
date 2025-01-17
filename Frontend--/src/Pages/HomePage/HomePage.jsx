@@ -11,55 +11,55 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const HomePage = () => {
   const navigate = useNavigate();
-const listRef = useRef(null);
-const handleLogin = () => {
-  navigate('/login'); // Navigate to the login page
-};
-
-const handleSignup = () => {
-  navigate('/signup'); // Navigate to the signup page
-};
-
-useEffect(() => {
-  // Observer for feature items
-  const featureObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        } else {
-          entry.target.classList.remove("show"); // Remove class when out of view
-        }
-      });
-    },
-    { threshold: 0.2 } // Trigger animation when 20% of the card is visible
-  );
-
-  const featureItems = document.querySelectorAll(
-    ".feature-item, .feature-image, .feature-info-left, .feature-info-right"
-  );
-  featureItems.forEach((item) => featureObserver.observe(item));
-
-  return () => {
-    featureItems.forEach((item) => featureObserver.unobserve(item));
+  const listRef = useRef(null);
+  const handleLogin = () => {
+    navigate('/login'); // Navigate to the login page
   };
-}, []);
 
-useEffect(() => {
-  const scrollInterval = setInterval(() => {
-    if (listRef.current) {
-      listRef.current.scrollLeft += 2; // Adjust the scroll speed here
-      if (
-        listRef.current.scrollLeft >=
-        listRef.current.scrollWidth - listRef.current.clientWidth
-      ) {
-        listRef.current.scrollLeft = 0; // Reset to the beginning
+  const handleSignup = () => {
+    navigate('/signup'); // Navigate to the signup page
+  };
+
+  useEffect(() => {
+    // Observer for feature items
+    const featureObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show"); // Remove class when out of view
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger animation when 20% of the card is visible
+    );
+
+    const featureItems = document.querySelectorAll(
+      ".feature-item, .feature-image, .feature-info-left, .feature-info-right"
+    );
+    featureItems.forEach((item) => featureObserver.observe(item));
+
+    return () => {
+      featureItems.forEach((item) => featureObserver.unobserve(item));
+    };
+  }, []);
+
+  useEffect(() => {
+    const scrollInterval = setInterval(() => {
+      if (listRef.current) {
+        listRef.current.scrollLeft += 2; // Adjust the scroll speed here
+        if (
+          listRef.current.scrollLeft >=
+          listRef.current.scrollWidth - listRef.current.clientWidth
+        ) {
+          listRef.current.scrollLeft = 0; // Reset to the beginning
+        }
       }
-    }
-  }, 20); // Adjust the interval here (lower = smoother scroll)
+    }, 20); // Adjust the interval here (lower = smoother scroll)
 
-  return () => clearInterval(scrollInterval); // Cleanup on component unmount
-}, []);
+    return () => clearInterval(scrollInterval); // Cleanup on component unmount
+  }, []);
 
 
   return (
@@ -151,7 +151,7 @@ useEffect(() => {
               <div className="feature-info-left">
                 <div
                   className="background-text"
-                  // ref={backgroundRef1}
+                // ref={backgroundRef1}
 
                 >
                   Personalize
@@ -191,7 +191,7 @@ useEffect(() => {
               <div style={{ padding: '0 70px 0 70px' }} className="feature-info-right">
                 <div
                   className="background-text"
-                  // ref={backgroundRef2}
+                // ref={backgroundRef2}
 
                 >
                   Calories
@@ -214,7 +214,7 @@ useEffect(() => {
               <div className="feature-info-left">
                 <div
                   className="background-text"
-                  // ref={backgroundRef3}
+                // ref={backgroundRef3}
 
                 >
                   AIPOSE
@@ -243,9 +243,25 @@ useEffect(() => {
           </div>
         </section>
 
-       <About />
+        <About />
 
-
+        {/* join us */}
+        <section className="join-us-section">
+          <h1 className="title">JOIN US</h1>
+          <p className="description">
+            Our app helps you achieve your fitness goals faster by combining personalized
+            training plans, AI-powered feedback, and real-time progress tracking. Here's
+            why our users love it!
+          </p>
+          <div className="button-container">
+            <button className="login-button" onClick={handleLogin}>
+              Login
+            </button>
+            <button className="signup-button" onClick={handleSignup}>
+              Signup
+            </button>
+          </div>
+        </section>
 
 
         {/* Contact Section */}
@@ -269,23 +285,7 @@ useEffect(() => {
             </button>
           </form>
         </section>
-        {/* join us */}
-        <section className="join-us-section">
-        <h1 className="title">JOIN US</h1>
-        <p className="description">
-          Our app helps you achieve your fitness goals faster by combining personalized
-          training plans, AI-powered feedback, and real-time progress tracking. Here's
-          why our users love it!
-        </p>
-        <div className="button-container">
-          <button className="login-button" onClick={handleLogin}>
-            Login
-          </button>
-          <button className="signup-button" onClick={handleSignup}>
-            Signup
-          </button>
-        </div>
-      </section>
+
 
         <Footer />
       </div>
