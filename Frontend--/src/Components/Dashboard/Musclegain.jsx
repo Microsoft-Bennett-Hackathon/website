@@ -207,7 +207,6 @@ const Musclegain = () => {
               <button
                 type="submit"
                 className="mr-auto ml-auto bg-[#ff0000] text-white py-2 rounded hover:bg-[#fa6060] focus:outline-none focus:ring-2 focus:ring-[#ff0000]"
-                
               >
                 Submit
               </button>
