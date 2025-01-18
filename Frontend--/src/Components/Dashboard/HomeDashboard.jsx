@@ -11,12 +11,6 @@ const HomeDashboard = () => {
     fullBodyDay: [],
   });
 
-  const navigate = useNavigate();
-
-  const handleDayClick = (day) => {
-    navigate(`/todaysworkoutmain?day=${day}`);
-  };
-
   const [userPreferences, setUserPreferences] = useState(null);
   // Function to randomly pick difficulty
   const getRandomDifficulty = () => {
@@ -200,8 +194,13 @@ const HomeDashboard = () => {
           <div className="bg-[#2d2d2d] w-full rounded-lg px-[10px]">
             <div className="flex flex-row items-center py-4">
               {/* Monday */}
-              <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[10px]">Monday</span>
+              <div
+                className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]"
+                onClick={() => handleDayClick("Arms")}
+              >
+                <Link to="/todaysworkoutmain?day=Monday">
+                  <span className="text-white font-bold mb-[10px]">Monday</span>
+                </Link>
                 <span className="text-sm text-slate-300">Arms Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   6:00 AM - 7:00 AM
@@ -214,7 +213,12 @@ const HomeDashboard = () => {
               </div>
               {/* Tuesday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[10px]">Tuesday</span>
+                <Link to="/todaysworkoutmain?day=Tuesday">
+                  <span className="text-white font-bold mb-[10px]">
+                    Tuesday
+                  </span>
+                </Link>
+
                 <span className="text-sm text-slate-300">Legs Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   7:30 AM - 8:30 AM
@@ -227,9 +231,12 @@ const HomeDashboard = () => {
               </div>
               {/* Wednesday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[10px]">
-                  Wednesday
-                </span>
+                <Link to="/todaysworkoutmain?day=Wednesday">
+                  <span className="text-white font-bold mb-[10px]">
+                    Wednesday
+                  </span>
+                </Link>
+
                 <span className="text-sm text-slate-300">Shoulder Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   6:00 AM - 7:00 AM
@@ -242,7 +249,12 @@ const HomeDashboard = () => {
               </div>
               {/* Thursday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[10px]">Thursday</span>
+                <Link to="/todaysworkoutmain?day=Thursday">
+                  <span className="text-white font-bold mb-[10px]">
+                    Thursday
+                  </span>
+                </Link>
+
                 <span className="text-sm text-slate-300">Chest Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   7:30 AM - 8:30 AM
@@ -255,7 +267,10 @@ const HomeDashboard = () => {
               </div>
               {/* Friday */}
               <div className="flex flex-col items-center border-r w-1/6 border-gray-500 pr-[10px]">
-                <span className="text-white font-bold mb-[10px]">Friday</span>
+                <Link to="/todaysworkoutmain?day=Friday">
+                  <span className="text-white font-bold mb-[10px]">Friday</span>
+                </Link>
+
                 <span className="text-sm text-slate-300">Back Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   6:00 AM - 7:00 AM
@@ -268,7 +283,12 @@ const HomeDashboard = () => {
               </div>
               {/* Saturday */}
               <div className="flex flex-col items-center w-1/6">
-                <span className="text-white font-bold mb-[10px]">Saturday</span>
+                <Link to="/todaysworkoutmain?day=Saturday">
+                  <span className="text-white font-bold mb-[10px]">
+                    Saturday
+                  </span>
+                </Link>
+
                 <span className="text-sm text-slate-300">Full Body Day</span>
                 <span className="text-[10px] text-slate-400 ">
                   8:00 AM - 9:00 AM
