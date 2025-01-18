@@ -11,6 +11,7 @@ const HomeDashboard = () => {
     fullBodyDay: [],
   });
 
+  const [userPreferences, setUserPreferences] = useState(null);
   // Function to randomly pick difficulty
   const getRandomDifficulty = () => {
     const difficulties = ["Beginner", "Intermediate", "Advanced"];
@@ -24,49 +25,69 @@ const HomeDashboard = () => {
         const response = await fetch("http://localhost:5001/api/exercises");
         const data = await response.json();
 
-        const randomDifficulty = getRandomDifficulty(); // Get random difficulty
+        const randomDifficulty = getRandomDifficulty();
+
+        const userResponse = await fetch(
+          "http://localhost:5001/api/user-preferences"
+        );
+        const userData = await userResponse.json();
+
+        const email = localStorage.getItem("email");
+
+        const currentUserPreferences = userData.find(
+          (pref) => pref.email === email
+        );
+        console.log(currentUserPreferences.level);
+        setUserPreferences(currentUserPreferences);
 
         const filteredExercises = {
           armsDay: data
             .filter(
               (exercise) =>
                 exercise.TargetArea === "Arms" &&
-                exercise.Difficulty === randomDifficulty
+                exercise.Difficulty === currentUserPreferences.level &&
+                exercise.goal === currentUserPreferences.goal &&
+                exercise.goal === currentUserPreferences.goal
             )
             .slice(0, 6),
           legsDay: data
             .filter(
               (exercise) =>
                 exercise.TargetArea === "Legs" &&
-                exercise.Difficulty === randomDifficulty
+                exercise.Difficulty === currentUserPreferences.level &&
+                exercise.goal === currentUserPreferences.goal
             )
             .slice(0, 6),
           shoulderDay: data
             .filter(
               (exercise) =>
                 exercise.TargetArea === "Shoulders" &&
-                exercise.Difficulty === randomDifficulty
+                exercise.Difficulty === currentUserPreferences.level &&
+                exercise.goal === currentUserPreferences.goal
             )
             .slice(0, 6),
           chestDay: data
             .filter(
               (exercise) =>
                 exercise.TargetArea === "Chest" &&
-                exercise.Difficulty === randomDifficulty
+                exercise.Difficulty === currentUserPreferences.level &&
+                exercise.goal === currentUserPreferences.goal
             )
             .slice(0, 6),
           backDay: data
             .filter(
               (exercise) =>
                 exercise.TargetArea === "Back" &&
-                exercise.Difficulty === randomDifficulty
+                exercise.Difficulty === currentUserPreferences.level &&
+                exercise.goal === currentUserPreferences.goal
             )
             .slice(0, 6),
           fullBodyDay: data
             .filter(
               (exercise) =>
                 exercise.TargetArea === "Full Body" &&
-                exercise.Difficulty === randomDifficulty
+                exercise.Difficulty === currentUserPreferences.level &&
+                exercise.goal === currentUserPreferences.goal
             )
             .slice(0, 6),
         };

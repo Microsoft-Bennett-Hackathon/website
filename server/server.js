@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const Exercise = require("./models/exercise.model");
 const Schedule = require("./models/schedule.model");
-
+const DietPreferences = require("./models/dietPreferencesSchema.model");
 
 dotenv.config();
 app.use(express.json());
@@ -35,6 +35,73 @@ app.get("/api/exercises", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error fetching exercises", error: error.message });
+  }
+});
+
+app.put("/api/update-diet-preferences", async (req, res) => {
+  const {
+    goal,
+    level,
+    lastWeight,
+    targetWeight,
+    dietaryPreference,
+    workoutFrequency,
+    email,
+  } = req.body;
+
+  // Check if the email exists in the database
+  try {
+    let dietPreference = await DietPreferences.findOne({ email });
+
+    if (dietPreference) {
+      // Update existing document
+      dietPreference.goal = goal;
+      dietPreference.level = level;
+      dietPreference.lastWeight = lastWeight;
+      dietPreference.targetWeight = targetWeight;
+      dietPreference.dietaryPreference = dietaryPreference;
+      dietPreference.workoutFrequency = workoutFrequency;
+
+      await dietPreference.save(); // Save the updated document
+
+      return res
+        .status(200)
+        .json({ message: "Diet preferences updated successfully" });
+    } else {
+      // Create new document if none exists
+      const newDietPreference = new DietPreferences({
+        goal,
+        level,
+        lastWeight,
+        targetWeight,
+        dietaryPreference,
+        workoutFrequency,
+        email,
+      });
+
+      await newDietPreference.save(); // Save the new document
+      return res
+        .status(201)
+        .json({ message: "Diet preferences created successfully" });
+    }
+  } catch (error) {
+    console.error("Error updating/creating diet preferences:", error);
+    return res
+      .status(500)
+      .json({ message: "Something went wrong", error: error.message });
+  }
+});
+
+app.get("/api/user-preferences", async (req, res) => {
+  try {
+    const userPreferences = await DietPreferences.find();
+    res.status(200).json(userPreferences);
+  } catch (error) {
+    console.error("Error fetching user preferences:", error);
+    res.status(500).json({
+      message: "Error fetching user preferences",
+      error: error.message,
+    });
   }
 });
 

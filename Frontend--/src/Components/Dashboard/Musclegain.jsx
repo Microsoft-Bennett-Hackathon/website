@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 const Musclegain = () => {
   const [schedules, setSchedules] = useState([]);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [goal, setGoal] = useState(""); // For storing the selected goal
+  const [level, setLevel] = useState(""); // For storing the selected level
 
   useEffect(() => {
     fetch("http://localhost:5001/api/schedules")
@@ -18,37 +20,60 @@ const Musclegain = () => {
       });
   }, []);
 
-  const handlePlanClick = () => {
+  const handlePlanClick = (goal, level) => {
+    setGoal(goal); // Set goal from the clicked schedule
+    setLevel(level); // Set level from the clicked schedule
     setIsPopupVisible(true);
   };
 
   const closePopup = () => {
     setIsPopupVisible(false);
   };
-  const handleUpdateDietPreferences = async () => {
+
+  const handleUpdateDietPreferences = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
     const token = localStorage.getItem("token"); // Assuming the token is stored in localStorage
     if (!token) {
       alert("You must be logged in.");
       return;
     }
-  
-    // const data = {
-    //   lastWeight,
-    //   targetWeight,
-    //   dietaryPreference,
-    //   workoutFrequency,
-    // };
-  
+
+    // Get values from the form
+    const lastWeight = document.getElementById("lastWeight").value;
+    const targetWeight = document.getElementById("targetWeight").value;
+    const dietaryPreference = document.getElementById("preferences").value;
+    const workoutFrequency = document.getElementById("workoutFrequency").value;
+    const email = localStorage.getItem("email"); // Assuming email is stored in localStorage
+
+    if (!email) {
+      alert("Email is required.");
+      return;
+    }
+
+    const data = {
+      lastWeight,
+      targetWeight,
+      dietaryPreference,
+      workoutFrequency,
+      goal,
+      level,
+      email,
+    };
+
     try {
-      const response = await fetch("http://localhost:5001/api/update-diet-preferences", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include JWT token in the Authorization header
-        },
-        // body: JSON.stringify(data),
-      });
-  
+      const response = await fetch(
+        "http://localhost:5001/api/update-diet-preferences",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Include JWT token in the Authorization header
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
       const result = await response.json();
       if (response.ok) {
         alert(result.message);
@@ -60,19 +85,16 @@ const Musclegain = () => {
       alert("Something went wrong!");
     }
   };
-  
 
   return (
-    <div
-      className={`dashboard-home-container flex flex-col p-[40px] overflow-scrolls`}
-    >
+    <div className="dashboard-home-container flex flex-col p-[40px] overflow-scrolls">
       <div className="dh-top flex flex-col gap-[30px]">
         <div className="flex flex-row gap-[30px] flex-wrap">
           {schedules.map((schedule, index) => (
             <div
               key={index}
               className="bg-[#2d2d2d] w-[440px] h-[140px] rounded-lg flex flex-row items-center p-[10px] hover:scale-105 transition-transform duration-300 cursor-pointer"
-              onClick={handlePlanClick}
+              onClick={() => handlePlanClick(schedule.goal, schedule.level)}
             >
               <img
                 src="/bodybuilder.avif"
@@ -81,7 +103,6 @@ const Musclegain = () => {
               />
               <div className="ml-[15px] flex flex-col gap-2">
                 <span className="text-white font-bold">{schedule.title}</span>
-
                 <span className="text-sm font-thin text-slate-300">
                   Goal: {schedule.goal}
                 </span>
@@ -101,10 +122,13 @@ const Musclegain = () => {
       {isPopupVisible && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-[#2d2d2d] p-6 rounded-lg shadow-lg w-[400px] text-center relative">
-            <h2 className="text-xl font-bold text-white mb-4" onSubmit={handleUpdateDietPreferences}>
+            <h2 className="text-xl font-bold text-white mb-4">
               Build Your Diet Plan
             </h2>
-            <form className="flex flex-col gap-4 text-left">
+            <form
+              className="flex flex-col gap-4 text-left"
+              onSubmit={handleUpdateDietPreferences}
+            >
               {/* Last Recorded Weight */}
               <div>
                 <label
@@ -175,7 +199,7 @@ const Musclegain = () => {
                   </option>
                   <option value="daily">Daily</option>
                   <option value="3-times-a-week">3 Times a Week</option>
-                  <option value="5-times-a-week">4 Times a Week</option>
+                  <option value="4-times-a-week">4 Times a Week</option>
                 </select>
               </div>
 
