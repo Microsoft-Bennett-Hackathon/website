@@ -6,6 +6,7 @@ const cors = require("cors");
 const Exercise = require("./models/exercise.model");
 const Schedule = require("./models/schedule.model");
 const DietPreferences = require("./models/dietPreferencesSchema.model");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 dotenv.config();
 app.use(express.json());
@@ -100,6 +101,31 @@ app.get("/api/user-preferences", async (req, res) => {
     console.error("Error fetching user preferences:", error);
     res.status(500).json({
       message: "Error fetching user preferences",
+      error: error.message,
+    });
+  }
+});
+
+app.post("/api/generate-content", async (req, res) => {
+  try {
+    const { prompt } = req.body;
+
+    if (!prompt) {
+      return res.status(400).json({ message: "Prompt is required" });
+    }
+
+    const genAI = new GoogleGenerativeAI(
+      "AIzaSyChLYW845Nu3kTrgizXvztf1Uxr12S32HE"
+    );
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const result = await model.generateContent(prompt);
+    console.log(result.response.text());
+
+    res.status(200).json({ response: result.response.text() });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error generating content",
       error: error.message,
     });
   }

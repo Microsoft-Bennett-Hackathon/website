@@ -183,7 +183,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="t text-white ml-[80px] mr-[450px] relative">
+        <div className="t text-white ml-[80px] mr-[450px] relative overflow-y-scroll">
           <HomeDashboard />
         </div>
       </div>
