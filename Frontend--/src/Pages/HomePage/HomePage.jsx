@@ -22,10 +22,11 @@ const HomePage = () => {
 
 
   useEffect(() => {
-    // Observer for feature items
-    const featureObserver = new IntersectionObserver(
+    // Intersection Observer for feature items and background text
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          console.log(entry.target.className, entry.isIntersecting);
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
           } else {
@@ -36,16 +37,19 @@ const HomePage = () => {
       { threshold: 0.2 }
     );
 
+    // Select all items to observe (features and background text)
     const featureItems = document.querySelectorAll(
       ".feature-item, .feature-image, .background-text"
     );
-    featureItems.forEach((item) => featureObserver.observe(item));
 
+    // Observe all elements
+    featureItems.forEach((item) => observer.observe(item));
+
+    // Cleanup observer on unmount
     return () => {
-      featureItems.forEach((item) => featureObserver.unobserve(item));
+      featureItems.forEach((item) => observer.unobserve(item));
     };
-  }, []);
-
+}, []);
 
   return (
 
@@ -72,7 +76,7 @@ const HomePage = () => {
                 <button
                   style={{ fontSize: "21px", display: "flex", alignItems: "center", gap: "8px" }}
                   className="cta-button"
-                  onClick={() => navigate("/join")}
+                  onClick={() => document.getElementById("join").scrollIntoView({ behavior: "smooth" })}
                 >
                   GET STARTED
                   <svg
@@ -136,13 +140,12 @@ const HomePage = () => {
               <div className="feature-info-left">
                 <div
                   className="background-text"
-                // ref={backgroundRef1}
 
                 >
                   Personalize
                 </div>
 
-                <h3 style={{ fontSize: "2.5rem", marginBottom: "22px" }}>
+                <h3 style={{ fontSize: "3rem", marginBottom: "22px" }}>
                   <span style={{ color: "red" }}>Personalized</span> Plans
                 </h3>
                 <p>
@@ -176,12 +179,11 @@ const HomePage = () => {
               <div style={{ padding: '0 70px 0 70px' }} className="feature-info-right">
                 <div
                   className="background-text"
-                // ref={backgroundRef2}
 
                 >
                   Calories
                 </div>
-                <h3 style={{ fontSize: "2.5rem", marginBottom: "22px" }}>
+                <h3 style={{ fontSize: "3rem", marginBottom: "22px" }}>
                   <span style={{ color: "red" }}>Calorie</span> Tracking
                 </h3>
                 <p>
@@ -199,13 +201,12 @@ const HomePage = () => {
               <div className="feature-info-left">
                 <div
                   className="background-text"
-                // ref={backgroundRef3}
 
                 >
                   AIPOSE
                 </div>
 
-                <h3 style={{ fontSize: "2.5rem", marginBottom: "12px" }}>
+                <h3 style={{ fontSize: "3rem", marginBottom: "12px" }}>
                   <span style={{ color: "red" }}>AI Pose</span> Correction
                 </h3>
                 <p>

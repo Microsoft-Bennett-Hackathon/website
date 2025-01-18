@@ -125,9 +125,8 @@ const Carousel = ({ onSelect, onFinish }) => {
       <div className="carousel-wrapper">
         <div className="card-wrapper">
           <div
-            className={`card ${
-              selectedIndex === currentIndex ? "selected" : ""
-            }`}
+            className={`card ${selectedIndex === currentIndex ? "selected" : ""
+              }`}
           >
             <img src={images[currentIndex].src} alt={`Card ${currentIndex}`} />
             <p className="card-label">{images[currentIndex].label}</p>
@@ -139,9 +138,8 @@ const Carousel = ({ onSelect, onFinish }) => {
               {images.map((image, index) => (
                 <div
                   key={index}
-                  className={`scale-mark ${
-                    index === currentIndex ? "active" : ""
-                  }`}
+                  className={`scale-mark ${index === currentIndex ? "active" : ""
+                    }`}
                   style={{ left: `${(index / (images.length - 1)) * 100}%` }}
                 >
                   <div className="mark-line"></div>
@@ -161,16 +159,22 @@ const Carousel = ({ onSelect, onFinish }) => {
           </div>
         </div>
       </div>
-      <button
-    style={{padding:'10px 40px' , marginBottom: '10px' }}
-        className={`${selectedIndex === currentIndex ? "selected" : ""}`}
-        onClick={handleSelect}
-      >
-        {selectedIndex === currentIndex ? "Selected" : "Select"}
-      </button>
-      <button style={{padding:'10px 40px' , margintop: '10px' }} className="signup-button" onClick={handleSignup}>
-        Sign Up
-      </button>
+      <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+        <button
+          style={{ padding: "10px 40px", marginBottom: "10px" }}
+          className={`${selectedIndex === currentIndex ? "selected" : ""}`}
+          onClick={handleSelect}
+        >
+          {selectedIndex === currentIndex ? "Selected" : "Select"}
+        </button>
+        <button
+          style={{ padding: "10px 40px", marginTop: "2px", marginBottom:'10px'}}
+          className="signup-button"
+          onClick={handleSignup}
+        >
+          Sign Up
+        </button>
+      </div>
     </div>
   );
 };

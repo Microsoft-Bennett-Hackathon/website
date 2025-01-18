@@ -1,7 +1,7 @@
 /* Advantages Section */
 .advantages {
   padding: 50px;
-  background-color: #000;
+  /* background-color: #000; */
   color: #fff;
   text-align: center;
   background: url(/Texture/bg.png);
@@ -17,10 +17,10 @@
 
 .advantages-list {
   padding:0 70px 0 70px;
-  height:500px;
+  height:550px;
   display: flex;
   flex-direction: row; /* Arrange items horizontally */
-  gap: 50px;
+  gap: 120px;
   justify-content: center; /* Center the cards */
   align-items: center;
   flex-wrap: wrap; /* Allow wrapping on smaller screens */
@@ -29,12 +29,12 @@
 .advantage-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
   padding:60px;
   width: 50%; /* Set width for each card */
   max-width: 300px;
-  background-color: #222;
+  background-color: black;
   border:2px solid red;
   opacity: 0; /* Initially hidden */
   transform: translateY(50px); /* Slide-in effect */

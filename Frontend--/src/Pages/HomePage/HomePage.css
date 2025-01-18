@@ -134,6 +134,7 @@
 .features {
   text-align: center;
   color: #fff;
+  width: 100%;
 }
 
 .features h2 {
@@ -146,6 +147,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  padding:0 70px 0 70px;
 }
 
 .feature-item {
@@ -157,6 +159,7 @@
   opacity: 0;
   transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
   position: relative;
+  overflow: visible; /* Ensure visibility */
 }
 
 .feature-item.show {
@@ -185,13 +188,25 @@
 
 .background-text {
   position: absolute;
-  font-size: 8rem;
-  font-weight: bold;
-  color: rgba(83, 83, 83, 0.2); 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: -1;
+  font-size: 4rem;
+  color: rgba(255, 0, 0, 0.2);
   opacity: 0;
-  transform: translateY(30px);
-  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.background-text.show {
+  opacity: 1;
+  transform: translate(-50%, -50%); /* Keep the same centering */
+}
+
+/* Styling for h3 to overlay the background text */
+h3 {
+  position: relative;
+  z-index: 1;
 }
 
 .feature-item.show .background-text {
@@ -204,6 +219,7 @@
   width: 50%;
   text-align: justify;
   position: relative;
+  z-index: 1; /* Ensure they are above the background-text */
 }
 
 .feature-info-left h3,
@@ -218,13 +234,14 @@
   font-size: 1.3rem;
   line-height: 1.6;
 }
-.feature-card-left{
+
+.feature-card-left {
   position: relative;
   width: 40%;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.feature-card-right
- {
+
+.feature-card-right {
   position: relative;
   width: 30%;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -253,6 +270,7 @@ p {
   font-size: 4rem;
   margin-bottom: 0.5rem;
 }
+
 
 /* New floating animations for subtle movement */
 @keyframes float {

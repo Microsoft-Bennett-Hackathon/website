@@ -19,7 +19,10 @@ const Advantages = () => {
 
   return (
     <section className="advantages" id="advantages">
-      <h2 className="advantages-heading">Why Choose Our App?</h2>
+      <h2 className="advantages-heading" style={{color:'white'}}>
+      <span style={{ color: "red" }}>Why</span> Choose Our App?
+      </h2>
+
       <motion.div
         className="advantages-list"
         variants={containerVariants}
@@ -29,7 +32,7 @@ const Advantages = () => {
       >
         <motion.div className="advantage-item" variants={itemVariants}>
           <div className="advantage-card-right">
-            <h3 className="h3">Faster Results</h3>
+            <h3 style={{color:'white'}} className="h3">Faster Results</h3>
             <span className="advantage-icon">⚡</span>
           </div>
           <div className="advantage-info-left">
@@ -42,7 +45,7 @@ const Advantages = () => {
 
         <motion.div className="advantage-item" variants={itemVariants}>
           <div className="advantage-card-right">
-            <h3 className="h3">Data-Driven Insights</h3>
+            <h3 style={{color:'white'}} className="h3">Data-Driven Insights</h3>
             <span className="advantage-icon">📊</span>
           </div>
           <div className="advantage-info-left">
@@ -55,7 +58,7 @@ const Advantages = () => {
 
         <motion.div className="advantage-item" variants={itemVariants}>
           <div className="advantage-card-right">
-            <h3 className="h3">Graphical Insights</h3>
+            <h3  style={{color:'white'}} className="h3">Graphical Insights</h3>
             <span className="advantage-icon">📈</span>
           </div>
           <div className="advantage-info-left">

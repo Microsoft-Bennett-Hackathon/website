@@ -99,9 +99,11 @@
 
 .carousel-slider {
   -webkit-appearance: none;
+  transition: background-color 0.2s ease;
   width: 100%;
   height: 4px;
   background: #e0e0e0;
+  cursor: pointer; /* Enables pointer interaction */
   border-radius: 2px;
   outline: none;
   position: relative;
@@ -119,13 +121,14 @@
   cursor: pointer;
   border-radius: 3px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s ease;
   position: relative;
   z-index: 3;
 }
 
 .carousel-slider::-webkit-slider-thumb:hover {
   transform: scaleY(1.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-slider::-moz-range-thumb {
@@ -135,7 +138,7 @@
   cursor: pointer;
   border-radius: 3px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s ease;
   position: relative;
   z-index: 3;
   border: none;
@@ -144,6 +147,7 @@
 .carousel-slider::-moz-range-track {
   height: 4px;
   background: #e0e0e0;
+  transition: transform 0.2s, box-shadow 0.2s ease;
   border-radius: 2px;
 }
 
@@ -154,10 +158,12 @@
   right: 0;
   bottom: 0;
   z-index: 2;
+  pointer-events: none; /* Ensures marks do not block mouse events */
 }
 
 .scale-mark {
   position: absolute;
+  pointer-events: none; /* Prevents marks from interfering with slider interaction */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,6 +171,7 @@
   height: 100%;
   transition: color 0.3s ease;
 }
+
 .mark-line {
   width: 2px;
   height: 10px;
