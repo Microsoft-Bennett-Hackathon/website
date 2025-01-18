@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./Login.css";
 
 // const LoginPage = () => {
@@ -41,6 +41,7 @@ const LoginPage = () => {
 
       // Save token to localStorage
       localStorage.setItem("authToken", response.data.token);
+      localStorage.setItem("email", email);
 
       // Navigate to Dashboard
       alert("Login successful!");
