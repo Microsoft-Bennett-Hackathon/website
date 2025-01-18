@@ -11,7 +11,7 @@ const Musclegain = () => {
       .then((response) => response.json())
       .then((data) => {
         const filteredSchedules = data.filter(
-          (schedule) => schedule.goal === "weight Gain"
+          (schedule) => schedule.goal === "weight gain"
         );
         setSchedules(filteredSchedules);
       })

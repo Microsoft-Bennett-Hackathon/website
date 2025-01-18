@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomeDashboard = () => {
   const [exercises, setExercises] = useState({
@@ -10,6 +10,12 @@ const HomeDashboard = () => {
     backDay: [],
     fullBodyDay: [],
   });
+
+  const navigate = useNavigate();
+
+  const handleDayClick = (day) => {
+    navigate(`/todaysworkoutmain?day=${day}`);
+  };
 
   const [userPreferences, setUserPreferences] = useState(null);
   // Function to randomly pick difficulty
@@ -269,8 +275,14 @@ const HomeDashboard = () => {
                 </span>
 
                 <ul className="text-xs text-slate-300 flex flex-col items-center">
-                  {exercises.armsDay.map((exercise, index) => (
-                    <span key={index}>{exercise.Exercise}</span>
+                  {[
+                    "Dumbbell Bicep Curls",
+                    "Deadlifts",
+                    "Pull-Ups",
+                    "Push-Ups",
+                    "Bodyweight Squats",
+                  ].map((exercise, index) => (
+                    <span key={index}>{exercise}</span>
                   ))}
                 </ul>
               </div>
