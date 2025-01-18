@@ -155,7 +155,7 @@ const Dietplan = () => {
       Dietary Preference: ${dietaryPreference}
       Workout Frequency: ${workoutFrequency}
       NOTE:generate in HTML. us this template <div class=" h-full p-6 text-white rounded-lg shadow-lg">
-  <h1 class="text-3xl font-bold text-center text-blue-400 mb-6">Gym Athlete's Diet Plan</h1>
+  <h1 class="text-3xl font-bold text-center text-white mb-6">Gym Athlete's Diet Plan</h1>
   <p class="text-lg text-gray-300 mb-6 text-center">This diet plan is designed to support an active athlete with high energy needs, helping build muscle and maintain peak performance.</p>
 
   <div class="space-y-8">
@@ -223,6 +223,7 @@ NOTE : do not enter display html in the content
         }
       );
       const data = await response.json();
+
       setGeneratedContent(data.response); // Assuming the API response contains HTML content
     } catch (error) {
       console.error("Error generating content:", error);
@@ -232,7 +233,7 @@ NOTE : do not enter display html in the content
 
   return (
     <div className="overflow-y-scroll h-[90vh] p-6 text-white rounded-lg">
-      <h1 className="text-3xl font-bold text-center text-blue-400 mb-6">
+      <h1 className="text-3xl font-bold text-center text-white mb-6">
         Generating Personalized Diet Plan
       </h1>
       {loading && (
