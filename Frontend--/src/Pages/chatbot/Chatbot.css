@@ -1,13 +1,13 @@
 /* Main container for the chatbot */
 .chatbot-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
     width: 350px;
-    max-height: 500px;
-    background-color: #fff;
+    max-height: 1000px;
+    background-color: #000; /* Black background */
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     transform: translateY(100%);
     transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
@@ -27,18 +27,22 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    color: #fff; /* White text */
   }
   
+  /* Header section with red theme */
   .chat-header {
-    background-color: #ff4d4d;
+    background-color: #ff0000; /* Bright red */
     padding: 12px;
     color: white;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
     position: relative;
+    border-bottom: 2px solid #ff3333; /* Slightly darker red border */
   }
   
+  /* Close button */
   .close-chat-btn {
     position: absolute;
     top: 10px;
@@ -51,15 +55,18 @@
   }
   
   .close-chat-btn:hover {
-    color: #ff6666;
+    color: #ff6666; /* Slightly lighter red on hover */
   }
   
+  /* Chat output area */
   .chat-output {
     flex-grow: 1;
     padding: 10px;
     overflow-y: auto;
+    background-color: #111; /* Dark black background */
   }
   
+  /* Individual chat messages */
   .chat-message {
     margin: 8px 0;
     padding: 8px 12px;
@@ -67,37 +74,43 @@
     font-size: 14px;
   }
   
+  /* User message styling */
   .user-message {
-    background-color: #e0e0e0;
+    background-color: #ff3333; /* Red for user messages */
     color: white;
     align-self: flex-end;
   }
   
+  /* Bot message styling */
   .bot-message {
-    background-color: #d9f7d4;
-    color: #ff4d4d; /* Red text for bot messages */
+    background-color: #222; /* Darker background for bot messages */
+    color: #ff6666; /* Lighter red text for bot messages */
     align-self: flex-start;
   }
   
+  /* Input section styling */
   .chat-input-section {
     display: flex;
     padding: 10px;
-    background-color: #f8f8f8;
-    border-top: 1px solid #ddd;
+    background-color: #000; /* Black input background */
+    border-top: 1px solid #333; /* Dark border for input */
   }
   
+  /* Input field styling */
   .chat-input-section input {
     flex-grow: 1;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #ff6666; /* Red border for input */
     border-radius: 8px;
     font-size: 14px;
-    margin-right: 8px;
+    background-color: #222; /* Dark background for input */
+    color: white;
   }
   
+  /* Button styling in input section */
   .chat-input-section button {
     padding: 8px 12px;
-    background-color: #ff4d4d;
+    background-color: #ff0000; /* Red button */
     color: white;
     border: none;
     border-radius: 8px;
@@ -105,8 +118,9 @@
     transition: background-color 0.3s ease;
   }
   
+  /* Button hover effect */
   .chat-input-section button:hover {
-    background-color: #e63939;
+    background-color: #cc0000; /* Darker red on hover */
   }
   
   /* Toggle button styles */
@@ -115,7 +129,7 @@
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #ff4d4d;
+    background-color: #ff0000; /* Red button */
     color: white;
     border: none;
     border-radius: 24px;
@@ -125,8 +139,9 @@
     transition: transform 0.3s ease, background-color 0.3s ease;
   }
   
+  /* Toggle button hover effect */
   .chatbot-toggle:hover {
-    background-color: #e63939;
+    background-color: #cc0000; /* Darker red on hover */
     transform: scale(1.05);
   }
   

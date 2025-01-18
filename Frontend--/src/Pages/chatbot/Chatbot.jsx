@@ -12,7 +12,7 @@ const Chatbot = () => {
 
     if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
       return 'Hello! Welcome to FIT AI. How can I assist you today?';
-    } else if (lowerInput.i5ncludes('fitness') || lowerInput.includes('exercise')) {
+    } else if (lowerInput.includes('fitness') || lowerInput.includes('exercise')) {
       return 'FIT AI provides personalized workout plans and advice. What are your fitness goals?';
     } else if (lowerInput.includes('diet') || lowerInput.includes('nutrition')) {
       return 'We offer tailored diet plans based on your fitness goals. Would you like to know more?';
@@ -69,7 +69,7 @@ const Chatbot = () => {
               &#10005;
             </button>
           </div>
-          <div id="chat-output" className="chat-output">
+          <div id="chat-output" className="chat-output" style={{height:'200px'}}>
             {messages.map((message, index) => (
               <div
                 key={index}

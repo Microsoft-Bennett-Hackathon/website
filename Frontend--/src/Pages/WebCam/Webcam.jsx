@@ -416,7 +416,7 @@ const Webcam = () => {
   });
 
   const exercises = [
-    { id: "squats", name: "squats", video: "/shoulder_exercise.mp4", duration: 15 },
+    { id: "squats", name: "squats", video: "/squats.mp4", duration: 15 },
     { id: "bicep", name: "bicep", video: "/biceps.mp4", duration: 20 },
     { id: "deadlift", name: "deadlift", video: "/back_exercise.mp4", duration: 18 },
     { id: "pushups", name: "pushups", video: "/cardio.mp4", duration: 25 },
