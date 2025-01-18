@@ -54,6 +54,7 @@ const TodaysWorkoutMain = () => {
             </div>
           </div>
         </div>
+
         <div className="dashboard-components dashboard-left-bar bg-[#2D2D2D] h-full left-0 w-[80px] border-2 border-black absolute">
           <div className="left-bar-links flex  flex-col gap-[30px] mt-[100px] justify-center items-center">
             <Link to="/">
@@ -182,8 +183,10 @@ const TodaysWorkoutMain = () => {
             </div>
           </div>
         </div>
-        <TodaysWorkout />
-        <div className="t text-white ml-[80px] mr-[450px] relative"></div>
+
+        <div className="t text-white ml-[80px] mr-[450px] relative">
+          <TodaysWorkout />
+        </div>
       </div>
     </>
   );
