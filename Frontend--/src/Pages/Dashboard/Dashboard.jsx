@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HomeDashboard from "../../Components/Dashboard/HomeDashboard";
-
+import Chatbot from "../chatbot/chatbot";
 export default function Dashboard() {
   return (
     <>
@@ -187,6 +187,8 @@ export default function Dashboard() {
           <HomeDashboard />
         </div>
       </div>
+      <Chatbot />
     </>
+      
   );
 }

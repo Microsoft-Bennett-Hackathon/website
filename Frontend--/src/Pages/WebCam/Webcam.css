@@ -8,8 +8,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 20px;
-  background-color: black;
+  padding: 0 70px 0 70px;
 }
 
 /* Webcam Wrapper */
@@ -17,14 +16,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  height: 50%;
+  width: 70%;
+  max-width: 800px;
   position: relative;
+  gap: 20px;
 }
 
 .webcam-video {
   width: 100%;
-  height: 100%;
+  height: auto;
   border: 2px solid #ffffff;
   border-radius: 10px;
   object-fit: cover;
@@ -35,103 +35,124 @@
   margin-top: 10px;
   background-color: #1f1f1f;
   color: #ffffff;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .fullscreen-btn:hover {
   background-color: #333333;
+  transform: scale(1.05);
 }
 
-/* Left Sidebar: Today's Exercise */
+/* Left Sidebar */
 .left-sidebar {
   position: absolute;
   left: 10px;
   top: 10%;
-  width: 200px;
+  width: 240px;
   height: 80%;
-  background: rgba(30, 30, 30, 0.8);
+  background: linear-gradient(to bottom, #2a2a2a, #1f1f1f);
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 15px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .left-sidebar h3 {
   margin-bottom: 10px;
-  color: red;
+  color: #ff4c4c;
+  font-size: 18px;
+  text-align: center;
 }
 
 .left-sidebar ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  width: 100%;
 }
 
 .left-sidebar li {
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  background-color: #292929;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Right Sidebar: Pose Correction */
-.floating-sidebar {
+.left-sidebar li:hover,
+.left-sidebar li.selected {
+  background-color: #ff4c4c;
+  color: #ffffff;
+}
+
+/* .dashboard-right-bar {
   position: absolute;
   right: 10px;
   top: 10%;
-  width: 200px;
-  height: 80%;
-  background: rgba(30, 30, 30, 0.8);
-  color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 320px;
+  height: 90%;
+  background: linear-gradient(to bottom, #2a2a2a, #1f1f1f);
+  border-radius: 12px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.scrolling-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  animation: scrollUp 10s linear infinite;
-}
-
-.scrolling-content p,
-.scrolling-content h3 {
-  margin: 10px 0;
+.dashboard-right-bar h1 {
+  color: #ff4c4c;
   text-align: center;
+  margin-bottom: 15px;
 }
 
-/* Animation for scrolling text */
-@keyframes scrollUp {
+.diet-details-container .hover-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #292929;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.diet-details-container .hover-item:hover {
+  background-color: #404040;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+} */
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
   0% {
-    transform: translateY(100%);
+    transform: rotate(0deg);
   }
   100% {
-    transform: translateY(-100%);
+    transform: rotate(360deg);
   }
 }
-
-/* Button */
-.open-camera-btn {
-  background-color: #1f1f1f;
-  color: #ffffff;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
+.exercise-selection button {
+  transition: all 0.3s ease-in-out;
 }
 
-.open-camera-btn:hover {
-  background-color: #333333;
+.exercise-selection button:hover {
+  background-color: #ff0000;
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.6);
 }
