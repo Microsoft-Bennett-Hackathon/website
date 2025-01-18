@@ -368,7 +368,7 @@ const Weightloss = () => {
                   </option>
                   <option value="daily">Daily</option>
                   <option value="3-times-a-week">3 Times a Week</option>
-                  <option value="4-times-a-week">4 Times a Week</option>
+                  <option value="4-times-a-week"> Times a Week</option>
                 </select>
               </div>
 

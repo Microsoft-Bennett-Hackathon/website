@@ -65,7 +65,7 @@
       "Friday": "legs",
       "Saturday": "shoulder"
     },
-    "goal": "weight Gain",
+    "goal": "weight gain",
     "days": 365,
     "level": "Intermediate"
   },
@@ -79,7 +79,7 @@
       "Friday": "legs",
       "Saturday": "shoulder"
     },
-    "goal": "weight Gain",
+    "goal": "weight gain",
     "days": 365,
     "level": "Advance"
   }

@@ -24,6 +24,7 @@ const HomeDashboard = () => {
       try {
         const response = await fetch("http://localhost:5001/api/exercises");
         const data = await response.json();
+        console.log(data);
 
         const randomDifficulty = getRandomDifficulty();
 
@@ -37,7 +38,7 @@ const HomeDashboard = () => {
         const currentUserPreferences = userData.find(
           (pref) => pref.email === email
         );
-        console.log(currentUserPreferences.level);
+        console.log(currentUserPreferences.goal);
         setUserPreferences(currentUserPreferences);
 
         const filteredExercises = {
@@ -46,7 +47,6 @@ const HomeDashboard = () => {
               (exercise) =>
                 exercise.TargetArea === "Arms" &&
                 exercise.Difficulty === currentUserPreferences.level &&
-                exercise.goal === currentUserPreferences.goal &&
                 exercise.goal === currentUserPreferences.goal
             )
             .slice(0, 6),
@@ -91,6 +91,7 @@ const HomeDashboard = () => {
             )
             .slice(0, 6),
         };
+        console.log(filteredExercises);
 
         setExercises(filteredExercises);
       } catch (error) {
