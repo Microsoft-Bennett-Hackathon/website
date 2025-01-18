@@ -331,49 +331,83 @@ const Webcam = () => {
         </div>
       )}
 
-      {/* Right Sidebar: Workout and Diet */}
       <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
-        <div className="right-bar-container flex flex-col px-[50px]">
-          <div className="r-top flex flex-col gap-[30px] mt-[18px]">
-            <h1 className="text-white font-semibold text-2xl">Today's Workout</h1>
-            <div className="flex flex-col px-[5px] shadow-sm shadow-slate-400 rounded-lg gap-[20px] mt-[5px]">
-              <img src="/api/placeholder/400/300" alt="workout" />
-              <div className="flex flex-col px-[10px] my-[10px]">
-                <span className="font-semibold text-white">
-                  {selectedExercise ? exercises.find(e => e.id === selectedExercise)?.name : 'Select an exercise'}
-                </span>
-                <span className="font-medium text-white">Week 1</span>
+          <div className="right-bar-container flex flex-col px-[50px] ">
+            <div className="r-top flex flex-col gap-[30px] mt-[18px]">
+              <h1 className="text-white font-semibold text-2xl">
+                Today's Workout
+              </h1>
+              <div className="flex flex-col px-[5px] shadow-sm shadow-slate-400 rounded-lg gap-[20px] mt-[5px]">
+                <img src="/workout img.png" alt="" />
+                <div className="flex flex-col px-[10px] my-[10px]">
+                  <span className=" font-semibold text-white">
+                    {" "}
+                    shoulder exercise
+                  </span>
+                  <span className="font-medium text-white "> Week 1</span>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="r-bottom mt-[25px]">
-            <h1 className="text-white font-semibold text-2xl">Today's Diet</h1>
-            <div className="diet-details-container flex flex-col gap-[20px] mt-[15px]">
-              <div className="w-full rounded-[20px] h-[60px] p-[10px] text-white flex flex-row items-center gap-[20px] px-3 hover:bg-[#404040] hover:scale-105 hover:shadow-sm hover:shadow-[#ff0000] transition-all duration-300 ease-in-out">
-                <img
-                  src="/api/placeholder/45/45"
-                  className="w-[45px] h-[45px] rounded-full object-cover"
-                  alt="breakfast"
-                />
-                <div className="flex flex-col">
-                  <span className="font-semibold text-white">Breakfast</span>
-                  <div className="flex flex-row gap-[15px]">
-                    <span className="text-sm font-normal text-white">
-                      Calories: 1000 cal
-                    </span>
-                    <span className="text-sm font-normal text-white">
-                      Protein: 20g
-                    </span>
+            <div className="r-bottom mt-[25px]">
+              <h1 className="text-white font-semibold text-2xl">
+                Today's Diet{" "}
+              </h1>
+              <div className="diet-details-container flex flex-col gap-[20px] mt-[15px]">
+                <div className="w-full  rounded-[20px] h-[60px] p-[10px] text-white flex flex-row items-center gap-[20px] px-3 hover:bg-[#404040] hover:scale-105 hover:shadow-sm hover:shadow-[#ff0000] transition-all duration-300 ease-in-out">
+                  <img
+                    src="breakfast.jpg"
+                    className="w-[45px] h-[45px] rounded-full object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-white"> Breakfast</span>
+                    <div className="flex flex-row gap-[15px]">
+                      <span className="text-sm font-normal text-white">
+                        Calories :1000 cal{" "}
+                      </span>
+                      <span className="text-sm font-normal text-white">
+                        Protein : 20g{" "}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full  rounded-[20px] h-[60px] p-[10px] text-white flex flex-row items-center gap-[20px] px-3 hover:bg-[#404040] hover:scale-105 hover:shadow-sm hover:shadow-[#ff0000] transition-all duration-300 ease-in-out">
+                  <img
+                    src="lunch.jpg"
+                    className="w-[45px] h-[45px] rounded-full object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-white"> Lunch</span>
+                    <div className="flex flex-row gap-[15px]">
+                      <span className="text-sm font-normal text-white">
+                        Calories :1000 cal{" "}
+                      </span>
+                      <span className="text-sm font-normal text-white">
+                        Protein : 20g{" "}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full  rounded-[20px] h-[60px] p-[10px] text-white flex flex-row items-center gap-[20px] px-3 hover:bg-[#404040] hover:scale-105 hover:shadow-sm hover:shadow-[#ff0000] transition-all duration-300 ease-in-out">
+                  <img
+                    src="dinner.jpg"
+                    className="w-[45px] h-[45px] rounded-full object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-white"> Dinner</span>
+                    <div className="flex flex-row gap-[15px]">
+                      <span className="text-sm font-normal text-white">
+                        Calories :1000 cal{" "}
+                      </span>
+                      <span className="text-sm font-normal text-white">
+                        Protein : 20g{" "}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-              {/* Similar structure for Lunch and Dinner sections */}
-              {/* Rest of the diet sections remain unchanged */}
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };
