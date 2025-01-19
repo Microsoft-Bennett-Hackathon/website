@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TodaysWorkout from "../../Components/Dashboard/TodaysWorkout";
+import Sidebar from "../../Components/sidebar/Sidebar";
 
 const TodaysWorkoutMain = () => {
   return (
@@ -106,7 +107,7 @@ const TodaysWorkoutMain = () => {
           </div>
         </div>
 
-        <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
+        {/* <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
           <div className="right-bar-container flex flex-col px-[50px] ">
             <div className="r-top flex flex-col gap-[30px] mt-[18px]">
               <h1 className="text-white font-semibold text-2xl">
@@ -182,7 +183,8 @@ const TodaysWorkoutMain = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Sidebar />
 
         <div className="t text-white ml-[80px] mr-[450px] relative">
           <TodaysWorkout />
