@@ -1,4 +1,3 @@
-
 // // import React, { useEffect, useRef, useState } from "react";
 // // import { Link } from "react-router-dom";
 // // import io from "socket.io-client";
@@ -107,8 +106,6 @@
 // //           </button>
 // //         </div>
 // //       )}
-
-
 
 // //       {/* Right Sidebar: Workout and Diet */}
 // //       <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
@@ -401,7 +398,6 @@ import io from "socket.io-client";
 import "./Webcam.css";
 import React, { useEffect, useRef, useState } from "react";
 
-
 const Webcam = () => {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
@@ -416,11 +412,26 @@ const Webcam = () => {
   });
 
   const exercises = [
-    { id: "squats", name: "squats", video: "/squats.mp4", duration: 15 },
-    { id: "bicep", name: "bicep", video: "/biceps.mp4", duration: 20 },
-    { id: "deadlift", name: "deadlift", video: "/back_exercise.mp4", duration: 18 },
-    { id: "pushups", name: "pushups", video: "/cardio.mp4", duration: 25 },
-    { id: "pullups", name: "pullups", video: "/cardio.mp4", duration: 25 },
+    { id: "squats", name: "squats", video: "/tuts/squats.mp4", duration: 15 },
+    { id: "bicep", name: "bicep", video: "/tuts/bicep.mp4", duration: 20 },
+    {
+      id: "deadlift",
+      name: "deadlift",
+      video: "/tuts/deadlift.mp4",
+      duration: 18,
+    },
+    {
+      id: "pushups",
+      name: "pushups",
+      video: "/tuts/pushups.mp4",
+      duration: 25,
+    },
+    {
+      id: "pullups",
+      name: "pullups",
+      video: "/tuts/pullups.mp4",
+      duration: 25,
+    },
   ];
 
   const [socket, setSocket] = useState(null);
@@ -488,7 +499,9 @@ const Webcam = () => {
             <li
               key={exercise.id}
               onClick={() => handleExerciseSelect(exercise.id)}
-              className={`cursor-pointer ${selectedExercise?.id === exercise.id ? "selected" : ""}`}
+              className={`cursor-pointer ${
+                selectedExercise?.id === exercise.id ? "selected" : ""
+              }`}
             >
               {exercise.name}: {exercise.duration} minutes
             </li>
@@ -509,7 +522,11 @@ const Webcam = () => {
       {isWebcamOpen && (
         <div className="webcam-wrapper">
           {predictionData.frame ? (
-            <img src={predictionData.frame} alt="Camera feed" className="webcam-video" />
+            <img
+              src={predictionData.frame}
+              alt="Camera feed"
+              className="webcam-video"
+            />
           ) : (
             <div className="loading-spinner"></div>
           )}
@@ -536,33 +553,41 @@ const Webcam = () => {
       <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
         <div className="right-bar-container flex flex-col px-[50px]">
           <div className="r-top flex flex-col gap-[30px] mt-[18px]">
-            <h1 className="text-white font-semibold text-2xl">Today's Workout</h1>
+            <h1 className="text-white font-semibold text-2xl">
+              Today's Workout
+            </h1>
             <div className="exercise-container flex flex-col px-[5px] shadow-sm shadow-slate-400 rounded-lg gap-[20px] mt-[5px]">
               {selectedExercise ? (
-                <div className="flex flex-col items-center" style={{height:'700px'}}>
+                <div
+                  className="flex flex-col items-center"
+                  style={{ height: "700px" }}
+                >
                   <video
                     src={selectedExercise.video}
                     className="rounded-lg w-full object-cover"
-                    style={{ height: '70%' }} // Increase the height of the video
+                    style={{ height: "70%" }} // Increase the height of the video
                     controls
                     autoPlay
                     loop
                   />
                   <div className="flex flex-col px-[10px] my-[10px] text-center">
-                    <span className="font-semibold text-white text-lg">{selectedExercise.name}</span>
+                    <span className="font-semibold text-white text-lg">
+                      {selectedExercise.name}
+                    </span>
                     <span className="font-medium text-white text-sm">
                       Duration: {selectedExercise.duration} minutes
                     </span>
                   </div>
                 </div>
               ) : (
-                <p className="text-gray-400 text-center">Select an exercise to view the details</p>
+                <p className="text-gray-400 text-center">
+                  Select an exercise to view the details
+                </p>
               )}
             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 };
