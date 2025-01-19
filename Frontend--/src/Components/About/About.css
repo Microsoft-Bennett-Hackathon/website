@@ -29,6 +29,8 @@
 .advantage-item {
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+
   align-items: left;
   justify-content: space-between;
   padding:60px;
