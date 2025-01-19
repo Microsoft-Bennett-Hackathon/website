@@ -42,7 +42,6 @@
     border-bottom: 2px solid #ff3333; /* Slightly darker red border */
   }
   
-  /* Close button */
   .close-chat-btn {
     position: absolute;
     top: 10px;
@@ -52,7 +51,9 @@
     color: white;
     font-size: 20px;
     cursor: pointer;
+    z-index: 1000; /* Ensure it’s above other elements */
   }
+  
   
   .close-chat-btn:hover {
     color: #ff6666; /* Slightly lighter red on hover */
@@ -69,24 +70,31 @@
   /* Individual chat messages */
   .chat-message {
     margin: 8px 0;
-    padding: 8px 12px;
+    padding: 8px 20px;
     border-radius: 16px;
     font-size: 14px;
   }
   
   /* User message styling */
-  .user-message {
-    background-color: #ff3333; /* Red for user messages */
-    color: white;
-    align-self: flex-end;
-  }
+ /* User message styling */
+.user-message {
+  background-color: #ff3333; /* Red for user messages */
+  color: white;
   
-  /* Bot message styling */
-  .bot-message {
-    background-color: #222; /* Darker background for bot messages */
-    color: #ff6666; /* Lighter red text for bot messages */
-    align-self: flex-start;
-  }
+  margin-left: 150px;
+  align-self: flex-end; /* Align messages to the right */
+  text-align: left;
+ /* Align text to the right within the bubble */
+}
+
+/* Bot message styling */
+.bot-message {
+  background-color: #222; /* Darker background for bot messages */
+  color: #ff6666; /* Lighter red text for bot messages */
+  align-self: flex-start; /* Align messages to the left */
+  text-align: left;
+  margin-right: 100px; /* Align text to the left within the bubble */
+}
   
   /* Input section styling */
   .chat-input-section {
