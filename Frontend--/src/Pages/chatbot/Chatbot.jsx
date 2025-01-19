@@ -51,14 +51,14 @@ const Chatbot = () => {
         className="chatbot-toggle"
         onClick={() => setIsChatOpen(!isChatOpen)}
       >
-        {isChatOpen ? "" : "Chat with FIT AI"}
+        {isChatOpen ? "" : "Chat with RONNIE"}
       </button>
 
       {/* Chatbot container */}
       <div className={`chatbot-container ${isChatOpen ? "open" : "closed"}`}>
         <div className="chatbox">
           <div className="chat-header">
-            <h3>FIT AI - Fitness Help</h3>
+            <h3>RONNIE</h3>
             <button
               className="close-chat-btn"
               onClick={() => setIsChatOpen(false)}
@@ -74,7 +74,7 @@ const Chatbot = () => {
                   message.sender === "user" ? "user-message" : "bot-message"
                 }`}
               >
-                {message.sender === "user" ? "You" : "FIT AI"}: {message.text}
+                {message.sender === "user" ? "You" : "RONNIE"}: {message.text}
               </div>
             ))}
           </div>

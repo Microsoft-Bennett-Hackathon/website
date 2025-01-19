@@ -318,7 +318,7 @@ base_model = "models/gemini-1.5-flash-001-tuning"
 
 
 operation = genai.create_tuned_model(
-    display_name="FIT_AI",
+    display_name="RONNIE",
     source_model=base_model,
     epoch_count=30,
     batch_size=4,
@@ -337,7 +337,7 @@ def is_fitness_related(input_text):
 
 def generate_response(input_text):
     if not is_fitness_related(input_text):
-        return "I am FIT AI, focused solely on fitness and health topics. Please ask me about exercise, nutrition, or wellness instead."
+        return "I am RONNIE AI, focused solely on fitness and health topics. Please ask me about exercise, nutrition, or wellness instead."
     
     result = model.generate_content(input_text)
     return result.text
