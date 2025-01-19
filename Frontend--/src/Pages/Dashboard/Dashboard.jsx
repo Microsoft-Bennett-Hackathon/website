@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HomeDashboard from "../../Components/Dashboard/HomeDashboard";
 import Chatbot from "../chatbot/chatbot";
+import Sidebar from "../../Components/sidebar/Sidebar";
 export default function Dashboard() {
   return (
     <>
@@ -105,7 +106,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
+        {/* <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
           <div className="right-bar-container flex flex-col px-[50px] ">
             <div className="r-top flex flex-col gap-[30px] mt-[18px]">
               <h1 className="text-white font-semibold text-2xl">
@@ -122,66 +123,10 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="r-bottom mt-[25px]">
-              <h1 className="text-white font-semibold text-2xl">
-                Today's Diet{" "}
-              </h1>
-              <div className="diet-details-container flex flex-col gap-[20px] mt-[15px]">
-                <div className="w-full  rounded-[20px] h-[60px] p-[10px] text-white flex flex-row items-center gap-[20px] px-3 hover:bg-[#404040] hover:scale-105 hover:shadow-sm hover:shadow-[#ff0000] transition-all duration-300 ease-in-out">
-                  <img
-                    src="breakfast.jpg"
-                    className="w-[45px] h-[45px] rounded-full object-cover"
-                  />
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-white"> Breakfast</span>
-                    <div className="flex flex-row gap-[15px]">
-                      <span className="text-sm font-normal text-white">
-                        Calories :1000 cal{" "}
-                      </span>
-                      <span className="text-sm font-normal text-white">
-                        Protein : 20g{" "}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full  rounded-[20px] h-[60px] p-[10px] text-white flex flex-row items-center gap-[20px] px-3 hover:bg-[#404040] hover:scale-105 hover:shadow-sm hover:shadow-[#ff0000] transition-all duration-300 ease-in-out">
-                  <img
-                    src="lunch.jpg"
-                    className="w-[45px] h-[45px] rounded-full object-cover"
-                  />
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-white"> Lunch</span>
-                    <div className="flex flex-row gap-[15px]">
-                      <span className="text-sm font-normal text-white">
-                        Calories :1000 cal{" "}
-                      </span>
-                      <span className="text-sm font-normal text-white">
-                        Protein : 20g{" "}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full  rounded-[20px] h-[60px] p-[10px] text-white flex flex-row items-center gap-[20px] px-3 hover:bg-[#404040] hover:scale-105 hover:shadow-sm hover:shadow-[#ff0000] transition-all duration-300 ease-in-out">
-                  <img
-                    src="dinner.jpg"
-                    className="w-[45px] h-[45px] rounded-full object-cover"
-                  />
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-white"> Dinner</span>
-                    <div className="flex flex-row gap-[15px]">
-                      <span className="text-sm font-normal text-white">
-                        Calories :1000 cal{" "}
-                      </span>
-                      <span className="text-sm font-normal text-white">
-                        Protein : 20g{" "}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="r-bottom mt-[25px]"></div>
           </div>
-        </div>
+        </div> */}
+        <Sidebar />
 
         <div className="t text-white ml-[80px] mr-[450px] relative overflow-y-scroll">
           <HomeDashboard />
@@ -189,6 +134,5 @@ export default function Dashboard() {
       </div>
       <Chatbot />
     </>
-      
   );
 }

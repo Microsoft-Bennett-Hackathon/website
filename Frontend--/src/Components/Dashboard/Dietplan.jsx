@@ -37,7 +37,7 @@ const Dietplan = () => {
         const userPreference = data.find(
           (preference) => preference.email === email
         );
-        console.log("user preference", userPreference);
+
         if (userPreference) {
           setUserPreferences(userPreference); // Set the user preference based on email
         } else {
