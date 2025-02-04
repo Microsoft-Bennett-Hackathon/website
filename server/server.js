@@ -115,7 +115,7 @@ app.post("/api/generate-content", async (req, res) => {
     }
 
     const genAI = new GoogleGenerativeAI(
-      "AIzaSyChLYW845Nu3kTrgizXvztf1Uxr12S32HE"
+      "Your gemini API key"
     );
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
