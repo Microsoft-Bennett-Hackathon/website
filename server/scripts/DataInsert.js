@@ -7,7 +7,7 @@ const Exercise = require("../models/exercise.model");
 const Schedule = require("../models/schedule.model");
 
 const MONGO_URI =
-  "mongodb+srv://siddheshchawande7:Mht6E8FDBDFFtwZB@fitness.hc4ek.mongodb.net/?retryWrites=true&w=majority&appName=fitness";
+  "";
 
 console.log(MONGO_URI);
 
