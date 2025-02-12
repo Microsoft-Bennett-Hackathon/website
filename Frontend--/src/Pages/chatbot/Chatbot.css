@@ -68,7 +68,6 @@
 }
 
 .close-chat-btn {
-  background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 50%;
   width: 32px;
@@ -81,7 +80,7 @@
 }
 
 .close-chat-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(253, 4, 4, 0.2);
   transform: rotate(90deg);
 }
 
