@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./Chatbot.css";
 
@@ -6,6 +6,8 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]); // Stores messages from user and bot
   const [input, setInput] = useState(""); // Stores current user input
   const [isChatOpen, setIsChatOpen] = useState(false); // State for toggling chatbot visibility
+
+  const chatOutputRef = useRef(null); // Reference for auto-scrolling
 
   // Handles sending the message
   const sendMessage = async () => {
@@ -30,7 +32,6 @@ const Chatbot = () => {
         { sender: "bot", text: botReply },
       ]);
     } catch (error) {
-      // Handle error response
       console.error("Error fetching AI response:", error);
       setMessages((prevMessages) => [
         ...prevMessages,
@@ -43,6 +44,13 @@ const Chatbot = () => {
 
     setInput(""); // Clear input field
   };
+
+  // Auto-scroll to the latest message when messages update
+  useEffect(() => {
+    if (chatOutputRef.current) {
+      chatOutputRef.current.scrollTop = chatOutputRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   return (
     <div>
@@ -66,27 +74,49 @@ const Chatbot = () => {
               &#10005;
             </button>
           </div>
-          <div id="chat-output" className="chat-output" style={{ height: "200px" }}>
+
+          {/* Chat output area */}
+          <div ref={chatOutputRef} className="chat-output">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`chat-message ${
-                  message.sender === "user" ? "user-message" : "bot-message"
-                }`}
+                className={`chat-message ${message.sender === "user" ? "user-message" : "bot-message"
+                  }`}
               >
-                {message.sender === "user" ? "You" : "RONNIE"}: {message.text}
+                {message.sender === "bot" ? <strong style={{ color: "red" }}>RONNIE: </strong> : null}
+                {message.text}
               </div>
             ))}
           </div>
+
+          {/* Input Section */}
           <div className="chat-input-section">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask something about fitness..."
-              onKeyPress={(e) => (e.key === "Enter" ? sendMessage() : null)}
+              onKeyDown={(e) => (e.key === "Enter" ? sendMessage() : null)} // Fixed deprecated event
             />
-            <button onClick={sendMessage}>Send</button>
+            <button
+              style={{
+                borderRadius: "12px",
+                backgroundColor: "red", // Green color
+                color: "white",
+                padding: "10px 16px",
+                fontSize: "16px",
+                border: "none",
+                cursor: "pointer",
+                transition: "0.3s",
+                marginLeft: "10px", // Adds spacing from the input field
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow effect
+              }}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "red")} // Hover effect
+              onMouseOut={(e) => (e.target.style.backgroundColor = "red")}
+              onClick={sendMessage}
+            >
+               Send
+            </button>
           </div>
         </div>
       </div>
