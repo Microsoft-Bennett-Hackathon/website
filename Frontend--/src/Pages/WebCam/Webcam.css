@@ -11,41 +11,86 @@
   padding: 0 70px 0 70px;
 }
 
+/* Hide the left sidebar when webcam is open */
+/* Ensure sidebar is hidden initially */
+.webcam-container.expanded .left-sidebar {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* Disable interactions */
+}
+
+/* Create an invisible hover trigger area (only on the left 30% of the page) */
+.webcam-container.expanded {
+  position: relative; /* Required for pseudo-element positioning */
+}
+
+.webcam-container.expanded::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30%; /* Hover trigger area on the left */
+  height: 100%;
+  background: transparent; /* Invisible but still hoverable */
+  z-index: 5;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Show sidebar when hovering over the left 30% of the page */
+.webcam-container.expanded:hover .left-sidebar {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+
+/* Expand the webcam container to take full width except for the right sidebar */
+.webcam-wrapper.expanded {
+  position: absolute;
+  left: 0;
+  right: 420px; /* Adjust this value to match the width of your right sidebar */
+  width: calc(100% - 420px) !important; /* Subtract the right sidebar width */
+  height: 80vh;
+  margin-right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 1; /* Webcam is below the sidebar */
+}
+
+/* Adjust webcam video to take full screen */
+.webcam-wrapper.expanded .webcam-video {
+  width: 100%;
+  height: 100%;
+  max-height: 91vh;
+  object-fit: cover; /* Ensure video covers the entire area */
+  border-radius: 0; /* Remove border radius for full expansion */
+  border: none; /* Remove border for full expansion */
+  margin-right: 0; /* Remove margin for full expansion */
+}
+
 /* Webcam Wrapper */
 .webcam-wrapper {
   display: flex;
+  /* margin-right: 180px; */
   flex-direction: column;
   align-items: center;
-  width: 70%;
-  max-width: 800px;
+  width: auto;
+  height: 80%;
+  max-width: 987px;
   position: relative;
-  gap: 20px;
+  gap: 30px;
+  transition: all 0.3s ease;
 }
 
 .webcam-video {
-  width: 100%;
-  height: auto;
+  width: 90%;
+  height: 100%;
   border: 2px solid #ffffff;
   border-radius: 10px;
-  object-fit: cover;
-}
-
-/* Fullscreen Button */
-.fullscreen-btn {
-  margin-top: 10px;
-  background-color: #1f1f1f;
-  color: #ffffff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.fullscreen-btn:hover {
-  background-color: black;
-  transform: scale(1.05);
+  object-fit: contain;
 }
 
 /* Left Sidebar */
@@ -64,12 +109,15 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  z-index: 2; /* Ensure sidebar is above the webcam feed */
 }
 
 .left-sidebar h3 {
   margin-bottom: 10px;
   color: #ff4c4c;
   font-size: 18px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -80,9 +128,9 @@
 }
 
 .left-sidebar li {
-  margin: 10px 0;
+  margin-top: 25px;
   font-size: 16px;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   background-color: #292929;
   border-radius: 8px;
@@ -96,48 +144,28 @@
   color: #ffffff;
 }
 
-/* .dashboard-right-bar {
-  position: absolute;
-  right: 10px;
-  top: 10%;
-  width: 320px;
-  height: 90%;
-  background: linear-gradient(to bottom, #2a2a2a, #1f1f1f);
-  border-radius: 12px;
-  overflow-y: auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
 
-.dashboard-right-bar h1 {
-  color: #ff4c4c;
-  text-align: center;
-  margin-bottom: 15px;
-}
 
-.diet-details-container .hover-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 10px;
-  border-radius: 12px;
-  background-color: #292929;
-  transition: all 0.3s ease;
+/* Open Camera Button */
+.open-camera-btn {
+  margin-top: 10px;
+  margin-left: -180px;
+  margin-right: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 3; /* Ensure button is above everything */
 }
 
-.diet-details-container .hover-item:hover {
-  background-color: #404040;
+.open-camera-btn:hover {
+  background-color: black;
   transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
-} */
-.loading-spinner {
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid #ffffff;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 0.8s linear infinite;
 }
+
+
 
 @keyframes spin {
   0% {
@@ -147,6 +175,8 @@
     transform: rotate(360deg);
   }
 }
+
+/* Exercise Selection Button */
 .exercise-selection button {
   transition: all 0.3s ease-in-out;
 }

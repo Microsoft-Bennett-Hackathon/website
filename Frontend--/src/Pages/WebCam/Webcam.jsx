@@ -7,7 +7,6 @@ const Webcam = () => {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   const [isWebcamOpen, setIsWebcamOpen] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [predictionData, setPredictionData] = useState({
     frame: null,
@@ -16,28 +15,6 @@ const Webcam = () => {
     count: 0,
   });
 
-  // const exercises = [
-  //   { id: "squats", name: "squats", video: "/tuts/squats.mp4", duration: 15 },
-  //   { id: "bicep", name: "bicep", video: "/tuts/bicep.mp4", duration: 20 },
-  //   {
-  //     id: "deadlift",
-  //     name: "deadlift",
-  //     video: "/tuts/deadlift.mp4",
-  //     duration: 18,
-  //   },
-  //   {
-  //     id: "pushups",
-  //     name: "pushups",
-  //     video: "/tuts/pushups.mp4",
-  //     duration: 25,
-  //   },
-  //   {
-  //     id: "pullups",
-  //     name: "pullups",
-  //     video: "/tuts/pullups.mp4",
-  //     duration: 25,
-  //   },
-  // ];
   const exercises = [
     {
       id: "squats",
@@ -120,17 +97,6 @@ const Webcam = () => {
     setIsWebcamOpen(true);
   };
 
-  const handleFullscreenToggle = () => {
-    if (containerRef.current) {
-      if (!isFullscreen && containerRef.current.requestFullscreen) {
-        containerRef.current.requestFullscreen();
-      } else if (isFullscreen && document.exitFullscreen) {
-        document.exitFullscreen();
-      }
-      setIsFullscreen(!isFullscreen);
-    }
-  };
-
   const handleExerciseSelect = (exerciseId) => {
     const exerciseObj = exercises.find((ex) => ex.id === exerciseId);
     setSelectedExercise(exerciseObj);
@@ -138,20 +104,21 @@ const Webcam = () => {
   };
 
   return (
-    <div ref={containerRef} className="webcam-container dark-theme">
+    <div ref={containerRef} className={`webcam-container dark-theme ${isWebcamOpen ? "expanded" : ""}`}>
+
       <div className="left-sidebar">
         <h3>Select Exercise</h3>
         <ul>
           {exercises.map((exercise) => (
             <li
-              key={exercise.id}
-              onClick={() => handleExerciseSelect(exercise.id)}
-              className={`cursor-pointer ${
-                selectedExercise?.id === exercise.id ? "selected" : ""
-              }`}
-            >
-              {exercise.name}: {exercise.duration} minutes
-            </li>
+            key={exercise.id}
+            onClick={() => handleExerciseSelect(exercise.id)}
+            className={`cursor-pointer ${
+              selectedExercise?.id === exercise.id ? "selected" : ""
+            }`}
+          >
+            {exercise.name}: {exercise.duration} minutes
+          </li>
           ))}
         </ul>
       </div>
@@ -167,8 +134,8 @@ const Webcam = () => {
       )}
 
       {isWebcamOpen && (
-        <div className="webcam-wrapper">
-          {predictionData.frame ? (
+        <div className="webcam-wrapper expanded">
+        {predictionData.frame ? (
             <img
               src={predictionData.frame}
               alt="Camera feed"
@@ -191,9 +158,6 @@ const Webcam = () => {
               <strong>Count:</strong> {predictionData.count}
             </p>
           </div>
-          <button onClick={handleFullscreenToggle} className="fullscreen-btn">
-            {isFullscreen ? "Exit Fullscreen" : "Go Fullscreen"}
-          </button>
         </div>
       )}
 
@@ -212,7 +176,7 @@ const Webcam = () => {
                   <video
                     src={selectedExercise.video}
                     className="rounded-lg w-full object-cover"
-                    style={{ height: "50%" }} // Increase the height of the video
+                    style={{ height: "40%" }}
                     controls
                     autoPlay
                     loop
