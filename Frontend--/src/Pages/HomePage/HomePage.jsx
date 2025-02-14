@@ -278,7 +278,7 @@ const HomePage = () => {
             </button>
           </form>
         </section>
-
+        <br />
 
         <Footer />
       </div>

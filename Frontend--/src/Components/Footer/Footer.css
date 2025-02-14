@@ -1,101 +1,138 @@
-/* Footer.css */
-
+/* Basic footer styling */
 .footer {
-    margin-top: 20px;
-    position: relative;
-    background-color: #A62727; /* Rich red color for the background */
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    height:40vh;
-  }
-  
-  .footer-background-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 5rem;
-    color: rgba(255, 255, 255, 0.1); /* Light and subtle text for background */
-    white-space: nowrap;
-    font-weight: bold;
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  .footer-content {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .footer-logo {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .footer-nav {
-    margin: 1rem 0;
-  }
-  
-  .footer-nav a {
-    margin: 0 1rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .footer-nav a:hover {
-    color: #FFE08A; /* Highlight color */
-  }
-  
-  .footer-copyright {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #f8f8f8;
-  }
-  
-  .footer-icons {
-    margin-top: 1.5rem;
-  }
-  
-  .footer-icons a {
-    margin: 0 0.5rem;
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    transition: transform 0.3s ease;
-  }
-  
-  .footer-icons a img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .footer-icons a:hover {
-    transform: scale(1.2); /* Zoom effect on hover */
-  }
-  
-  @media (max-width: 768px) {
-    .footer-background-text {
-      font-size: 3rem;
-    }
-  
-    .footer-logo {
-      font-size: 2rem;
-    }
-  
-    .footer-nav a {
-      margin: 0 0.5rem;
-      font-size: 1rem;
-    }
-  
-    .footer-icons a {
-      margin: 0 0.3rem;
-      width: 28px;
-    }
-  }
-  
+  position: relative;
+  background-color: #BC2F2B;
+  color: #fff;
+  padding: 50px 20px;
+  overflow: hidden; /* Hides any large text overflow */
+}
+
+/* Large, faint background text */
+.footer-background-text {
+  padding: 0 70px 0 70px;
+  position: absolute;
+  /* Adjust these values to position faint text behind the main heading */
+  top: 20px; 
+  left: 70px;
+
+  font-size: 8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.08);
+  text-transform: uppercase;
+  line-height: 0.9;
+  pointer-events: none; /* So it doesn't block clicks */
+  user-select: none;    /* Not selectable */
+  z-index: 0;           /* Behind main content */
+}
+
+/* Main container for all footer items */
+.footer-content {
+  padding: 0 40px 0 40px;
+  position: relative;
+  margin-left: 30px;
+  z-index: 1; /* Ensure it appears above the faint text */
+  /* max-width: 1600px; */
+  /* margin: 0 auto; */
+}
+
+/* Top heading (IGNITE YOUR INNER STRENGTH) */
+.footer-ignite {
+  padding: 0 10px 0 10px;
+  width: 100%; /* Ensure it takes full width */
+  max-width: 900px; /* Increase from 700px */
+  margin: 0 0px 80px 0;
+  font-size: 4.6rem;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+
+
+/* Bottom row layout:
+   Using a grid with three columns: left, center, right */
+.footer-bottom {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 230px;
+}
+
+/* Left column */
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-fitai {
+  padding: 0 10px 0 10px;
+  font-size: 3.5rem;  
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Center column (navigation) */
+.footer-nav {
+  margin-top: 15px;
+  display: flex;
+  font-size: 1.1rem;
+  justify-content: center; /* Centers links horizontally */
+  gap: 1.4rem; /* Adds spacing between links */
+  margin-left: -390px;
+}
+
+.footer-copyright {
+  margin-top: 6px;
+  text-align: left; 
+  margin-left: 100px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+
+
+
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #ddd;
+}
+
+/* Right column (social icons) */
+.footer-right {
+  display: flex;
+  margin-top:80px;
+  justify-content: flex-end;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-icons a {
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.footer-icons a:hover {
+  opacity: 0.8;
+}
+
+.footer-icons img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Paragraph styling */
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
