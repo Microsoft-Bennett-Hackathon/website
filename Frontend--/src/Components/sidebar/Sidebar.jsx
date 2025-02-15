@@ -154,7 +154,7 @@ const Sidebar = () => {
     Thursday: { targetArea: "Chest", image: "/images/chest.jpg" },
     Friday: { targetArea: "Back", image: "/images/back.jpg" },
     Sunday: { targetArea: "FullBody", image: "/images/fullbody.jpg" },
-    Saturday: { targetArea: "Rest", image: "/images/rest.jpg" }, // Add image for rest day if needed
+    Saturday: { targetArea: "Rest", image: "/images/rest.jpg" },
   };
 
   useEffect(() => {
