@@ -131,6 +131,8 @@
 }
 /* Feature-sec */
 /* Features Section */
+  
+/* Features Section */
 .features {
   text-align: center;
   color: #fff;
@@ -147,7 +149,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding:0 70px 0 70px;
+  padding: 0 70px;
 }
 
 .feature-item {
@@ -200,10 +202,18 @@
 
 .background-text.show {
   opacity: 1;
-  transform: translate(-50%, -50%); /* Keep the same centering */
+  transform: translate(-50%, -50%);
 }
 
-/* Styling for h3 to overlay the background text */
+/* Additional background text positioning for the AI feature */
+.feature-item-third .background-text.ai-pose {
+  top: 45%;
+}
+
+.feature-item-third .background-text.ai-pose-correction {
+  top: 55%;
+}
+
 h3 {
   position: relative;
   z-index: 1;
@@ -270,7 +280,6 @@ p {
   font-size: 4rem;
   margin-bottom: 0.5rem;
 }
-
 
 /* New floating animations for subtle movement */
 @keyframes float {

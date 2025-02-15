@@ -16,15 +16,15 @@ import MusclegainMain from "./Pages/Musclegain/MusclegainMain";
 import DietplanMain from "./Pages/Dietplan/DietplanMain";
 import AllworkoutsMain from "./Pages/Allworkouts/AllworkoutsMain";
 import TodaysWorkoutMain from "./Pages/TodaysWorkout/TodaysWorkoutMain";
+import ProfileSection from "./Pages/ProfileSection/ProfileSection";
 // Mock authentication check
 const isAuthenticated = () => {
   return localStorage.getItem("authToken") !== null;
 };
 
-// Protected Route component
-// const ProtectedRoute = ({ element }) => {
-//   return isAuthenticated() ? element : <Navigate to="/login" replace />;
-// };
+const ProtectedRoute = ({ element }) => {
+  return isAuthenticated() ? element : <Navigate to="/login" replace />;
+};
 
 const App = () => {
   return (
@@ -39,8 +39,8 @@ const App = () => {
         <Route path="/advantages" element={<About />} />
 
         {/* Protected Route */}
-        <Route path="/dashboard"  element={<Dashboard />} /> />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard"  element={<Dashboard />} /> 
+        <Route path="/profile" element={<ProfileSection />} />
         <Route path="/WeightlossMain" element={<WeightLossMain />} />
         <Route path="/MusclegainMain" element={<MusclegainMain />} />
         <Route path="/DietplanMain" element={<DietplanMain />} />

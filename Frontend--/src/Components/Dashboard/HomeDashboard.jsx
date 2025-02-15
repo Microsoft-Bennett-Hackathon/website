@@ -19,88 +19,100 @@ const HomeDashboard = () => {
     return difficulties[randomIndex];
   };
 
-  useEffect(() => {
-    const fetchExercises = async () => {
-      try {
-        const response = await fetch("http://localhost:5001/api/exercises");
-        const data = await response.json();
-        console.log(data);
+  const fetchExercises = async () => {
+    try {
+      // Fetch exercises
+      const response = await fetch("http://localhost:5001/api/exercises");
+      const data = await response.json();
+      console.log("Exercises data:", data);
 
-        const randomDifficulty = getRandomDifficulty();
+      // Optionally, get a random difficulty
+      const randomDifficulty = getRandomDifficulty();
 
-        const userResponse = await fetch(
-          "http://localhost:5001/api/user-preferences"
-        );
-        const userData = await userResponse.json();
+      // Fetch user preferences
+      const userResponse = await fetch("http://localhost:5001/api/user-preferences");
+      const userData = await userResponse.json();
+      console.log("User preferences data:", userData);
 
-        const email = localStorage.getItem("email");
+      // Get email from localStorage
+      const email = localStorage.getItem("email");
 
-        const currentUserPreferences = userData.find(
-          (pref) => pref.email === email
-        );
-        console.log(currentUserPreferences.goal);
-        setUserPreferences(currentUserPreferences);
-
-        const filteredExercises = {
-          armsDay: data
-            .filter(
-              (exercise) =>
-                exercise.TargetArea === "Arms" &&
-                exercise.Difficulty === currentUserPreferences.level &&
-                exercise.goal === currentUserPreferences.goal
-            )
-            .slice(0, 6),
-          legsDay: data
-            .filter(
-              (exercise) =>
-                exercise.TargetArea === "Legs" &&
-                exercise.Difficulty === currentUserPreferences.level &&
-                exercise.goal === currentUserPreferences.goal
-            )
-            .slice(0, 6),
-          shoulderDay: data
-            .filter(
-              (exercise) =>
-                exercise.TargetArea === "Shoulders" &&
-                exercise.Difficulty === currentUserPreferences.level &&
-                exercise.goal === currentUserPreferences.goal
-            )
-            .slice(0, 6),
-          chestDay: data
-            .filter(
-              (exercise) =>
-                exercise.TargetArea === "Chest" &&
-                exercise.Difficulty === currentUserPreferences.level &&
-                exercise.goal === currentUserPreferences.goal
-            )
-            .slice(0, 6),
-          backDay: data
-            .filter(
-              (exercise) =>
-                exercise.TargetArea === "Back" &&
-                exercise.Difficulty === currentUserPreferences.level &&
-                exercise.goal === currentUserPreferences.goal
-            )
-            .slice(0, 6),
-          fullBodyDay: data
-            .filter(
-              (exercise) =>
-                exercise.TargetArea === "Full Body" &&
-                exercise.Difficulty === currentUserPreferences.level &&
-                exercise.goal === currentUserPreferences.goal
-            )
-            .slice(0, 6),
-        };
-        console.log(filteredExercises);
-
-        setExercises(filteredExercises);
-      } catch (error) {
-        console.error("Error fetching exercises:", error);
+      // Find the current user's preferences
+      const currentUserPreferences = userData.find(
+        (pref) =>
+          pref.email?.toLowerCase().trim() === email.toLowerCase().trim()
+      );
+      if (!currentUserPreferences) {
+        console.error("User preferences not found for email:", email);
+        return;
       }
-    };
 
+      console.log("User goal:", currentUserPreferences.goal);
+      setUserPreferences(currentUserPreferences);
+
+      // Filter exercises based on user preferences
+      const filteredExercises = {
+        armsDay: data
+          .filter(
+            (exercise) =>
+              exercise.TargetArea === "Arms" &&
+              exercise.Difficulty === currentUserPreferences.level &&
+              exercise.goal === currentUserPreferences.goal
+          )
+          .slice(0, 6),
+        legsDay: data
+          .filter(
+            (exercise) =>
+              exercise.TargetArea === "Legs" &&
+              exercise.Difficulty === currentUserPreferences.level &&
+              exercise.goal === currentUserPreferences.goal
+          )
+          .slice(0, 6),
+        shoulderDay: data
+          .filter(
+            (exercise) =>
+              exercise.TargetArea === "Shoulders" &&
+              exercise.Difficulty === currentUserPreferences.level &&
+              exercise.goal === currentUserPreferences.goal
+          )
+          .slice(0, 6),
+        chestDay: data
+          .filter(
+            (exercise) =>
+              exercise.TargetArea === "Chest" &&
+              exercise.Difficulty === currentUserPreferences.level &&
+              exercise.goal === currentUserPreferences.goal
+          )
+          .slice(0, 6),
+        backDay: data
+          .filter(
+            (exercise) =>
+              exercise.TargetArea === "Back" &&
+              exercise.Difficulty === currentUserPreferences.level &&
+              exercise.goal === currentUserPreferences.goal
+          )
+          .slice(0, 6),
+        fullBodyDay: data
+          .filter(
+            (exercise) =>
+              exercise.TargetArea === "Full Body" &&
+              exercise.Difficulty === currentUserPreferences.level &&
+              exercise.goal === currentUserPreferences.goal
+          )
+          .slice(0, 6),
+      };
+
+      console.log("Filtered Exercises:", filteredExercises);
+      setExercises(filteredExercises);
+    } catch (error) {
+      console.error("Error fetching exercises:", error);
+    }
+  };
+
+  useEffect(() => {
     fetchExercises();
   }, []);
+
 
   return (
     <>

@@ -5,7 +5,7 @@ const Musclegain = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [goal, setGoal] = useState(""); // For storing the selected goal
   const [level, setLevel] = useState(""); // For storing the selected level
-
+  console.log(localStorage.getItem("authToken"))
   useEffect(() => {
     fetch("http://localhost:5001/api/schedules")
       .then((response) => response.json())
@@ -32,8 +32,9 @@ const Musclegain = () => {
 
   const handleUpdateDietPreferences = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-
-    const token = localStorage.getItem("token"); // Assuming the token is stored in localStorage
+    
+    const token = localStorage.getItem("authToken"); // Assuming the token is stored in localStorage
+    
     if (!token) {
       alert("You must be logged in.");
       return;

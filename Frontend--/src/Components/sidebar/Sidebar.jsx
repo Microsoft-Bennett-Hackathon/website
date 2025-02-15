@@ -153,8 +153,8 @@ const Sidebar = () => {
     Wednesday: { targetArea: "Shoulders", image: "/images/shoulders.jpg" },
     Thursday: { targetArea: "Chest", image: "/images/chest.jpg" },
     Friday: { targetArea: "Back", image: "/images/back.jpg" },
-    Sunday: { targetArea: "FullBody", image: "/images/fullbody.jpg" },
-    Saturday: { targetArea: "Rest", image: "/images/rest.jpg" }, // Add image for rest day if needed
+    Saturday: { targetArea: "FullBody", image: "/images/fullbody.jpg" },
+    Sunday: { targetArea: "Rest", image: "/images/rest.jpg" }, // Add image for rest day if needed
   };
 
   useEffect(() => {
@@ -241,7 +241,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black">
+<div className="dashboard-components dashboard-right-bar bg-[#2D2D2D] h-full right-0 w-[450px] absolute border-2 border-black mb-5">
       <div className="right-bar-container flex flex-col px-[50px]">
         <div className="r-top flex flex-col gap-[30px] mt-[18px]">
           <h1 className="text-white font-semibold text-2xl">Today's Workout</h1>
@@ -259,7 +259,7 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <div className="r-bottom mt-[25px] bg-[#1E1E1E] p-[20px] rounded-lg shadow-lg">
+        <div className="r-bottom mt-[25px] bg-[#1E1E1E] p-[20px] rounded-lg shadow-lg mb-5">
           {loading && <p className="text-white text-center">Loading...</p>}
           {error && <p className="text-red-500 text-center">Error: {error}</p>}
           {dietPreferences && nutrition && (
@@ -282,14 +282,17 @@ const Sidebar = () => {
                 </p>
                 <p className="flex justify-between">
                   <span>Carbs:</span>
+           
                   <span>{nutrition.carbGrams.toFixed(1)} g</span>
                 </p>
               </div>
             </div>
+            
           )}
         </div>
       </div>
     </div>
+    
   );
 };
 

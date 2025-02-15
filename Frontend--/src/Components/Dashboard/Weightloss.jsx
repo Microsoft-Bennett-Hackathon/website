@@ -33,7 +33,7 @@ const Weightloss = () => {
   const handleUpdateDietPreferences = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    const token = localStorage.getItem("token"); // Assuming the token is stored in localStorage
+    const token = localStorage.getItem("authToken"); // Assuming the token is stored in localStorage
     if (!token) {
       alert("You must be logged in.");
       return;

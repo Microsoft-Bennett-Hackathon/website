@@ -278,8 +278,8 @@ const HomePage = () => {
             </button>
           </form>
         </section>
-        <br />
 
+        <br />
         <Footer />
       </div>
 

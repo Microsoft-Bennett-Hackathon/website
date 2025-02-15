@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import HomeDashboard from "../../Components/Dashboard/HomeDashboard";
-import Chatbot from "../chatbot/chatbot";
 import Sidebar from "../../Components/sidebar/Sidebar";
+import Chatbot from "../chatbot/chatbot";
+import profile from "../../Pages/ProfileSection/ProfileSection";
+
 export default function Dashboard() {
+
   return (
     <>
       <div className="dashboard-container bg-black h-screen flex flex-col ">
@@ -18,6 +21,7 @@ export default function Dashboard() {
                   width="20"
                   height="24=0"
                   viewBox="0 0 24 24"
+
                 >
                   <path
                     fill="#000"
@@ -41,17 +45,24 @@ export default function Dashboard() {
                   d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm8-7l8-5V6l-8 5l-8-5v2z"
                 />
               </svg>
+              <Link to="/profile">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
-                height="20s"
+                height="20"
                 viewBox="0 0 24 24"
+              
+               
               >
+              
                 <path
                   fill="#fff"
                   d="M2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm4-8h8v-2H6zm0-3h12V9H6zm0-3h12V6H6z"
                 />
               </svg>
+
+              </Link>
+
             </div>
           </div>
         </div>
@@ -132,7 +143,10 @@ export default function Dashboard() {
           <HomeDashboard />
         </div>
       </div>
+    
+
       <Chatbot />
+      
     </>
   );
 }
