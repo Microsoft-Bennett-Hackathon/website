@@ -1,0 +1,188 @@
+body {
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Overall container */
+  .profile-page {
+    
+    background-color: black; /* Black background */
+    color: #fff; /* White text */
+    min-height: 90vh;
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  
+  /* Main content container */
+  .profile-content {
+    /* Width & layout */
+    margin-top:10px;
+    width: 80%;  
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 20px;
+    
+    /* Background & padding */
+    background-color: rgba(45, 45, 45, 1);
+    padding: 20px 40px;
+    border-radius: 13px;
+    /* max-height: 800px; 
+    overflow-y: auto; */
+  }
+  
+  /* Header styling (now inside .profile-content) */
+  .profile-header {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .profile-header h1 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-size: 2.3rem;
+    font-weight: 600;
+  }
+  
+  /* Left section with user details and plan */
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  /* User details */
+  .profile-info {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .info-item label,
+  .info-row label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: red;
+  }
+  
+  .info-item input,
+  .info-row input {
+    width: 70%;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid #555;
+    background-color: black;
+    color: #fff;
+  }
+  
+  .info-item p,
+  .info-row p {
+    background-color: black;
+    padding: 8px 10px;
+    border-radius: 4px;
+  }
+  
+  /* Row for Weight, Height, BMI */
+  .info-row {
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .info-row > div {
+    flex: 1;
+  }
+  
+  /* Reduce BMI container width */
+  .info-row > div:last-child {
+    flex: 0 0 80px; /* Adjust this width as needed */
+  }
+  
+  /* Current plan section */
+  .current-plan {
+    padding: 20px;
+    background-color: black;
+    border-radius: 12px;
+    max-width: 500px;
+  }
+  
+  .current-plan h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .plan-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .plan-details p {
+    margin-bottom: 6px;
+  }
+  
+  /* Edit button section (bottom of left column) */
+  .edit-section {
+     /* Pushes the edit-section to the bottom */
+             /* Make this a flex container */
+     /* Align content to the right */
+     display: flex;
+     margin-top: 350px;
+     justify-content: right;
+  }
+  
+  .edit-button,
+  .save-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border-radius: 12px;
+  }
+  
+  .edit-button:hover,
+  .save-button:hover {
+    background-color: #d60000;
+  }
+  
+  .save-message {
+    text-align: center;
+    color: green;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  /* Right column: avatar */
+  .profile-avatar {
+    align-self: flex-start; /* Align this item at the top of the container */
+    margin-top: 0;         /* Adjust if you need additional spacing */
+  }
+  
+  /* Square Avatar Box */
+  .avatar-box {
+    width: 350px;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 4px solid #ff4444;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

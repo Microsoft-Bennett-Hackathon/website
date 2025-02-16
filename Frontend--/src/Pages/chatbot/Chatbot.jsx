@@ -57,6 +57,7 @@ const Chatbot = () => {
       {/* Chatbot toggle button */}
       <button
         className="chatbot-toggle"
+        style={{marginBottom:'-20px'}}
         onClick={() => setIsChatOpen(!isChatOpen)}
       >
         {isChatOpen ? "" : "Chat with RONNIE"}

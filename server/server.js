@@ -96,6 +96,7 @@ app.put("/api/update-diet-preferences", async (req, res) => {
 app.get("/api/user-preferences", async (req, res) => {
   try {
     const userPreferences = await DietPreferences.find();
+    console.log("User preferences from DB:", userPreferences); // Debug log
     res.status(200).json(userPreferences);
   } catch (error) {
     console.error("Error fetching user preferences:", error);
@@ -105,6 +106,7 @@ app.get("/api/user-preferences", async (req, res) => {
     });
   }
 });
+
 
 app.post("/api/generate-content", async (req, res) => {
   try {
