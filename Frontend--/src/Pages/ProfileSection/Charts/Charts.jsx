@@ -35,10 +35,16 @@ const stepGoal = 10000;
 const stepPercentage = (stepsTaken / stepGoal) * 100;
 
 // Generate chart data for 30 days: x-axis is Day, y-axis is Calorie Streak
-const chartDataArray = Array.from({ length: 30 }, (_, i) => ({
-  day: `${i + 1}`,
-  calories: Math.floor(Math.random() * 300) + 100, // calorie streak between 100 and 400
-}));
+let calories = 100; // starting point
+
+const chartDataArray = Array.from({ length: 30 }, (_, i) => {
+  // Add a small random increment each day
+  calories += Math.floor(Math.random() * 10); // increment by 0 to 9
+  return {
+    day: `${i + 1}`,
+    calories,
+  };
+});
 
 // Prepare data for the Area Chart (notice fill: true)
 const data = {
