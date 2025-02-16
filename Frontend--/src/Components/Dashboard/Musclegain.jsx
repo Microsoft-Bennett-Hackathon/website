@@ -21,8 +21,8 @@ const Musclegain = () => {
   }, []);
 
   const handlePlanClick = (goal, level) => {
-    setGoal(goal); // Set goal from the clicked schedule
-    setLevel(level); // Set level from the clicked schedule
+    setGoal(goal);
+    setLevel(level);
     setIsPopupVisible(true);
   };
 
@@ -33,7 +33,7 @@ const Musclegain = () => {
   const handleUpdateDietPreferences = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    const token = localStorage.getItem("token"); // Assuming the token is stored in localStorage
+    const token = localStorage.getItem("token");
     if (!token) {
       alert("You must be logged in.");
       return;
@@ -44,7 +44,7 @@ const Musclegain = () => {
     const targetWeight = document.getElementById("targetWeight").value;
     const dietaryPreference = document.getElementById("preferences").value;
     const workoutFrequency = document.getElementById("workoutFrequency").value;
-    const email = localStorage.getItem("email"); // Assuming email is stored in localStorage
+    const email = localStorage.getItem("email");
 
     if (!email) {
       alert("Email is required.");

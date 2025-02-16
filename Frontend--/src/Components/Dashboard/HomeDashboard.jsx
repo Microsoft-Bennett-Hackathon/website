@@ -26,7 +26,7 @@ const HomeDashboard = () => {
         const data = await response.json();
         console.log(data);
 
-        const randomDifficulty = getRandomDifficulty();
+        // const randomDifficulty = getRandomDifficulty();
 
         const userResponse = await fetch(
           "http://localhost:5001/api/user-preferences"
@@ -38,7 +38,7 @@ const HomeDashboard = () => {
         const currentUserPreferences = userData.find(
           (pref) => pref.email === email
         );
-        console.log(currentUserPreferences.goal);
+        console.log(currentUserPreferences);
         setUserPreferences(currentUserPreferences);
 
         const filteredExercises = {
@@ -192,7 +192,7 @@ const HomeDashboard = () => {
 
         <div className="dh-bottom flex mt-[40px]">
           <div className="bg-[#1f1f1f] w-full rounded-lg  py-[15px]">
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-start">
               {/* Monday */}
               <div
                 className="flex flex-col items-center border-r w-1/6 border-gray-700 px-[10px]  "
