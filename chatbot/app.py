@@ -8,7 +8,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 # Set the API key for Google Generative AI
-genai.configure(api_key='AIzaSyChLYW845Nu3kTrgizXvztf1Uxr12S32HE')
+genai.configure(api_key='')
 
 # Load the fine-tuned model
 model_name = "tunedModels/fitai-rjxj4w7lu0jz"
